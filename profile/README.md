@@ -29,3 +29,11 @@ A community project working to get as many cross-platform builds of HEP tools on
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sherpa-green.svg)](https://anaconda.org/conda-forge/sherpa) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sherpa.svg)](https://anaconda.org/conda-forge/sherpa) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sherpa.svg)](https://anaconda.org/conda-forge/sherpa) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sherpa.svg)](https://anaconda.org/conda-forge/sherpa) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-siscone-green.svg)](https://anaconda.org/conda-forge/siscone) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/siscone.svg)](https://anaconda.org/conda-forge/siscone) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/siscone.svg)](https://anaconda.org/conda-forge/siscone) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/siscone.svg)](https://anaconda.org/conda-forge/siscone) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-yoda-green.svg)](https://anaconda.org/conda-forge/yoda) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/yoda.svg)](https://anaconda.org/conda-forge/yoda) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/yoda.svg)](https://anaconda.org/conda-forge/yoda) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/yoda.svg)](https://anaconda.org/conda-forge/yoda) |
+
+## Adding new tools
+
+Contributions of new HEP tools are very welcome!
+
+To get a new tool listed:
+1. Package and distribute your tool on conda-forge.
+2. Open up an Issue with title "Add <tool name> to HEP Packaging Coordination" with a link to the tool's conda-forge feedstock.
