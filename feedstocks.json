@@ -3,6 +3,7 @@
     "collier",
     "emela",
     "ff-static",
+    "ff",
     "lhapdf",
     "looptools",
     "mpfun90",
@@ -14,16 +15,26 @@
   ],
   "Simulation": [
     "delphes",
+    "fastjet-contrib",
+    "fastjet-cxx",
+    "fastjet",
     "geant4",
-    "sherpa",
     "hepmc2",
     "hepmc3",
     "pythia8",
-    "fastjet",
+    "sherpa",
     "yoda"
   ],
-  "Grid": ["xrootd"],
+  "Grid": [
+    "apptainer",
+    "ca-policy-lcg",
+    "davix",
+    "dirac-grid",
+    "gfal2",
+    "python-gfal2",
+    "xrootd"
+  ],
   "Experiment specific": {
-    "LHCb": ["LbEnv", "LHCbDIRAC"]
+    "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"]
   }
 }
