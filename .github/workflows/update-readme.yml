@@ -1,0 +1,42 @@
+name: Update README
+
+on:
+  # Run every 6 hours
+  schedule:
+    - cron: "0 */6 * * *"
+  # Also allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install requests pre-commit
+
+      - name: Run update script
+        env:
+          # Pass the GitHub token so that the API requests (if needed) can be authenticated.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python update_readme.py && pre-commit run --all-files
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add README.md
+            git commit -m "Update README via CI"
+            git push
+          else
+            echo "No changes to commit."
+          fi

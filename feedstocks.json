@@ -1,0 +1,29 @@
+{
+  "Analysis": [
+    "collier",
+    "emela",
+    "ff-static",
+    "lhapdf",
+    "looptools",
+    "mpfun90",
+    "ninja-hep-ph",
+    "oneloop",
+    "qcdloop",
+    "root",
+    "siscone"
+  ],
+  "Simulation": [
+    "delphes",
+    "geant4",
+    "sherpa",
+    "hepmc2",
+    "hepmc3",
+    "pythia8",
+    "fastjet",
+    "yoda"
+  ],
+  "Grid": ["xrootd"],
+  "Experiment specific": {
+    "LHCb": ["LbEnv", "LHCbDIRAC"]
+  }
+}
