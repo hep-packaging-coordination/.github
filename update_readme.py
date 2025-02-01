@@ -2,10 +2,8 @@
 import json
 import os
 import requests
+from collections import defaultdict
 from datetime import datetime, timezone
-
-# Global variable to hold the feedstock outputs mapping.
-FEEDSTOCK_OUTPUTS = {}
 
 
 def load_feedstock_outputs():
@@ -57,14 +55,14 @@ def generate_tool_row(feedstock_name):
       - Open non-draft PRs (linking to the pull requests page on GitHub for the first output)
       - A comma-separated list of all outputs for that feedstock.
     """
-    outputs = FEEDSTOCK_OUTPUTS.get(feedstock_name, [feedstock_name])
-
     feedstock_url = f"https://github.com/conda-forge/{feedstock_name}-feedstock"
     pr_page_url = f"{feedstock_url}/pulls"
-    pr_count = get_open_prs_count(feedstock_name)
+    # pr_count = get_open_prs_count(feedstock_name)
+    pr_count = 0
     pr_count_link = "" if pr_count == 0 else f"[{pr_count}]({pr_page_url})"
 
-    for output in outputs:
+    for output in sorted(FEEDSTOCK_OUTPUTS[feedstock_name]):
+        print(feedstock_name, output)
         anaconda_url = f"https://anaconda.org/conda-forge/{output}"
 
         feedstock_badge = f"[![Conda Recipe](https://img.shields.io/badge/feedstock-{output.replace('-', '--')}-green.svg)]({feedstock_url})"
@@ -87,7 +85,7 @@ def process_tools_section(section_title, tools):
     # Table header now includes an extra column for all outputs.
     lines.append("| Feedstock | Output | Downloads | Version | Platforms | Open PRs |")
     lines.append("| --- | --- | --- | --- | --- | --- |")
-    for tool in tools:
+    for tool in sorted(tools):
         lines.extend(generate_tool_row(tool))
     lines.append("")
     return lines
@@ -95,8 +93,11 @@ def process_tools_section(section_title, tools):
 
 def main():
     global FEEDSTOCK_OUTPUTS
-    # Load the feedstock outputs from the remote JSON.
-    FEEDSTOCK_OUTPUTS = load_feedstock_outputs()
+    by_feedstock = defaultdict(set)
+    for output, feedstocks in load_feedstock_outputs().items():
+        for feedstock in feedstocks:
+            by_feedstock[feedstock].add(output)
+    FEEDSTOCK_OUTPUTS = dict(by_feedstock)
 
     # Load the local JSON data containing categories and tools.
     with open("feedstocks.json", "r") as f:
