@@ -57,15 +57,17 @@ def generate_tool_row(feedstock_name):
     """
     feedstock_url = f"https://github.com/conda-forge/{feedstock_name}-feedstock"
     pr_page_url = f"{feedstock_url}/pulls"
-    # pr_count = get_open_prs_count(feedstock_name)
-    pr_count = 0
+    pr_count = get_open_prs_count(feedstock_name)
     pr_count_link = "" if pr_count == 0 else f"[{pr_count}]({pr_page_url})"
 
-    for output in sorted(FEEDSTOCK_OUTPUTS[feedstock_name]):
+    for i, output in enumerate(sorted(FEEDSTOCK_OUTPUTS[feedstock_name])):
         print(feedstock_name, output)
         anaconda_url = f"https://anaconda.org/conda-forge/{output}"
 
-        feedstock_badge = f"[![Conda Recipe](https://img.shields.io/badge/feedstock-{output.replace('-', '--')}-green.svg)]({feedstock_url})"
+        if i == 0:
+            feedstock_badge = f"[![Conda Recipe](https://img.shields.io/badge/feedstock-{output.replace('-', '--')}-green.svg)]({feedstock_url})"
+        else:
+            feedstock_badge = ""
         recipe_badge = f"[![Conda Recipe](https://img.shields.io/badge/recipe-{output.replace('-', '--')}-green.svg)]({feedstock_url})"
         downloads_badge = f"[![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/{output}.svg)]({anaconda_url})"
         version_badge = f"[![Conda Version](https://img.shields.io/conda/vn/conda-forge/{output}.svg)]({anaconda_url})"
