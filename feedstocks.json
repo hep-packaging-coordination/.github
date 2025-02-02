@@ -1,0 +1,40 @@
+{
+  "Analysis": [
+    "collier",
+    "emela",
+    "ff-static",
+    "ff",
+    "lhapdf",
+    "looptools",
+    "mpfun90",
+    "ninja-hep-ph",
+    "oneloop",
+    "qcdloop",
+    "root",
+    "siscone"
+  ],
+  "Simulation": [
+    "delphes",
+    "fastjet-contrib",
+    "fastjet-cxx",
+    "fastjet",
+    "geant4",
+    "hepmc2",
+    "hepmc3",
+    "pythia8",
+    "sherpa",
+    "yoda"
+  ],
+  "Grid": [
+    "apptainer",
+    "ca-policy-lcg",
+    "davix",
+    "dirac-grid",
+    "gfal2",
+    "python-gfal2",
+    "xrootd"
+  ],
+  "Experiment specific": {
+    "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"]
+  }
+}
