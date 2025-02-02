@@ -13,21 +13,21 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
-      - name: Install dependencies
-        run: pip install requests pre-commit
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
 
       - name: Run update script
         env:
           # Pass the GitHub token so that the API requests (if needed) can be authenticated.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python update_readme.py && (pre-commit run --all-files || true)
+        run: python update_readme.py && (uvx pre-commit run --all-files || true)
 
       - name: Commit and push changes
         run: |
