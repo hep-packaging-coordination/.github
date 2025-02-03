@@ -22,12 +22,20 @@ jobs:
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          enable-cache: auto
+          cache-dependency-glob: '**/uv.lock'
+          prune-cache: true
+
+      - name: Create uv virtual environment
+        run: uv venv && uv pip install requests
 
       - name: Run update script
         env:
           # Pass the GitHub token so that the API requests (if needed) can be authenticated.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: uv pip install requests && python update_readme.py && (uvx pre-commit run --all-files || true)
+        run: python update_readme.py && (uvx pre-commit run --all-files || true)
 
       - name: Commit and push changes
         run: |
