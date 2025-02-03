@@ -4,6 +4,7 @@ on:
   # Run every 6 hours
   schedule:
     - cron: "0 */6 * * *"
+  pull_request:
   # Also allow manual triggering
   workflow_dispatch:
 
@@ -30,22 +31,20 @@ jobs:
           cache-dependency-glob: '**/uv.lock'
           prune-cache: true
 
-      - name: Create uv virtual environment
+      - name: Install Python dependencies
         run: |
-          uv venv
-          source .venv/bin/activate
-          uv pip install requests
+          uv pip install --system --upgrade requests
 
       - name: Run update script
         env:
           # Pass the GitHub token so that the API requests (if needed) can be authenticated.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          source .venv/bin/activate
           python update_readme.py
           (uvx pre-commit run --all-files || true)
 
       - name: Commit and push changes
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository == 'hep-packaging-coordination/.github'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
