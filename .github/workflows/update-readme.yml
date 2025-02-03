@@ -29,13 +29,19 @@ jobs:
           prune-cache: true
 
       - name: Create uv virtual environment
-        run: uv venv && uv pip install requests
+        run: |
+          uv venv
+          source .venv/bin/activate
+          uv pip install requests
 
       - name: Run update script
         env:
           # Pass the GitHub token so that the API requests (if needed) can be authenticated.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python update_readme.py && (uvx pre-commit run --all-files || true)
+        run: |
+          source .venv/bin/activate
+          python update_readme.py
+          (uvx pre-commit run --all-files || true)
 
       - name: Commit and push changes
         run: |
