@@ -2,7 +2,6 @@
   "Analysis": [
     "collier",
     "emela",
-    "ff-static",
     "ff",
     "lhapdf",
     "looptools",
@@ -10,6 +9,7 @@
     "ninja-hep-ph",
     "oneloop",
     "qcdloop",
+    "qcdloop-fortran",
     "root",
     "siscone"
   ],
