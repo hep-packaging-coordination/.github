@@ -3,7 +3,6 @@ import json
 import os
 import requests
 from collections import defaultdict
-from datetime import datetime, timezone
 
 
 def load_feedstock_outputs():
@@ -136,10 +135,6 @@ def main():
         '2. Open up an [Issue](https://github.com/hep-packaging-coordination/.github/issues) with title "Add `<tool name>` to HEP Packaging Coordination" with a link to the tool\'s conda-forge feedstock.'
     )
     lines.append("")
-
-    # Append the last updated timestamp in UTC.
-    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
-    lines.append(f"Last updated: {now_utc}")
 
     # Write output to README.md in the "profile" directory relative to this script.
     script_dir = os.path.dirname(os.path.realpath(__file__))
