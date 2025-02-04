@@ -73,4 +73,4 @@ To get a new tool listed:
 1. Package and distribute your tool on conda-forge.
 2. Open up an [Issue](https://github.com/hep-packaging-coordination/.github/issues) with title "Add `<tool name>` to HEP Packaging Coordination" with a link to the tool's conda-forge feedstock.
 
-Last updated: 2025-02-04 12:39:44 UTC
+Last updated: 2025-02-04 18:27:33 UTC
