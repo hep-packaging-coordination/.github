@@ -22,6 +22,7 @@
     "geant4",
     "hepmc2",
     "hepmc3",
+    "mg5amcnlo",
     "pythia8",
     "sherpa",
     "yoda"
