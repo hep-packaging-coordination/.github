@@ -43,6 +43,12 @@ jobs:
           python update_readme.py
           (uvx pre-commit run --all-files || true)
 
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+        with:
+          name: updated-readme
+          path: profile/README.md
+
       - name: Commit and push changes
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository == 'hep-packaging-coordination/.github'
         run: |
