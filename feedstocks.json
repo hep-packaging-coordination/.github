@@ -39,6 +39,39 @@
     "xrootd"
   ],
   "Experiment specific": {
-    "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"]
-  }
+    "LHCb": [
+      "lbenv",
+      "lbplatformutils",
+      "lhcbdirac-config",
+      "lhcbdirac"
+    ]
+  },
+  "Scikit-HEP": [
+    "awkward",
+    "awkward-cpp",
+    "boost-histogram",
+    "cabinetry",
+    "coffea",
+    "cuda_histogram",
+    "decaylanguage",
+    "fastjet",
+    "fsspec-xrootd",
+    "hepconvert",
+    "hepstats",
+    "hepunits",
+    "hist",
+    "histoprint",
+    "iminuit",
+    "mplhep",
+    "particle",
+    "pyhepmc",
+    "pyhf",
+    "pylhe",
+    "resample",
+    "scikit-hep",
+    "uhi",
+    "uproot",
+    "uproot-browser",
+    "vector"
+  ]
 }
