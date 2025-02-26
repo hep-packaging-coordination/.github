@@ -14,7 +14,8 @@
     "qcdloop",
     "qcdloop-fortran",
     "root",
-    "siscone"
+    "siscone",
+    "smodels"
   ],
   "Simulation": [
     "delphes",
