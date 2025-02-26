@@ -74,5 +74,8 @@
     "uproot",
     "uproot-browser",
     "vector"
+  ],
+  "Hardware": [
+    "yarr"
   ]
 }
