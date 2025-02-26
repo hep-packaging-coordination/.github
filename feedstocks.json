@@ -45,6 +45,9 @@
       "lbplatformutils",
       "lhcbdirac-config",
       "lhcbdirac"
+    ],
+    "CMS": [
+      "cms-combine"
     ]
   },
   "Scikit-HEP": [
