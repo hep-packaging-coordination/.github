@@ -13,6 +13,7 @@
     "pyslha",
     "qcdloop",
     "qcdloop-fortran",
+    "rivet",
     "root",
     "siscone",
     "smodels"
@@ -40,15 +41,8 @@
     "xrootd"
   ],
   "Experiment specific": {
-    "LHCb": [
-      "lbenv",
-      "lbplatformutils",
-      "lhcbdirac-config",
-      "lhcbdirac"
-    ],
-    "CMS": [
-      "cms-combine"
-    ]
+    "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"],
+    "CMS": ["cms-combine"]
   },
   "Scikit-HEP": [
     "awkward",
@@ -78,7 +72,5 @@
     "uproot-browser",
     "vector"
   ],
-  "Hardware": [
-    "yarr"
-  ]
+  "Hardware": ["yarr"]
 }
