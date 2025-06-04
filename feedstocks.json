@@ -51,7 +51,7 @@
   "Experiment specific": {
     "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"],
     "CMS": ["cms-combine"],
-    "ATLAS": ["module-qc-data-tools", "itkdb"]
+    "ATLAS": ["itkdb", "module-qc-data-tools", "module-qc-database-tools"]
   },
   "Scikit-HEP": [
     "awkward",
