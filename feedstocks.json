@@ -13,14 +13,17 @@
     "ninja-hep-ph",
     "oneloop",
     "pineappl",
+    "pylha",
     "pyslha",
     "qcdloop",
     "qcdloop-fortran",
     "rivet",
     "root",
+    "rundec",
     "siscone",
     "smefit",
-    "smodels"
+    "smodels",
+    "wilson"
   ],
   "Simulation": [
     "delphes",
