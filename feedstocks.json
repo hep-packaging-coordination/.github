@@ -50,7 +50,8 @@
   "Statistical Modeling": ["stanhf"],
   "Experiment specific": {
     "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"],
-    "CMS": ["cms-combine"]
+    "CMS": ["cms-combine"],
+    "ATLAS": ["module-qc-data-tools", "itkdb"]
   },
   "Scikit-HEP": [
     "awkward",
