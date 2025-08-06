@@ -58,7 +58,8 @@
       "module-qc-tools",
       "module-qc-analysis-tools",
       "atlasopenmagic"
-    ]
+    ],
+    "Legend": ["dbetto", "dspeed", "legend-pydataobj", "pygama", "pylegendmeta"]
   },
   "Scikit-HEP": [
     "awkward",
