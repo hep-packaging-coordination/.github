@@ -56,7 +56,8 @@
       "module-qc-data-tools",
       "module-qc-database-tools",
       "module-qc-tools",
-      "module-qc-analysis-tools"
+      "module-qc-analysis-tools",
+      "atlasopenmagic"
     ]
   },
   "Scikit-HEP": [
