@@ -90,5 +90,6 @@
     "uproot-browser",
     "vector"
   ],
-  "Hardware": ["yarr"]
+  "Hardware": ["yarr"],
+  "Machine Learning": ["lgatr"]
 }
