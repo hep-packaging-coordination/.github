@@ -47,6 +47,7 @@ def get_open_prs_count(feedstock):
 def generate_tool_row(feedstock_name):
     """
     Generate a Markdown table row for a given output with badges for:
+      - Feedstock name (to enable text search)
       - Conda Recipe (linking to the feedstock repository on GitHub for the first output)
       - Conda Downloads (linking to the Anaconda page for the first output)
       - Conda Version (linking to the Anaconda page for the first output)
@@ -72,7 +73,7 @@ def generate_tool_row(feedstock_name):
         version_badge = f"[![Conda Version](https://img.shields.io/conda/vn/conda-forge/{output}.svg)]({anaconda_url})"
         platforms_badge = f"[![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/{output}.svg)]({anaconda_url})"
 
-        yield f"| {feedstock_badge} | {recipe_badge} | {downloads_badge} | {version_badge} | {platforms_badge} | {pr_count_link} |"
+        yield f"| {feedstock_name} | {feedstock_badge} | {recipe_badge} | {downloads_badge} | {version_badge} | {platforms_badge} | {pr_count_link} |"
 
 
 def process_tools_section(section_title, tools):
@@ -84,8 +85,10 @@ def process_tools_section(section_title, tools):
     lines.append(f"### {section_title}")
     lines.append("")
     # Table header now includes an extra column for all outputs.
-    lines.append("| Feedstock | Output | Downloads | Version | Platforms | Open PRs |")
-    lines.append("| --- | --- | --- | --- | --- | --- |")
+    lines.append(
+        "| Name | Feedstock | Output | Downloads | Version | Platforms | Open PRs |"
+    )
+    lines.append("| ---| --- | --- | --- | --- | --- | --- |")
     for tool in sorted(tools):
         lines.extend(generate_tool_row(tool))
     lines.append("")
