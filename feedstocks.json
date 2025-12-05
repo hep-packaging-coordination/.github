@@ -49,7 +49,7 @@
     "python-gfal2",
     "xrootd"
   ],
-  "Statistical Modeling": ["stanhf", "pyhs3"],
+  "Statistical Modeling": ["stanhf", "pyhs3", "roounfold"],
   "Experiment specific": {
     "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"],
     "CMS": ["cms-combine"],
