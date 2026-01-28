@@ -92,5 +92,5 @@
     "vector"
   ],
   "Hardware": ["yarr"],
-  "Machine Learning": ["lgatr"]
+  "Machine Learning": ["lgatr", "lwtnn"]
 }
