@@ -38,7 +38,8 @@
     "mg5amcnlo",
     "pythia8",
     "sherpa",
-    "yoda"
+    "yoda",
+    "bxdecay0"
   ],
   "Grid": [
     "apptainer",
@@ -61,7 +62,21 @@
       "module-qc-analysis-tools",
       "atlasopenmagic"
     ],
-    "Legend": ["dbetto", "dspeed", "legend-pydataobj", "pygama", "pylegendmeta"]
+    "LEGEND": [
+      "dbetto",
+      "dspeed",
+      "legend-pydataobj",
+      "pygama",
+      "pylegendmeta",
+      "remage",
+      "revertex",
+      "reboost",
+      "legend-pygeom-optics",
+      "legend-pygeom-hpges",
+      "legend-pygeom-tools",
+      "legend-pygeom-l200",
+      "legend-pygeom-l1000"
+    ]
   },
   "Scikit-HEP": [
     "awkward",
