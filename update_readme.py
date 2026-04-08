@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+import subprocess
 import requests
 from collections import defaultdict
 
@@ -20,28 +21,62 @@ def load_feedstock_outputs():
         return {}
 
 
-def get_open_prs_count(feedstock):
+def fetch_all_pr_counts(feedstocks):
     """
-    Given a feedstock name (e.g. "collier" or the first output from a feedstock),
-    query the GitHub API for open pull requests (ignoring draft PRs) in the corresponding
-    conda-forge feedstock repository. Assumes the repository is named "conda-forge/<feedstock>-feedstock".
+    Fetch open PR counts for all feedstocks in a single batched GraphQL query.
+    Note: totalCount includes draft PRs (GraphQL pullRequests has no isDraft filter).
+    Returns a dict mapping feedstock name -> count (int or "ERROR").
     """
-    repo = f"conda-forge/{feedstock}-feedstock"
-    api_url = f"https://api.github.com/repos/{repo}/pulls?state=open"
-    headers = {}
-    token = os.environ.get("GITHUB_TOKEN")
-    if token:
-        headers["Authorization"] = f"token {token}"
-    try:
-        response = requests.get(api_url, headers=headers)
-        response.raise_for_status()
-    except Exception as e:
-        print(f"Error fetching PRs for {repo}: {e}")
-        return "ERROR"
-    pulls = response.json()
-    # Filter out draft PRs.
-    non_draft_pulls = [pr for pr in pulls if not pr.get("draft", False)]
-    return len(non_draft_pulls)
+    if not feedstocks:
+        return {}
+
+    # GraphQL aliases must match [_A-Za-z][_0-9A-Za-z]* — replace hyphens with underscores.
+    # conda-forge feedstock names use hyphens, not underscores, so collisions are not a concern.
+    def to_alias(name):
+        return name.replace("-", "_")
+
+    feedstocks = list(feedstocks)
+    counts = {}
+    for i in range(0, len(feedstocks), 25):
+        chunk = feedstocks[i : i + 25]
+        alias_to_feedstock = {to_alias(f): f for f in chunk}
+
+        query_parts = []
+        for feedstock in chunk:
+            alias = to_alias(feedstock)
+            repo_name = f"{feedstock}-feedstock"
+            query_parts.append(
+                f'  {alias}: repository(owner: "conda-forge", name: "{repo_name}") {{\n'
+                f"    pullRequests(states: [OPEN]) {{\n"
+                f"      totalCount\n"
+                f"    }}\n"
+                f"  }}"
+            )
+
+        query = "query {\n" + "\n".join(query_parts) + "\n}"
+
+        try:
+            result = subprocess.run(
+                ["gh", "api", "graphql", "-f", f"query={query}"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            data = json.loads(result.stdout).get("data", {})
+            for alias, feedstock in alias_to_feedstock.items():
+                repo_data = data.get(alias)
+                if repo_data is None:
+                    counts[feedstock] = "ERROR"
+                else:
+                    counts[feedstock] = repo_data["pullRequests"]["totalCount"]
+        except subprocess.CalledProcessError as e:
+            print(
+                f"GraphQL error fetching PR counts (batch {i // 25 + 1}): {e.stderr.strip()}"
+            )
+            for feedstock in chunk:
+                counts[feedstock] = "ERROR"
+
+    return counts
 
 
 def generate_tool_row(feedstock_name):
@@ -57,7 +92,7 @@ def generate_tool_row(feedstock_name):
     """
     feedstock_url = f"https://github.com/conda-forge/{feedstock_name}-feedstock"
     pr_page_url = f"{feedstock_url}/pulls"
-    pr_count = get_open_prs_count(feedstock_name)
+    pr_count = PR_COUNTS.get(feedstock_name, "ERROR")
     pr_count_link = "" if pr_count == 0 else f"[{pr_count}]({pr_page_url})"
 
     for i, output in enumerate(sorted(FEEDSTOCK_OUTPUTS[feedstock_name])):
@@ -96,7 +131,7 @@ def process_tools_section(section_title, tools):
 
 
 def main():
-    global FEEDSTOCK_OUTPUTS
+    global FEEDSTOCK_OUTPUTS, PR_COUNTS
     by_feedstock = defaultdict(set)
     for output, feedstocks in load_feedstock_outputs().items():
         for feedstock in feedstocks:
@@ -106,6 +141,16 @@ def main():
     # Load the local JSON data containing categories and tools.
     with open("feedstocks.json", "r") as f:
         data = json.load(f)
+
+    # Collect all feedstock names up front for a single batched GraphQL query.
+    all_feedstocks = set()
+    for content in data.values():
+        if isinstance(content, list):
+            all_feedstocks.update(content)
+        elif isinstance(content, dict):
+            for tools in content.values():
+                all_feedstocks.update(tools)
+    PR_COUNTS = fetch_all_pr_counts(all_feedstocks)
 
     lines = []
     lines.append("# HEP Packaging Coordination")
