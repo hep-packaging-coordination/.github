@@ -21,21 +21,18 @@ def load_feedstock_outputs():
         return {}
 
 
-def fetch_all_pr_counts(feedstocks):
+def _fetch_pr_counts_graphql(feedstocks):
     """
-    Fetch open PR counts for all feedstocks in a single batched GraphQL query.
+    Fetch open PR counts via gh CLI GraphQL in batches of 25.
     Note: totalCount includes draft PRs (GraphQL pullRequests has no isDraft filter).
-    Returns a dict mapping feedstock name -> count (int or "ERROR").
+    Returns a dict mapping feedstock name -> count, or None if gh CLI is unavailable/unauthenticated.
     """
-    if not feedstocks:
-        return {}
 
     # GraphQL aliases must match [_A-Za-z][_0-9A-Za-z]* — replace hyphens with underscores.
     # conda-forge feedstock names use hyphens, not underscores, so collisions are not a concern.
     def to_alias(name):
         return name.replace("-", "_")
 
-    feedstocks = list(feedstocks)
     counts = {}
     for i in range(0, len(feedstocks), 25):
         chunk = feedstocks[i : i + 25]
@@ -69,13 +66,64 @@ def fetch_all_pr_counts(feedstocks):
                     counts[feedstock] = "ERROR"
                 else:
                     counts[feedstock] = repo_data["pullRequests"]["totalCount"]
+        except FileNotFoundError:
+            print("gh CLI not found; falling back to REST API.")
+            return None
         except subprocess.CalledProcessError as e:
             print(
-                f"GraphQL error fetching PR counts (batch {i // 25 + 1}): {e.stderr.strip()}"
+                f"gh CLI error (batch {i // 25 + 1}): {e.stderr.strip()}; falling back to REST API."
             )
-            for feedstock in chunk:
-                counts[feedstock] = "ERROR"
+            return None
 
+    return counts
+
+
+def _fetch_pr_counts_rest(feedstocks):
+    """
+    Fetch open non-draft PR counts via the GitHub REST API, one feedstock at a time.
+    Uses GITHUB_TOKEN if set, otherwise makes unauthenticated requests.
+    Paginates through all open PRs to avoid missing any beyond the first page.
+    """
+    headers = {}
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"token {token}"
+
+    counts = {}
+    for feedstock in feedstocks:
+        repo = f"conda-forge/{feedstock}-feedstock"
+        page, non_draft_count = 1, 0
+        while True:
+            url = f"https://api.github.com/repos/{repo}/pulls?state=open&per_page=100&page={page}"
+            try:
+                response = requests.get(url, headers=headers)
+                response.raise_for_status()
+                pulls = response.json()
+                if not pulls:
+                    break
+                non_draft_count += sum(1 for pr in pulls if not pr.get("draft", False))
+                page += 1
+            except Exception as e:
+                print(f"Error fetching PRs for {repo}: {e}")
+                non_draft_count = "ERROR"
+                break
+        counts[feedstock] = non_draft_count
+
+    return counts
+
+
+def fetch_all_pr_counts(feedstocks):
+    """
+    Fetch open PR counts for all feedstocks.
+    Tries gh CLI GraphQL (batched, authenticated) first; falls back to REST API with GITHUB_TOKEN.
+    """
+    if not feedstocks:
+        return {}
+
+    feedstocks = list(feedstocks)
+    counts = _fetch_pr_counts_graphql(feedstocks)
+    if counts is None:
+        counts = _fetch_pr_counts_rest(feedstocks)
     return counts
 
 
