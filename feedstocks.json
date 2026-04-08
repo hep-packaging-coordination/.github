@@ -61,7 +61,8 @@
       "module-qc-database-tools",
       "module-qc-tools",
       "module-qc-analysis-tools",
-      "atlasopenmagic"
+      "atlasopenmagic",
+      "pyami-core"
     ],
     "LEGEND": [
       "dbetto",
