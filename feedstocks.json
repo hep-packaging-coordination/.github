@@ -62,7 +62,8 @@
       "module-qc-tools",
       "module-qc-analysis-tools",
       "atlasopenmagic",
-      "pyami-core"
+      "pyami-core",
+      "histfitter"
     ],
     "LEGEND": [
       "dbetto",
