@@ -54,8 +54,9 @@
   "Statistical Modeling": ["stanhf", "pyhs3", "roounfold"],
   "Experiment specific": {
     "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"],
-    "CMS": ["cms-combine"],
+    "CMS": ["dasgoclient", "cms-combine"],
     "ATLAS": [
+      "stare-atlas",
       "itkdb",
       "module-qc-data-tools",
       "module-qc-database-tools",
