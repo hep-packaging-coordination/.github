@@ -50,6 +50,7 @@
     "dirac-grid",
     "gfal2",
     "python-gfal2",
+    "rucio-mcp",
     "xrootd",
     "voms-lsc"
   ],
