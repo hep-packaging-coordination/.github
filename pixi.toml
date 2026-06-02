@@ -8,29 +8,60 @@ version = "0.1.0"
 scripts = ["setup.sh"]
 
 [tasks]
-update = { cmd = "python ./update_readme.py", description = "Regenerate profile/README.md and site/src/data/feedstocks.json from live conda-forge data" }
-lint = { cmd = "pre-commit run --all-files", description = "Run all pre-commit hooks (ruff, prettier, etc.)" }
-test = { cmd = "pytest tests/ -v", description = "Run Python unit/integration tests for the data pipeline" }
 
-# ── Site tasks (run from the site/ subdir) ────────────────────────────────────
+# ── Core pipeline ─────────────────────────────────────────────────────────────
+update = { cmd = "python ./update_readme.py", description = "Regenerate profile/README.md and site/src/data/feedstocks.json from live conda-forge data" }
+
+# ── Site building blocks ──────────────────────────────────────────────────────
 site-install = { cmd = "npm install", cwd = "site", description = "Install site npm dependencies", inputs = ["site/package.json", "site/package-lock.json"], outputs = ["site/node_modules/.package-lock.json"] }
 site-dev = { cmd = "npm run dev", cwd = "site", description = "Start Astro dev server at http://localhost:4321/.github/", depends-on = ["site-install"] }
 site-build = { cmd = "npm run build", cwd = "site", description = "Build static site to site/dist/", depends-on = ["site-install"] }
-site-preview = { cmd = "npm run preview", cwd = "site", description = "Serve the production build locally at http://localhost:4321/.github/", depends-on = ["site-build"] }
+site-preview = { cmd = "npm run preview", cwd = "site", description = "Serve production build at http://localhost:4321/.github/", depends-on = ["site-build"] }
 site-format = { cmd = "npm run format", cwd = "site", description = "Auto-format site source files (Astro, Svelte, Tailwind)", depends-on = ["site-install"] }
 site-format-check = { cmd = "npm run format-check", cwd = "site", description = "Check site formatting without writing changes (CI-safe)", depends-on = ["site-install"] }
-site-lint = { cmd = "npm run lint", cwd = "site", description = "Lint Astro components with eslint-plugin-astro", depends-on = ["site-install"] }
-site-test = { cmd = "npm run test", cwd = "site", description = "Run site unit tests with vitest (search logic, withBase utility)", depends-on = ["site-install"] }
-site-e2e = { cmd = "npx playwright test", cwd = "site", description = "Run Playwright e2e tests against the production build", depends-on = ["site-install", "site-build"] }
+site-lint = { cmd = "npm run lint", cwd = "site", description = "Lint Astro/Svelte components", depends-on = ["site-install"] }
+site-test = { cmd = "npm run test", cwd = "site", description = "Vitest unit tests: site TypeScript logic (filterTools, countByCategory, withBase)", depends-on = ["site-install"] }
+site-e2e = { cmd = "npx playwright test", cwd = "site", description = "Playwright browser tests: loads the real built site in Chromium and checks search, filters, base-path", depends-on = ["site-install", "site-build"] }
 linkcheck = { cmd = "lychee --root-dir site/dist site/dist/", description = "Check for broken links in the built site", depends-on = ["site-build"] }
 
+# ── Top-level developer tasks ─────────────────────────────────────────────────
+
 [tasks.start]
-depends-on = ["update", "lint"]
-description = "Regenerate both artifacts then lint everything"
+# Uses cmd for explicit sequential order: update data → build → serve.
+# (depends-on tasks may run in parallel, which would race update vs. build.)
+cmd = "python update_readme.py && npm --prefix site run build && npm --prefix site run preview"
+depends-on = ["site-install"]
+description = "Fresh start: regenerate data, build site, then serve at http://localhost:4321/.github/"
+
+[tasks.format]
+# Formats the site first (Prettier), then runs pre-commit on the whole repo
+# (covers Python via ruff + ruff-format, plus any other hooks).
+cmd = "pre-commit run --all-files"
+depends-on = ["site-format"]
+description = "Auto-format all source files: Prettier for site, then pre-commit hooks (ruff, etc.)"
+
+[tasks.lint]
+# Read-only checks — no file modifications. Safe for CI and pre-commit hooks.
+# Covers JS/TS formatting and linting; Python covered separately via pre-commit in 'format'.
+depends-on = ["site-format-check", "site-lint"]
+description = "Check all formatting and linting without modifying files (CI-safe)"
+
+[tasks.test]
+# Three tiers — each tests a different layer:
+#   test-python : pytest — Python data pipeline (feedstock_data.py, no browser)
+#   site-test   : vitest — site TypeScript logic (filterTools, countByCategory, etc., no browser)
+#   site-e2e    : Playwright — full browser tests against the real built site at /.github/
+depends-on = ["test-python", "site-test", "site-e2e"]
+description = "Run all tests: Python data pipeline (pytest), site logic (vitest), browser (Playwright)"
+
+[tasks.test-python]
+cmd = "pytest tests/ -v"
+description = "Python-only tests for the data pipeline (feedstock_data.py, update_readme.py)"
 
 [tasks.check]
-depends-on = ["test", "lint", "site-format-check", "site-lint", "site-test", "linkcheck"]
-description = "Full quality gate: Python tests + lint + site format/lint/test/linkcheck"
+# The full CI quality gate — what should be green before merging.
+depends-on = ["lint", "test", "linkcheck"]
+description = "Full CI gate: lint (check-only) + all tests + broken-link check"
 
 [dependencies]
 python = ">=3.14.4,<3.15"
