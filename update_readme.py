@@ -174,7 +174,7 @@ def main():
         f.write(render_readme(model))
     print(f"README.md updated at {readme_path}")
 
-    tools_json_path = os.path.join(script_dir, "site", "src", "data", "tools.json")
+    tools_json_path = os.path.join(script_dir, "site", "src", "data", "feedstocks.json")
     os.makedirs(os.path.dirname(tools_json_path), exist_ok=True)
     with open(tools_json_path, "w") as f:
         json.dump(render_tools_json(model), f, indent=2)

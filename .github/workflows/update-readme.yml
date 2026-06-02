@@ -52,7 +52,7 @@ jobs:
           name: updated-readme
           path: |
             profile/README.md
-            site/src/data/tools.json
+            site/src/data/feedstocks.json
 
       - name: Commit and push changes
         # The GITHUB_TOKEN commit will NOT re-trigger deploy.yml (GitHub's
@@ -62,7 +62,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
-            git add profile/README.md site/src/data/tools.json
+            git add profile/README.md site/src/data/feedstocks.json
             git commit -m "Update README via CI"
             git push
           else

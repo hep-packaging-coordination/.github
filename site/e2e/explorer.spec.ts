@@ -73,7 +73,9 @@ test("category chip filters results", async ({ page }) => {
 
   // Click the first top-level category chip.
   const chip = page.locator('[role="group"] button').first();
-  const chipLabel = (await chip.textContent())?.trim() ?? "";
+  // Strip the count badge digits from the chip text (e.g. "Analysis 27" → "Analysis").
+  const chipRaw = (await chip.textContent())?.trim() ?? "";
+  const categoryName = chipRaw.replace(/\s*\d+\s*$/, "").trim();
   await chip.click();
 
   // Some cards should be visible after filtering.
@@ -85,7 +87,7 @@ test("category chip filters results", async ({ page }) => {
   const cardCount = await cards.count();
   for (let i = 0; i < cardCount; i++) {
     await expect(
-      cards.nth(i).locator(`span:text("${chipLabel}")`),
+      cards.nth(i).locator(`span:text("${categoryName}")`),
     ).toBeVisible();
   }
 });

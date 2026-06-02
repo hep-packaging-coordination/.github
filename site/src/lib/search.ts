@@ -89,6 +89,27 @@ export function flattenCategories(categories: Category[]): SearchItem[] {
 }
 
 /**
+ * Count feedstocks per category and subcategory label.
+ *
+ * Returns a plain record so chip templates can read counts[name] directly.
+ * For nested categories the parent count is the sum of all subcategory counts.
+ */
+export function countByCategory(categories: Category[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const cat of categories) {
+    let catTotal = cat.feedstocks?.length ?? 0;
+    if (cat.subcategories) {
+      for (const sub of cat.subcategories) {
+        counts[sub.name] = sub.feedstocks.length;
+        catTotal += sub.feedstocks.length;
+      }
+    }
+    counts[cat.name] = catTotal;
+  }
+  return counts;
+}
+
+/**
  * Filter the feedstock catalog by query and/or active category chips.
  *
  * Query and category are composed with AND: a result must satisfy both.

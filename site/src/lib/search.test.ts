@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterTools } from "./search";
+import { filterTools, countByCategory } from "./search";
 import type { Feedstock, Category } from "./tools";
 
 // ── Test fixtures ─────────────────────────────────────────────────────────────
@@ -50,6 +50,34 @@ const CAT_EXP: Category = {
 };
 
 const ALL_CATEGORIES: Category[] = [CAT_STATS, CAT_ANALYSIS, CAT_EXP];
+
+// ── countByCategory tests ─────────────────────────────────────────────────────
+
+describe("countByCategory", () => {
+  it("counts feedstocks in a flat category", () => {
+    const counts = countByCategory(ALL_CATEGORIES);
+    expect(counts["Statistical Modeling"]).toBe(1); // only pyhf
+    expect(counts["Analysis"]).toBe(1); // only root
+  });
+
+  it("counts feedstocks in each subcategory individually", () => {
+    const counts = countByCategory(ALL_CATEGORIES);
+    expect(counts["ATLAS"]).toBe(1); // histfitter
+    expect(counts["CMS"]).toBe(1);   // cms-combine
+  });
+
+  it("parent nested category count equals sum of subcategories", () => {
+    const counts = countByCategory(ALL_CATEGORIES);
+    expect(counts["Experiment specific"]).toBe(2); // ATLAS(1) + CMS(1)
+  });
+
+  it("flat category with zero subcategories counts feedstocks directly", () => {
+    const counts = countByCategory([
+      { name: "ML", feedstocks: [PYHF, ROOT], subcategories: null },
+    ]);
+    expect(counts["ML"]).toBe(2);
+  });
+});
 
 // ── filterTools tests ─────────────────────────────────────────────────────────
 
