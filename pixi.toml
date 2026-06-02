@@ -12,11 +12,23 @@ update = "python ./update_readme.py"
 lint = "pre-commit run --all-files"
 test = "pytest tests/ -v"
 
+# ── Site tasks (run from the site/ subdir) ────────────────────────────────────
+site-install = { cmd = "npm install", cwd = "site", inputs = ["site/package.json", "site/package-lock.json"], outputs = ["site/node_modules/.package-lock.json"] }
+site-dev = { cmd = "npm run dev", cwd = "site", depends-on = ["site-install"] }
+site-build = { cmd = "npm run build", cwd = "site", depends-on = ["site-install"] }
+site-preview = { cmd = "npm run preview", cwd = "site", depends-on = ["site-build"] }
+site-format = { cmd = "npm run format", cwd = "site", depends-on = ["site-install"] }
+site-format-check = { cmd = "npm run format-check", cwd = "site", depends-on = ["site-install"] }
+site-lint = { cmd = "npm run lint", cwd = "site", depends-on = ["site-install"] }
+site-test = { cmd = "npm run test", cwd = "site", depends-on = ["site-install"] }
+site-e2e = { cmd = "npx playwright test", cwd = "site", depends-on = ["site-install", "site-build"] }
+linkcheck = { cmd = "lychee --root-dir site/dist site/dist/", depends-on = ["site-build"] }
+
 [tasks.start]
 depends-on = ["update", "lint"]
 
 [tasks.check]
-depends-on = ["test", "lint"]
+depends-on = ["test", "lint", "site-format-check", "site-lint", "site-test", "linkcheck"]
 
 [dependencies]
 python = ">=3.14.4,<3.15"
@@ -25,3 +37,5 @@ pre-commit = ">=4.5.1,<5"
 pytest = ">=8,<9"
 responses = ">=0.25,<0.26"
 jsonschema = ">=4,<5"
+nodejs = ">=22,<23"
+lychee = ">=0.23,<0.25"

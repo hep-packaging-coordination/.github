@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import AddTool from "../components/AddTool.astro";
+import Footer from "../components/Footer.astro";
+import DarkModeToggle from "../components/DarkModeToggle.astro";
+import ToolExplorer from "../components/ToolExplorer.svelte";
+import { ToolsDataSchema } from "../lib/tools";
+
+// Import the committed tools.json at build time.
+// This is intentional: build-time import avoids any runtime fetch() that
+// would depend on the base path, keeps the island instant (no loading state),
+// and is type-checked against ToolsDataSchema below.
+import rawTools from "../data/tools.json";
+
+// Validate the snapshot against the schema at build time.  A malformed
+// tools.json fails the build rather than silently shipping bad data.
+const toolsData = ToolsDataSchema.parse(rawTools);
+
+// Compute stats for the hero — flatten nested subcategories for the total count.
+function countFeedstocks(data: typeof toolsData): number {
+  let n = 0;
+  for (const cat of data.categories) {
+    if (cat.feedstocks) n += cat.feedstocks.length;
+    if (cat.subcategories) {
+      for (const sub of cat.subcategories) n += sub.feedstocks.length;
+    }
+  }
+  return n;
+}
+
+const totalTools = countFeedstocks(toolsData);
+const totalCategories = toolsData.categories.length;
+---
+
+<BaseLayout
+  title="HEP Packaging Coordination — conda-forge tool directory"
+  description={`Browse and search ${totalTools} High Energy Physics tools distributed on conda-forge.`}
+>
+  <!-- Sticky top-bar with nav -->
+  <div
+    class="sticky top-0 z-10 border-b border-[var(--color-cf-border)] bg-[var(--color-cf-bg)]/95 backdrop-blur"
+  >
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+      <span class="font-display text-sm font-semibold text-[var(--color-cf-primary)]">
+        HEP Packaging
+      </span>
+      <nav class="flex items-center gap-4 text-sm" aria-label="Main navigation">
+        <a
+          href="https://github.com/hep-packaging-coordination/.github/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[var(--color-cf-text-muted)] hover:text-[var(--color-cf-primary)]"
+        >
+          Issues
+        </a>
+        <a
+          href="https://conda-forge.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[var(--color-cf-text-muted)] hover:text-[var(--color-cf-primary)]"
+        >
+          conda-forge
+        </a>
+        <DarkModeToggle />
+      </nav>
+    </div>
+  </div>
+
+  <Hero {totalTools} {totalCategories} />
+
+  <!-- Main content -->
+  <main class="mx-auto max-w-6xl px-6 py-12">
+    <!-- Tool explorer (interactive Svelte island) -->
+    <section class="section-fade mb-16">
+      <ToolExplorer categories={toolsData.categories} client:load />
+    </section>
+
+    <!-- Add a tool CTA -->
+    <AddTool />
+  </main>
+
+  <Footer />
+</BaseLayout>

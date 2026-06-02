@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Simple "package/box" icon in conda-forge teal on a rounded background -->
+  <rect width="32" height="32" rx="8" fill="#008478"/>
+  <!-- Heroicons "archive-box" simplified for 32px -->
+  <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+    d="M6 8.25h20v2.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8.25Z"/>
+  <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+    d="M7.5 11.75v10a1 1 0 0 0 1 1h15a1 1 0 0 0 1-1v-10"/>
+  <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+    d="M13 16h6"/>
+</svg>
