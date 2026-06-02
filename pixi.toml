@@ -8,27 +8,29 @@ version = "0.1.0"
 scripts = ["setup.sh"]
 
 [tasks]
-update = "python ./update_readme.py"
-lint = "pre-commit run --all-files"
-test = "pytest tests/ -v"
+update = { cmd = "python ./update_readme.py", description = "Regenerate profile/README.md and site/src/data/feedstocks.json from live conda-forge data" }
+lint = { cmd = "pre-commit run --all-files", description = "Run all pre-commit hooks (ruff, prettier, etc.)" }
+test = { cmd = "pytest tests/ -v", description = "Run Python unit/integration tests for the data pipeline" }
 
 # ── Site tasks (run from the site/ subdir) ────────────────────────────────────
-site-install = { cmd = "npm install", cwd = "site", inputs = ["site/package.json", "site/package-lock.json"], outputs = ["site/node_modules/.package-lock.json"] }
-site-dev = { cmd = "npm run dev", cwd = "site", depends-on = ["site-install"] }
-site-build = { cmd = "npm run build", cwd = "site", depends-on = ["site-install"] }
-site-preview = { cmd = "npm run preview", cwd = "site", depends-on = ["site-build"] }
-site-format = { cmd = "npm run format", cwd = "site", depends-on = ["site-install"] }
-site-format-check = { cmd = "npm run format-check", cwd = "site", depends-on = ["site-install"] }
-site-lint = { cmd = "npm run lint", cwd = "site", depends-on = ["site-install"] }
-site-test = { cmd = "npm run test", cwd = "site", depends-on = ["site-install"] }
-site-e2e = { cmd = "npx playwright test", cwd = "site", depends-on = ["site-install", "site-build"] }
-linkcheck = { cmd = "lychee --root-dir site/dist site/dist/", depends-on = ["site-build"] }
+site-install = { cmd = "npm install", cwd = "site", description = "Install site npm dependencies", inputs = ["site/package.json", "site/package-lock.json"], outputs = ["site/node_modules/.package-lock.json"] }
+site-dev = { cmd = "npm run dev", cwd = "site", description = "Start Astro dev server at http://localhost:4321/.github/", depends-on = ["site-install"] }
+site-build = { cmd = "npm run build", cwd = "site", description = "Build static site to site/dist/", depends-on = ["site-install"] }
+site-preview = { cmd = "npm run preview", cwd = "site", description = "Serve the production build locally at http://localhost:4321/.github/", depends-on = ["site-build"] }
+site-format = { cmd = "npm run format", cwd = "site", description = "Auto-format site source files (Astro, Svelte, Tailwind)", depends-on = ["site-install"] }
+site-format-check = { cmd = "npm run format-check", cwd = "site", description = "Check site formatting without writing changes (CI-safe)", depends-on = ["site-install"] }
+site-lint = { cmd = "npm run lint", cwd = "site", description = "Lint Astro components with eslint-plugin-astro", depends-on = ["site-install"] }
+site-test = { cmd = "npm run test", cwd = "site", description = "Run site unit tests with vitest (search logic, withBase utility)", depends-on = ["site-install"] }
+site-e2e = { cmd = "npx playwright test", cwd = "site", description = "Run Playwright e2e tests against the production build", depends-on = ["site-install", "site-build"] }
+linkcheck = { cmd = "lychee --root-dir site/dist site/dist/", description = "Check for broken links in the built site", depends-on = ["site-build"] }
 
 [tasks.start]
 depends-on = ["update", "lint"]
+description = "Regenerate both artifacts then lint everything"
 
 [tasks.check]
 depends-on = ["test", "lint", "site-format-check", "site-lint", "site-test", "linkcheck"]
+description = "Full quality gate: Python tests + lint + site format/lint/test/linkcheck"
 
 [dependencies]
 python = ">=3.14.4,<3.15"
