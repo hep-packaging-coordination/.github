@@ -37,11 +37,11 @@ test("page loads with no console 404 errors", async ({ page }) => {
 test("island hydrates and shows tool list", async ({ page }) => {
   await goto(page);
 
-  // The result count paragraph should be visible and show > 0 tools.
+  // The result count paragraph should be visible and show > 0 feedstocks.
   const count = page.locator('[aria-live="polite"]');
   await expect(count).toBeVisible();
   const text = await count.textContent();
-  expect(text).toMatch(/\d+ tools? found/);
+  expect(text).toMatch(/\d+ feedstocks? found/);
   const n = parseInt(text!.match(/\d+/)![0]);
   expect(n).toBeGreaterThan(0);
 });
@@ -63,7 +63,7 @@ test("typing gibberish shows empty state", async ({ page }) => {
   await page.locator("#tool-search").fill("zzznomatch99999");
 
   // Empty state message.
-  await expect(page.locator("text=No tools found")).toBeVisible();
+  await expect(page.locator("text=No feedstocks found")).toBeVisible();
   // The "Clear filters" button inside empty state should appear.
   await expect(page.locator("button", { hasText: "Clear filters" }).last()).toBeVisible();
 });

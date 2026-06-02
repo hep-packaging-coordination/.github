@@ -152,6 +152,68 @@ describe("filterTools", () => {
     });
   });
 
+  describe("same feedstock in multiple categories", () => {
+    it("returns separate entries for each category (distinct categoryName)", () => {
+      // fastjet appears in both Simulation and Scikit-HEP in real feedstocks.json.
+      // filterTools must return BOTH entries, each with a different categoryName,
+      // so the Svelte each key (categoryName + ":" + feedstock.name) stays unique.
+      const FASTJET_SIM: Feedstock = {
+        name: "fastjet",
+        outputs: ["fastjet"],
+        pr_count: 2,
+      };
+      const FASTJET_SKHEP: Feedstock = {
+        name: "fastjet",
+        outputs: ["fastjet"],
+        pr_count: 2,
+      };
+      const categoriesWithSharedFeedstock: Category[] = [
+        { name: "Simulation", feedstocks: [FASTJET_SIM], subcategories: null },
+        {
+          name: "Scikit-HEP",
+          feedstocks: [FASTJET_SKHEP],
+          subcategories: null,
+        },
+      ];
+      const result = filterTools(categoriesWithSharedFeedstock, {
+        query: "",
+        activeCategories: [],
+      });
+      expect(result).toHaveLength(2);
+      const categoryNames = result.map((r) => r.categoryName);
+      expect(categoryNames).toContain("Simulation");
+      expect(categoryNames).toContain("Scikit-HEP");
+    });
+
+    it("composite key categoryName:feedstockName is unique across all results", () => {
+      const FASTJET_SIM: Feedstock = {
+        name: "fastjet",
+        outputs: ["fastjet"],
+        pr_count: 2,
+      };
+      const FASTJET_SKHEP: Feedstock = {
+        name: "fastjet",
+        outputs: ["fastjet"],
+        pr_count: 2,
+      };
+      const categoriesWithSharedFeedstock: Category[] = [
+        { name: "Simulation", feedstocks: [FASTJET_SIM], subcategories: null },
+        {
+          name: "Scikit-HEP",
+          feedstocks: [FASTJET_SKHEP],
+          subcategories: null,
+        },
+      ];
+      const result = filterTools(categoriesWithSharedFeedstock, {
+        query: "",
+        activeCategories: [],
+      });
+      const keys = result.map((r) => r.categoryName + ":" + r.feedstock.name);
+      const uniqueKeys = new Set(keys);
+      expect(uniqueKeys.size).toBe(result.length);
+    });
+  });
+
   describe("result shape", () => {
     it("each result carries the feedstock and its resolved category name", () => {
       const result = filterTools(ALL_CATEGORIES, {

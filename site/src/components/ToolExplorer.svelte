@@ -38,7 +38,7 @@
 <section aria-label="Tool explorer">
   <!-- Search box -->
   <div class="relative mb-4">
-    <label for="tool-search" class="sr-only">Search HEP tools</label>
+    <label for="tool-search" class="sr-only">Search HEP feedstocks</label>
     <!-- Search icon -->
     <svg
       class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--color-cf-text-muted)]"
@@ -58,7 +58,7 @@
     <input
       id="tool-search"
       type="search"
-      placeholder="Search tools, e.g. pyhf, root, awkward…"
+      placeholder="Search feedstocks, e.g. pyhf, root, awkward…"
       bind:value={query}
       class="w-full rounded-xl border border-[var(--color-cf-border)] bg-[var(--color-cf-card)] py-3 pl-10 pr-4 text-base text-[var(--color-cf-text)] placeholder-[var(--color-cf-text-muted)] shadow-sm transition-shadow focus:outline-none focus:ring-2 focus:ring-[var(--color-cf-primary)]"
       autocomplete="off"
@@ -101,7 +101,7 @@
     aria-atomic="true"
     class="mb-4 text-sm text-[var(--color-cf-text-muted)]"
   >
-    {results.length} tool{results.length === 1 ? "" : "s"} found
+    {results.length} feedstock{results.length === 1 ? "" : "s"} found
   </p>
 
   <!-- Results grid -->
@@ -110,7 +110,7 @@
       class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
       role="list"
     >
-      {#each results as { feedstock, categoryName } (feedstock.name)}
+      {#each results as { feedstock, categoryName } (categoryName + ":" + feedstock.name)}
         <li>
           <ToolCard {feedstock} {categoryName} />
         </li>
@@ -120,7 +120,7 @@
     <!-- Empty state -->
     <div class="rounded-2xl border border-dashed border-[var(--color-cf-border)] py-16 text-center">
       <p class="text-lg font-semibold text-[var(--color-cf-text)]">
-        No tools found
+        No feedstocks found
       </p>
       <p class="mt-1 text-sm text-[var(--color-cf-text-muted)]">
         Try a different search term or clear the category filter.
