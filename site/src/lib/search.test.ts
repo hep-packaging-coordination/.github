@@ -153,88 +153,83 @@ describe("filterTools", () => {
   });
 
   describe("same feedstock in multiple categories", () => {
-    it("returns separate entries for each category (distinct categoryName)", () => {
+    it("merges into one result with both category names", () => {
       // fastjet appears in both Simulation and Scikit-HEP in real feedstocks.json.
-      // filterTools must return BOTH entries, each with a different categoryName,
-      // so the Svelte each key (categoryName + ":" + feedstock.name) stays unique.
-      const FASTJET_SIM: Feedstock = {
-        name: "fastjet",
-        outputs: ["fastjet"],
-        pr_count: 2,
-      };
-      const FASTJET_SKHEP: Feedstock = {
-        name: "fastjet",
-        outputs: ["fastjet"],
-        pr_count: 2,
-      };
+      // flattenCategories must produce ONE merged SearchItem so feedstock.name is
+      // a valid unique Svelte each key, and the single card shows both badges.
+      const FASTJET: Feedstock = { name: "fastjet", outputs: ["fastjet"], pr_count: 2 };
       const categoriesWithSharedFeedstock: Category[] = [
-        { name: "Simulation", feedstocks: [FASTJET_SIM], subcategories: null },
-        {
-          name: "Scikit-HEP",
-          feedstocks: [FASTJET_SKHEP],
-          subcategories: null,
-        },
+        { name: "Simulation", feedstocks: [FASTJET], subcategories: null },
+        { name: "Scikit-HEP", feedstocks: [FASTJET], subcategories: null },
       ];
       const result = filterTools(categoriesWithSharedFeedstock, {
         query: "",
         activeCategories: [],
       });
-      expect(result).toHaveLength(2);
-      const categoryNames = result.map((r) => r.categoryName);
-      expect(categoryNames).toContain("Simulation");
-      expect(categoryNames).toContain("Scikit-HEP");
+      expect(result).toHaveLength(1);
+      expect(result[0].feedstock.name).toBe("fastjet");
+      expect(result[0].categoryNames).toContain("Simulation");
+      expect(result[0].categoryNames).toContain("Scikit-HEP");
     });
 
-    it("composite key categoryName:feedstockName is unique across all results", () => {
-      const FASTJET_SIM: Feedstock = {
-        name: "fastjet",
-        outputs: ["fastjet"],
-        pr_count: 2,
-      };
-      const FASTJET_SKHEP: Feedstock = {
-        name: "fastjet",
-        outputs: ["fastjet"],
-        pr_count: 2,
-      };
+    it("merged feedstock appears when filtering by either of its categories", () => {
+      const FASTJET: Feedstock = { name: "fastjet", outputs: ["fastjet"], pr_count: 2 };
       const categoriesWithSharedFeedstock: Category[] = [
-        { name: "Simulation", feedstocks: [FASTJET_SIM], subcategories: null },
-        {
-          name: "Scikit-HEP",
-          feedstocks: [FASTJET_SKHEP],
-          subcategories: null,
-        },
+        { name: "Simulation", feedstocks: [FASTJET], subcategories: null },
+        { name: "Scikit-HEP", feedstocks: [FASTJET], subcategories: null },
       ];
-      const result = filterTools(categoriesWithSharedFeedstock, {
+      const bySimulation = filterTools(categoriesWithSharedFeedstock, {
         query: "",
-        activeCategories: [],
+        activeCategories: ["Simulation"],
       });
-      const keys = result.map((r) => r.categoryName + ":" + r.feedstock.name);
-      const uniqueKeys = new Set(keys);
-      expect(uniqueKeys.size).toBe(result.length);
+      expect(bySimulation.map((r) => r.feedstock.name)).toContain("fastjet");
+
+      const byScikit = filterTools(categoriesWithSharedFeedstock, {
+        query: "",
+        activeCategories: ["Scikit-HEP"],
+      });
+      expect(byScikit.map((r) => r.feedstock.name)).toContain("fastjet");
+    });
+
+    it("feedstock names are unique across all results (safe Svelte each key)", () => {
+      const result = filterTools(ALL_CATEGORIES, { query: "", activeCategories: [] });
+      const names = result.map((r) => r.feedstock.name);
+      expect(new Set(names).size).toBe(names.length);
     });
   });
 
   describe("result shape", () => {
-    it("each result carries the feedstock and its resolved category name", () => {
+    it("each result carries the feedstock and its categoryNames array", () => {
       const result = filterTools(ALL_CATEGORIES, {
         query: "pyhf",
         activeCategories: [],
       });
       expect(result[0]).toMatchObject({
         feedstock: { name: "pyhf" },
-        categoryName: "Statistical Modeling",
+        categoryNames: ["Statistical Modeling"],
       });
     });
 
-    it("feedstock in a subcategory carries the parent category name", () => {
+    it("feedstock in a subcategory carries both parent and subcategory name", () => {
+      // histfitter is in the ATLAS subcategory of "Experiment specific".
+      // categoryNames must include BOTH so we can filter by either chip.
       const result = filterTools(ALL_CATEGORIES, {
         query: "histfitter",
         activeCategories: [],
       });
-      expect(result[0]).toMatchObject({
-        feedstock: { name: "histfitter" },
-        categoryName: "Experiment specific",
+      expect(result[0].feedstock.name).toBe("histfitter");
+      expect(result[0].categoryNames).toContain("Experiment specific");
+      expect(result[0].categoryNames).toContain("ATLAS");
+    });
+
+    it("filtering by subcategory name works independently", () => {
+      const result = filterTools(ALL_CATEGORIES, {
+        query: "",
+        activeCategories: ["ATLAS"],
       });
+      const names = result.map((r) => r.feedstock.name);
+      expect(names).toContain("histfitter");
+      expect(names).not.toContain("cms-combine"); // cms-combine is CMS, not ATLAS
     });
   });
 });

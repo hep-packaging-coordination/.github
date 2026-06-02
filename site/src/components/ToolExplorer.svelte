@@ -9,9 +9,6 @@
 
   const { categories }: Props = $props();
 
-  // Derive the flat list of top-level category names for the filter chips.
-  const categoryNames = $derived(categories.map((c) => c.name));
-
   let query = $state("");
   let activeCategories = $state<string[]>([]);
 
@@ -33,9 +30,20 @@
   const hasActiveFilters = $derived(
     query.trim().length > 0 || activeCategories.length > 0,
   );
+
+  function chipClass(name: string, isSubcategory = false) {
+    const active = activeCategories.includes(name);
+    const base = isSubcategory
+      ? "min-h-[36px] rounded-full border px-2.5 py-1 text-xs font-medium transition-colors"
+      : "min-h-[44px] rounded-full border px-3 py-1.5 text-sm font-medium transition-colors";
+    const style = active
+      ? "border-[var(--color-cf-primary)] bg-[var(--color-cf-primary)] text-white"
+      : "border-[var(--color-cf-border)] bg-[var(--color-cf-card)] text-[var(--color-cf-text)] hover:border-[var(--color-cf-primary)] hover:text-[var(--color-cf-primary)]";
+    return `${base} ${style}`;
+  }
 </script>
 
-<section aria-label="Tool explorer">
+<section aria-label="Feedstock explorer">
   <!-- Search box -->
   <div class="relative mb-4">
     <label for="tool-search" class="sr-only">Search HEP feedstocks</label>
@@ -66,33 +74,50 @@
     />
   </div>
 
-  <!-- Category chips -->
-  <div class="mb-4 flex flex-wrap gap-2" role="group" aria-label="Filter by category">
-    {#each categoryNames as name (name)}
-      <button
-        type="button"
-        onclick={() => toggleCategory(name)}
-        aria-pressed={activeCategories.includes(name)}
-        class={[
-          "min-h-[44px] rounded-full border px-3 py-1.5 text-sm font-medium transition-colors",
-          activeCategories.includes(name)
-            ? "border-[var(--color-cf-primary)] bg-[var(--color-cf-primary)] text-white"
-            : "border-[var(--color-cf-border)] bg-[var(--color-cf-card)] text-[var(--color-cf-text)] hover:border-[var(--color-cf-primary)] hover:text-[var(--color-cf-primary)]",
-        ].join(" ")}
-      >
-        {name}
-      </button>
-    {/each}
+  <!-- Category chips — hierarchical: top-level chips + subcategory sub-chips -->
+  <div class="mb-4 space-y-2" role="group" aria-label="Filter by category">
+    <div class="flex flex-wrap gap-2">
+      {#each categories as cat (cat.name)}
+        <!-- Top-level category chip -->
+        <button
+          type="button"
+          onclick={() => toggleCategory(cat.name)}
+          aria-pressed={activeCategories.includes(cat.name)}
+          class={chipClass(cat.name)}
+        >
+          {cat.name}
+        </button>
+      {/each}
 
-    {#if hasActiveFilters}
-      <button
-        type="button"
-        onclick={clearAll}
-        class="min-h-[44px] rounded-full border border-transparent px-3 py-1.5 text-sm text-[var(--color-cf-text-muted)] underline-offset-2 hover:underline"
-      >
-        Clear filters
-      </button>
-    {/if}
+      {#if hasActiveFilters}
+        <button
+          type="button"
+          onclick={clearAll}
+          class="min-h-[44px] rounded-full border border-transparent px-3 py-1.5 text-sm text-[var(--color-cf-text-muted)] underline-offset-2 hover:underline"
+        >
+          Clear filters
+        </button>
+      {/if}
+    </div>
+
+    <!-- Subcategory chips: shown for any category that has subcategories -->
+    {#each categories as cat (cat.name)}
+      {#if cat.subcategories && cat.subcategories.length > 0}
+        <div class="flex flex-wrap items-center gap-1.5 pl-2">
+          <span class="text-xs text-[var(--color-cf-text-muted)]">{cat.name}:</span>
+          {#each cat.subcategories as sub (sub.name)}
+            <button
+              type="button"
+              onclick={() => toggleCategory(sub.name)}
+              aria-pressed={activeCategories.includes(sub.name)}
+              class={chipClass(sub.name, true)}
+            >
+              {sub.name}
+            </button>
+          {/each}
+        </div>
+      {/if}
+    {/each}
   </div>
 
   <!-- Result count (aria-live so screen readers announce filter changes) -->
@@ -110,9 +135,9 @@
       class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
       role="list"
     >
-      {#each results as { feedstock, categoryName } (categoryName + ":" + feedstock.name)}
+      {#each results as { feedstock, categoryNames } (feedstock.name)}
         <li>
-          <ToolCard {feedstock} {categoryName} />
+          <ToolCard {feedstock} {categoryNames} />
         </li>
       {/each}
     </ul>

@@ -71,19 +71,23 @@ test("typing gibberish shows empty state", async ({ page }) => {
 test("category chip filters results", async ({ page }) => {
   await goto(page);
 
-  // Click the first category chip (Analysis).
+  // Click the first top-level category chip.
   const chip = page.locator('[role="group"] button').first();
-  const chipLabel = await chip.textContent();
+  const chipLabel = (await chip.textContent())?.trim() ?? "";
   await chip.click();
 
-  // Only cards tagged with that category should remain.
+  // Some cards should be visible after filtering.
   const cards = page.locator("article");
   await expect(cards.first()).toBeVisible();
 
-  // All remaining cards should show the selected category tag.
-  const tagCount = await page.locator(`span:text("${chipLabel?.trim()}")`).count();
+  // Every visible card must include a badge for the active category.
+  // (Cards may have additional badges if the feedstock is in multiple categories.)
   const cardCount = await cards.count();
-  expect(tagCount).toBe(cardCount);
+  for (let i = 0; i < cardCount; i++) {
+    await expect(
+      cards.nth(i).locator(`span:text("${chipLabel}")`),
+    ).toBeVisible();
+  }
 });
 
 test("clear filters chip removes category filter", async ({ page }) => {

@@ -3,15 +3,14 @@
 
   interface Props {
     feedstock: Feedstock;
-    categoryName: string;
+    categoryNames: string[];
   }
 
-  const { feedstock, categoryName }: Props = $props();
+  const { feedstock, categoryNames }: Props = $props();
 
   const feedstockUrl = `https://github.com/conda-forge/${feedstock.name}-feedstock`;
   const prPageUrl = `${feedstockUrl}/pulls`;
 
-  // Use the first output for badge URLs; show one badge row per output.
   const outputs = $derived(feedstock.outputs);
 </script>
 
@@ -20,7 +19,7 @@
 >
   <!-- Header row -->
   <div class="mb-3 flex items-start justify-between gap-2">
-    <div class="min-w-0">
+    <div class="min-w-0 flex-1">
       <h3 class="truncate font-display text-base font-semibold leading-tight">
         <a
           href={feedstockUrl}
@@ -31,11 +30,16 @@
           {feedstock.name}
         </a>
       </h3>
-      <span
-        class="mt-0.5 inline-block rounded-full bg-[var(--color-cf-primary-lightest)] px-2 py-0.5 text-xs font-medium text-[var(--color-cf-primary-darkest)]"
-      >
-        {categoryName}
-      </span>
+      <!-- Category badges: one per category the feedstock belongs to -->
+      <div class="mt-1 flex flex-wrap gap-1">
+        {#each categoryNames as name (name)}
+          <span
+            class="inline-block rounded-full bg-[var(--color-cf-primary-lightest)] px-2 py-0.5 text-xs font-medium text-[var(--color-cf-primary-darkest)]"
+          >
+            {name}
+          </span>
+        {/each}
+      </div>
     </div>
 
     <!-- Open PRs badge (only when > 0) -->

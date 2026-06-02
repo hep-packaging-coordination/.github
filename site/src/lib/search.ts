@@ -12,8 +12,13 @@ import type { Category, Feedstock } from "./tools";
 
 export interface SearchItem {
   feedstock: Feedstock;
-  /** Flat section label used for category filtering (parent name for nested). */
-  categoryName: string;
+  /**
+   * All category labels that apply to this feedstock.
+   * For flat categories: one entry, e.g. ["Analysis"].
+   * For feedstocks in multiple categories: all of them, e.g. ["Simulation", "Scikit-HEP"].
+   * For subcategory feedstocks: parent + subcategory, e.g. ["Experiment specific", "ATLAS"].
+   */
+  categoryNames: string[];
 }
 
 export interface FilterOptions {
@@ -38,35 +43,57 @@ const FUSE_OPTIONS: Fuse.IFuseOptions<SearchItem> = {
 // ── Public API ────────────────────────────────────────────────────────────────
 
 /**
- * Flatten all categories into SearchItems (feedstock + resolved category name).
- * Subcategories bubble up to the parent category name for chip filtering.
+ * Flatten all categories into SearchItems, merging feedstocks that appear
+ * in multiple categories into one item with multiple categoryNames entries.
+ *
+ * For subcategory feedstocks, both the parent category name AND the
+ * subcategory name are included so each can be used as an independent filter.
+ *
+ * The resulting list has one entry per unique feedstock.name, making
+ * feedstock.name a valid unique Svelte each key.
  */
 export function flattenCategories(categories: Category[]): SearchItem[] {
-  const items: SearchItem[] = [];
+  const byName = new Map<string, SearchItem>();
+
+  function addFeedstock(f: Feedstock, ...names: string[]) {
+    const existing = byName.get(f.name);
+    if (existing) {
+      for (const name of names) {
+        if (!existing.categoryNames.includes(name)) {
+          existing.categoryNames.push(name);
+        }
+      }
+    } else {
+      byName.set(f.name, { feedstock: f, categoryNames: [...names] });
+    }
+  }
+
   for (const cat of categories) {
     if (cat.feedstocks) {
       for (const f of cat.feedstocks) {
-        items.push({ feedstock: f, categoryName: cat.name });
+        addFeedstock(f, cat.name);
       }
     }
     if (cat.subcategories) {
       for (const sub of cat.subcategories) {
         for (const f of sub.feedstocks) {
-          // Parent category name, not subcategory name, so the top-level chip
-          // "Experiment specific" shows all experiment-specific tools.
-          items.push({ feedstock: f, categoryName: cat.name });
+          // Include BOTH parent category and subcategory name so both
+          // the "Experiment specific" chip and the "ATLAS" chip filter correctly.
+          addFeedstock(f, cat.name, sub.name);
         }
       }
     }
   }
-  return items;
+
+  return Array.from(byName.values());
 }
 
 /**
- * Filter the tool catalog by query and/or active category chips.
+ * Filter the feedstock catalog by query and/or active category chips.
  *
  * Query and category are composed with AND: a result must satisfy both.
  * An empty query matches all items; an empty activeCategories list matches all.
+ * A feedstock matches the category filter if ANY of its categoryNames is active.
  */
 export function filterTools(
   categories: Category[],
@@ -74,13 +101,15 @@ export function filterTools(
 ): SearchItem[] {
   const allItems = flattenCategories(categories);
 
-  // Step 1: Apply category chip filter (fast exact match).
+  // Step 1: Category chip filter — feedstock matches if any of its labels is active.
   const categoryFiltered =
     activeCategories.length === 0
       ? allItems
-      : allItems.filter((item) => activeCategories.includes(item.categoryName));
+      : allItems.filter((item) =>
+          item.categoryNames.some((cn) => activeCategories.includes(cn)),
+        );
 
-  // Step 2: Apply fuzzy query (only if non-empty).
+  // Step 2: Fuzzy query filter (only if non-empty).
   if (!query.trim()) {
     return categoryFiltered;
   }
