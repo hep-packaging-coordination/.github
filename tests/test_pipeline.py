@@ -9,8 +9,6 @@ Covers:
 
 import json
 
-import pytest
-
 from feedstock_data import build_tool_model, render_readme, render_tools_json
 
 
@@ -83,9 +81,7 @@ class TestBuildToolModel:
 
     def test_nested_category_has_subcategories_no_feedstocks(self):
         model = self._model()
-        exp = next(
-            c for c in model["categories"] if c["name"] == "Experiment specific"
-        )
+        exp = next(c for c in model["categories"] if c["name"] == "Experiment specific")
         assert exp["feedstocks"] is None
         assert exp["subcategories"] is not None
 
@@ -113,9 +109,7 @@ class TestBuildToolModel:
 
     def test_subcategory_feedstocks_present(self):
         model = self._model()
-        exp = next(
-            c for c in model["categories"] if c["name"] == "Experiment specific"
-        )
+        exp = next(c for c in model["categories"] if c["name"] == "Experiment specific")
         atlas = next(s for s in exp["subcategories"] if s["name"] == "ATLAS")
         names = [f["name"] for f in atlas["feedstocks"]]
         assert "histfitter" in names
@@ -158,9 +152,7 @@ class TestRenderToolsJson:
 
     def test_nested_category_subcategories_present(self):
         data = self._json()
-        exp = next(
-            c for c in data["categories"] if c["name"] == "Experiment specific"
-        )
+        exp = next(c for c in data["categories"] if c["name"] == "Experiment specific")
         assert exp["subcategories"] is not None
         sub_names = [s["name"] for s in exp["subcategories"]]
         assert "ATLAS" in sub_names
@@ -220,7 +212,7 @@ class TestRenderReadme:
         readme = self._readme()
         lines = readme.splitlines()
         # pyhf rows (first output alphabetically → first row carries the name)
-        pyhf_lines = [l for l in lines if "pyhf" in l and l.startswith("|")]
+        pyhf_lines = [line for line in lines if "pyhf" in line and line.startswith("|")]
         assert pyhf_lines, "Expected at least one pyhf table row"
         for line in pyhf_lines:
             cells = [c.strip() for c in line.split("|")]
@@ -230,9 +222,7 @@ class TestRenderReadme:
     def test_pr_count_positive_renders_as_link(self):
         """When pr_count > 0 the Open PRs cell is a Markdown link."""
         readme = self._readme()
-        assert (
-            "[3](https://github.com/conda-forge/root-feedstock/pulls)" in readme
-        )
+        assert "[3](https://github.com/conda-forge/root-feedstock/pulls)" in readme
 
     def test_hyphen_in_badge_label_escaped_to_double_hyphen(self):
         """shields.io badge labels must escape hyphens as '--'."""

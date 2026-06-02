@@ -6,145 +6,102 @@
       "feedstocks": [
         {
           "name": "collier",
-          "outputs": [
-            "collier",
-            "collier-static"
-          ],
+          "outputs": ["collier", "collier-static"],
           "pr_count": 0
         },
         {
           "name": "contur",
-          "outputs": [
-            "contur"
-          ],
+          "outputs": ["contur"],
           "pr_count": 0
         },
         {
           "name": "cuttools",
-          "outputs": [
-            "cuttools-static"
-          ],
+          "outputs": ["cuttools-static"],
           "pr_count": 1
         },
         {
           "name": "eko",
-          "outputs": [
-            "eko"
-          ],
+          "outputs": ["eko"],
           "pr_count": 0
         },
         {
           "name": "emela",
-          "outputs": [
-            "emela"
-          ],
+          "outputs": ["emela"],
           "pr_count": 0
         },
         {
           "name": "evermore",
-          "outputs": [
-            "evermore"
-          ],
+          "outputs": ["evermore"],
           "pr_count": 2
         },
         {
           "name": "ff",
-          "outputs": [
-            "ff-static"
-          ],
+          "outputs": ["ff-static"],
           "pr_count": 1
         },
         {
           "name": "iregi",
-          "outputs": [
-            "iregi-static"
-          ],
+          "outputs": ["iregi-static"],
           "pr_count": 0
         },
         {
           "name": "lhapdf",
-          "outputs": [
-            "lhapdf"
-          ],
+          "outputs": ["lhapdf"],
           "pr_count": 0
         },
         {
           "name": "looptools",
-          "outputs": [
-            "looptools-static"
-          ],
+          "outputs": ["looptools-static"],
           "pr_count": 0
         },
         {
           "name": "mpfun90",
-          "outputs": [
-            "mpfun90"
-          ],
+          "outputs": ["mpfun90"],
           "pr_count": 0
         },
         {
           "name": "ninja-hep-ph",
-          "outputs": [
-            "ninja-hep-ph",
-            "ninja-hep-ph-static"
-          ],
+          "outputs": ["ninja-hep-ph", "ninja-hep-ph-static"],
           "pr_count": 1
         },
         {
           "name": "nnpdf",
-          "outputs": [
-            "nnpdf"
-          ],
+          "outputs": ["nnpdf"],
           "pr_count": 0
         },
         {
           "name": "oneloop",
-          "outputs": [
-            "oneloop",
-            "oneloop-static"
-          ],
+          "outputs": ["oneloop", "oneloop-static"],
           "pr_count": 1
         },
         {
           "name": "pineappl",
-          "outputs": [
-            "pineappl"
-          ],
+          "outputs": ["pineappl"],
           "pr_count": 0
         },
         {
           "name": "pylha",
-          "outputs": [
-            "pylha"
-          ],
+          "outputs": ["pylha"],
           "pr_count": 0
         },
         {
           "name": "pyslha",
-          "outputs": [
-            "pyslha"
-          ],
+          "outputs": ["pyslha"],
           "pr_count": 0
         },
         {
           "name": "qcdloop",
-          "outputs": [
-            "qcdloop"
-          ],
+          "outputs": ["qcdloop"],
           "pr_count": 1
         },
         {
           "name": "qcdloop-fortran",
-          "outputs": [
-            "qcdloop-fortran-static"
-          ],
+          "outputs": ["qcdloop-fortran-static"],
           "pr_count": 0
         },
         {
           "name": "rivet",
-          "outputs": [
-            "rivet"
-          ],
+          "outputs": ["rivet"],
           "pr_count": 0
         },
         {
@@ -160,45 +117,32 @@
         },
         {
           "name": "rundec",
-          "outputs": [
-            "rundec"
-          ],
+          "outputs": ["rundec"],
           "pr_count": 0
         },
         {
           "name": "siscone",
-          "outputs": [
-            "siscone"
-          ],
+          "outputs": ["siscone"],
           "pr_count": 1
         },
         {
           "name": "smefit",
-          "outputs": [
-            "smefit"
-          ],
+          "outputs": ["smefit"],
           "pr_count": 0
         },
         {
           "name": "smodels",
-          "outputs": [
-            "smodels"
-          ],
+          "outputs": ["smodels"],
           "pr_count": 0
         },
         {
           "name": "spheno",
-          "outputs": [
-            "spheno",
-            "spheno-atlas"
-          ],
+          "outputs": ["spheno", "spheno-atlas"],
           "pr_count": 0
         },
         {
           "name": "wilson",
-          "outputs": [
-            "wilson"
-          ],
+          "outputs": ["wilson"],
           "pr_count": 0
         }
       ],
@@ -209,23 +153,17 @@
       "feedstocks": [
         {
           "name": "bxdecay0",
-          "outputs": [
-            "bxdecay0"
-          ],
+          "outputs": ["bxdecay0"],
           "pr_count": 1
         },
         {
           "name": "delphes",
-          "outputs": [
-            "delphes"
-          ],
+          "outputs": ["delphes"],
           "pr_count": 0
         },
         {
           "name": "fastjet",
-          "outputs": [
-            "fastjet"
-          ],
+          "outputs": ["fastjet"],
           "pr_count": 2
         },
         {
@@ -239,11 +177,7 @@
         },
         {
           "name": "fastjet-cxx",
-          "outputs": [
-            "fastjet-cxx",
-            "fastjet-cxx-devel",
-            "fastjet-cxx-python"
-          ],
+          "outputs": ["fastjet-cxx", "fastjet-cxx-devel", "fastjet-cxx-python"],
           "pr_count": 4
         },
         {
@@ -258,51 +192,37 @@
         },
         {
           "name": "hepmc2",
-          "outputs": [
-            "hepmc2"
-          ],
+          "outputs": ["hepmc2"],
           "pr_count": 0
         },
         {
           "name": "hepmc3",
-          "outputs": [
-            "hepmc3"
-          ],
+          "outputs": ["hepmc3"],
           "pr_count": 0
         },
         {
           "name": "mg5amcnlo",
-          "outputs": [
-            "mg5amcnlo"
-          ],
+          "outputs": ["mg5amcnlo"],
           "pr_count": 1
         },
         {
           "name": "pythia8",
-          "outputs": [
-            "pythia8"
-          ],
+          "outputs": ["pythia8"],
           "pr_count": 3
         },
         {
           "name": "resummino",
-          "outputs": [
-            "resummino"
-          ],
+          "outputs": ["resummino"],
           "pr_count": 0
         },
         {
           "name": "sherpa",
-          "outputs": [
-            "sherpa"
-          ],
+          "outputs": ["sherpa"],
           "pr_count": 6
         },
         {
           "name": "yoda",
-          "outputs": [
-            "yoda"
-          ],
+          "outputs": ["yoda"],
           "pr_count": 0
         }
       ],
@@ -313,66 +233,47 @@
       "feedstocks": [
         {
           "name": "apptainer",
-          "outputs": [
-            "apptainer"
-          ],
+          "outputs": ["apptainer"],
           "pr_count": 0
         },
         {
           "name": "ca-policy-lcg",
-          "outputs": [
-            "ca-policy-lcg"
-          ],
+          "outputs": ["ca-policy-lcg"],
           "pr_count": 0
         },
         {
           "name": "davix",
-          "outputs": [
-            "davix"
-          ],
+          "outputs": ["davix"],
           "pr_count": 0
         },
         {
           "name": "dirac-grid",
-          "outputs": [
-            "dirac-grid",
-            "diraccommon"
-          ],
+          "outputs": ["dirac-grid", "diraccommon"],
           "pr_count": 0
         },
         {
           "name": "gfal2",
-          "outputs": [
-            "gfal2"
-          ],
+          "outputs": ["gfal2"],
           "pr_count": 0
         },
         {
           "name": "python-gfal2",
-          "outputs": [
-            "python-gfal2"
-          ],
+          "outputs": ["python-gfal2"],
           "pr_count": 0
         },
         {
           "name": "rucio-mcp",
-          "outputs": [
-            "rucio-mcp"
-          ],
+          "outputs": ["rucio-mcp"],
           "pr_count": 0
         },
         {
           "name": "voms-lsc",
-          "outputs": [
-            "voms-lsc"
-          ],
+          "outputs": ["voms-lsc"],
           "pr_count": 0
         },
         {
           "name": "xrootd",
-          "outputs": [
-            "xrootd"
-          ],
+          "outputs": ["xrootd"],
           "pr_count": 1
         }
       ],
@@ -383,23 +284,17 @@
       "feedstocks": [
         {
           "name": "pyhs3",
-          "outputs": [
-            "pyhs3"
-          ],
+          "outputs": ["pyhs3"],
           "pr_count": 0
         },
         {
           "name": "roounfold",
-          "outputs": [
-            "roounfold"
-          ],
+          "outputs": ["roounfold"],
           "pr_count": 1
         },
         {
           "name": "stanhf",
-          "outputs": [
-            "stanhf"
-          ],
+          "outputs": ["stanhf"],
           "pr_count": 0
         }
       ],
@@ -414,30 +309,22 @@
           "feedstocks": [
             {
               "name": "lbenv",
-              "outputs": [
-                "lbenv"
-              ],
+              "outputs": ["lbenv"],
               "pr_count": 0
             },
             {
               "name": "lbplatformutils",
-              "outputs": [
-                "lbplatformutils"
-              ],
+              "outputs": ["lbplatformutils"],
               "pr_count": 0
             },
             {
               "name": "lhcbdirac",
-              "outputs": [
-                "lhcbdirac"
-              ],
+              "outputs": ["lhcbdirac"],
               "pr_count": 4
             },
             {
               "name": "lhcbdirac-config",
-              "outputs": [
-                "lhcbdirac-config"
-              ],
+              "outputs": ["lhcbdirac-config"],
               "pr_count": 0
             }
           ]
@@ -447,16 +334,12 @@
           "feedstocks": [
             {
               "name": "cms-combine",
-              "outputs": [
-                "cms-combine"
-              ],
+              "outputs": ["cms-combine"],
               "pr_count": 0
             },
             {
               "name": "dasgoclient",
-              "outputs": [
-                "dasgoclient"
-              ],
+              "outputs": ["dasgoclient"],
               "pr_count": 0
             }
           ]
@@ -466,66 +349,47 @@
           "feedstocks": [
             {
               "name": "atlasopenmagic",
-              "outputs": [
-                "atlasopenmagic"
-              ],
+              "outputs": ["atlasopenmagic"],
               "pr_count": 0
             },
             {
               "name": "histfitter",
-              "outputs": [
-                "histfitter"
-              ],
+              "outputs": ["histfitter"],
               "pr_count": 0
             },
             {
               "name": "itkdb",
-              "outputs": [
-                "itkdb"
-              ],
+              "outputs": ["itkdb"],
               "pr_count": 1
             },
             {
               "name": "module-qc-analysis-tools",
-              "outputs": [
-                "module-qc-analysis-tools"
-              ],
+              "outputs": ["module-qc-analysis-tools"],
               "pr_count": 0
             },
             {
               "name": "module-qc-data-tools",
-              "outputs": [
-                "module-qc-data-tools"
-              ],
+              "outputs": ["module-qc-data-tools"],
               "pr_count": 0
             },
             {
               "name": "module-qc-database-tools",
-              "outputs": [
-                "module-qc-database-tools"
-              ],
+              "outputs": ["module-qc-database-tools"],
               "pr_count": 0
             },
             {
               "name": "module-qc-tools",
-              "outputs": [
-                "module-qc-tools"
-              ],
+              "outputs": ["module-qc-tools"],
               "pr_count": 0
             },
             {
               "name": "pyami-core",
-              "outputs": [
-                "pyami-core",
-                "pyami-core-cli"
-              ],
+              "outputs": ["pyami-core", "pyami-core-cli"],
               "pr_count": 0
             },
             {
               "name": "stare-atlas",
-              "outputs": [
-                "stare-atlas"
-              ],
+              "outputs": ["stare-atlas"],
               "pr_count": 0
             }
           ]
@@ -535,93 +399,67 @@
           "feedstocks": [
             {
               "name": "dbetto",
-              "outputs": [
-                "dbetto"
-              ],
+              "outputs": ["dbetto"],
               "pr_count": 0
             },
             {
               "name": "dspeed",
-              "outputs": [
-                "dspeed"
-              ],
+              "outputs": ["dspeed"],
               "pr_count": 0
             },
             {
               "name": "legend-pydataobj",
-              "outputs": [
-                "legend-pydataobj"
-              ],
+              "outputs": ["legend-pydataobj"],
               "pr_count": 0
             },
             {
               "name": "legend-pygeom-hpges",
-              "outputs": [
-                "legend-pygeom-hpges"
-              ],
+              "outputs": ["legend-pygeom-hpges"],
               "pr_count": 0
             },
             {
               "name": "legend-pygeom-l1000",
-              "outputs": [
-                "legend-pygeom-l1000"
-              ],
+              "outputs": ["legend-pygeom-l1000"],
               "pr_count": 0
             },
             {
               "name": "legend-pygeom-l200",
-              "outputs": [
-                "legend-pygeom-l200"
-              ],
+              "outputs": ["legend-pygeom-l200"],
               "pr_count": 0
             },
             {
               "name": "legend-pygeom-optics",
-              "outputs": [
-                "legend-pygeom-optics"
-              ],
+              "outputs": ["legend-pygeom-optics"],
               "pr_count": 0
             },
             {
               "name": "legend-pygeom-tools",
-              "outputs": [
-                "legend-pygeom-tools"
-              ],
+              "outputs": ["legend-pygeom-tools"],
               "pr_count": 0
             },
             {
               "name": "pygama",
-              "outputs": [
-                "pygama"
-              ],
+              "outputs": ["pygama"],
               "pr_count": 0
             },
             {
               "name": "pylegendmeta",
-              "outputs": [
-                "pylegendmeta"
-              ],
+              "outputs": ["pylegendmeta"],
               "pr_count": 0
             },
             {
               "name": "reboost",
-              "outputs": [
-                "reboost"
-              ],
+              "outputs": ["reboost"],
               "pr_count": 0
             },
             {
               "name": "remage",
-              "outputs": [
-                "remage"
-              ],
+              "outputs": ["remage"],
               "pr_count": 0
             },
             {
               "name": "revertex",
-              "outputs": [
-                "revertex"
-              ],
+              "outputs": ["revertex"],
               "pr_count": 0
             }
           ]
@@ -633,187 +471,132 @@
       "feedstocks": [
         {
           "name": "awkward",
-          "outputs": [
-            "awkward",
-            "awkward-numba"
-          ],
+          "outputs": ["awkward", "awkward-numba"],
           "pr_count": 0
         },
         {
           "name": "awkward-cpp",
-          "outputs": [
-            "awkward-cpp"
-          ],
+          "outputs": ["awkward-cpp"],
           "pr_count": 1
         },
         {
           "name": "boost-histogram",
-          "outputs": [
-            "boost-histogram"
-          ],
+          "outputs": ["boost-histogram"],
           "pr_count": 1
         },
         {
           "name": "cabinetry",
-          "outputs": [
-            "cabinetry"
-          ],
+          "outputs": ["cabinetry"],
           "pr_count": 0
         },
         {
           "name": "coffea",
-          "outputs": [
-            "coffea"
-          ],
+          "outputs": ["coffea"],
           "pr_count": 0
         },
         {
           "name": "cuda_histogram",
-          "outputs": [
-            "cuda_histogram"
-          ],
+          "outputs": ["cuda_histogram"],
           "pr_count": 0
         },
         {
           "name": "decaylanguage",
-          "outputs": [
-            "decaylanguage"
-          ],
+          "outputs": ["decaylanguage"],
           "pr_count": 0
         },
         {
           "name": "fastjet",
-          "outputs": [
-            "fastjet"
-          ],
+          "outputs": ["fastjet"],
           "pr_count": 2
         },
         {
           "name": "fsspec-xrootd",
-          "outputs": [
-            "fsspec-xrootd"
-          ],
+          "outputs": ["fsspec-xrootd"],
           "pr_count": 1
         },
         {
           "name": "hepconvert",
-          "outputs": [
-            "hepconvert"
-          ],
+          "outputs": ["hepconvert"],
           "pr_count": 0
         },
         {
           "name": "hepstats",
-          "outputs": [
-            "hepstats"
-          ],
+          "outputs": ["hepstats"],
           "pr_count": 3
         },
         {
           "name": "hepunits",
-          "outputs": [
-            "hepunits"
-          ],
+          "outputs": ["hepunits"],
           "pr_count": 0
         },
         {
           "name": "hist",
-          "outputs": [
-            "hist",
-            "hist-base"
-          ],
+          "outputs": ["hist", "hist-base"],
           "pr_count": 0
         },
         {
           "name": "histoprint",
-          "outputs": [
-            "histoprint"
-          ],
+          "outputs": ["histoprint"],
           "pr_count": 0
         },
         {
           "name": "iminuit",
-          "outputs": [
-            "iminuit"
-          ],
+          "outputs": ["iminuit"],
           "pr_count": 0
         },
         {
           "name": "mplhep",
-          "outputs": [
-            "mplhep"
-          ],
+          "outputs": ["mplhep"],
           "pr_count": 0
         },
         {
           "name": "particle",
-          "outputs": [
-            "particle"
-          ],
+          "outputs": ["particle"],
           "pr_count": 1
         },
         {
           "name": "pyhepmc",
-          "outputs": [
-            "pyhepmc"
-          ],
+          "outputs": ["pyhepmc"],
           "pr_count": 0
         },
         {
           "name": "pyhf",
-          "outputs": [
-            "pyhf"
-          ],
+          "outputs": ["pyhf"],
           "pr_count": 0
         },
         {
           "name": "pylhe",
-          "outputs": [
-            "pylhe"
-          ],
+          "outputs": ["pylhe"],
           "pr_count": 0
         },
         {
           "name": "resample",
-          "outputs": [
-            "resample"
-          ],
+          "outputs": ["resample"],
           "pr_count": 0
         },
         {
           "name": "scikit-hep",
-          "outputs": [
-            "scikit-hep"
-          ],
+          "outputs": ["scikit-hep"],
           "pr_count": 0
         },
         {
           "name": "uhi",
-          "outputs": [
-            "uhi"
-          ],
+          "outputs": ["uhi"],
           "pr_count": 0
         },
         {
           "name": "uproot",
-          "outputs": [
-            "uproot",
-            "uproot-base"
-          ],
+          "outputs": ["uproot", "uproot-base"],
           "pr_count": 0
         },
         {
           "name": "uproot-browser",
-          "outputs": [
-            "uproot-browser"
-          ],
+          "outputs": ["uproot-browser"],
           "pr_count": 0
         },
         {
           "name": "vector",
-          "outputs": [
-            "vector"
-          ],
+          "outputs": ["vector"],
           "pr_count": 0
         }
       ],
@@ -824,9 +607,7 @@
       "feedstocks": [
         {
           "name": "yarr",
-          "outputs": [
-            "yarr"
-          ],
+          "outputs": ["yarr"],
           "pr_count": 0
         }
       ],
@@ -837,16 +618,12 @@
       "feedstocks": [
         {
           "name": "lgatr",
-          "outputs": [
-            "lgatr"
-          ],
+          "outputs": ["lgatr"],
           "pr_count": 0
         },
         {
           "name": "lwtnn",
-          "outputs": [
-            "lwtnn"
-          ],
+          "outputs": ["lwtnn"],
           "pr_count": 1
         }
       ],

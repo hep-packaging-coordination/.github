@@ -132,7 +132,7 @@ def render_readme(model: dict) -> str:
     lines.append("To get a new tool listed:")
     lines.append("1. Package and distribute your tool on conda-forge.")
     lines.append(
-        '2. Open up an [Issue](https://github.com/hep-packaging-coordination/.github/issues)'
+        "2. Open up an [Issue](https://github.com/hep-packaging-coordination/.github/issues)"
         ' with title "Add `<tool name>` to HEP Packaging Coordination"'
         " with a link to the tool's conda-forge feedstock."
     )
@@ -203,8 +203,6 @@ def _render_feedstock_rows(entry: dict) -> list[str]:
 
     # Feedstock with no known outputs: emit one row with blanks for badge columns.
     if not outputs:
-        rows.append(
-            f"| {feedstock_name} |  |  |  |  |  | {pr_count_link} |"
-        )
+        rows.append(f"| {feedstock_name} |  |  |  |  |  | {pr_count_link} |")
 
     return rows

@@ -94,7 +94,9 @@ export function flattenCategories(categories: Category[]): SearchItem[] {
  * Returns a plain record so chip templates can read counts[name] directly.
  * For nested categories the parent count is the sum of all subcategory counts.
  */
-export function countByCategory(categories: Category[]): Record<string, number> {
+export function countByCategory(
+  categories: Category[],
+): Record<string, number> {
   const counts: Record<string, number> = {};
   for (const cat of categories) {
     let catTotal = cat.feedstocks?.length ?? 0;

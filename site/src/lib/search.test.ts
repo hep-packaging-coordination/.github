@@ -63,7 +63,7 @@ describe("countByCategory", () => {
   it("counts feedstocks in each subcategory individually", () => {
     const counts = countByCategory(ALL_CATEGORIES);
     expect(counts["ATLAS"]).toBe(1); // histfitter
-    expect(counts["CMS"]).toBe(1);   // cms-combine
+    expect(counts["CMS"]).toBe(1); // cms-combine
   });
 
   it("parent nested category count equals sum of subcategories", () => {
@@ -185,7 +185,11 @@ describe("filterTools", () => {
       // fastjet appears in both Simulation and Scikit-HEP in real feedstocks.json.
       // flattenCategories must produce ONE merged SearchItem so feedstock.name is
       // a valid unique Svelte each key, and the single card shows both badges.
-      const FASTJET: Feedstock = { name: "fastjet", outputs: ["fastjet"], pr_count: 2 };
+      const FASTJET: Feedstock = {
+        name: "fastjet",
+        outputs: ["fastjet"],
+        pr_count: 2,
+      };
       const categoriesWithSharedFeedstock: Category[] = [
         { name: "Simulation", feedstocks: [FASTJET], subcategories: null },
         { name: "Scikit-HEP", feedstocks: [FASTJET], subcategories: null },
@@ -201,7 +205,11 @@ describe("filterTools", () => {
     });
 
     it("merged feedstock appears when filtering by either of its categories", () => {
-      const FASTJET: Feedstock = { name: "fastjet", outputs: ["fastjet"], pr_count: 2 };
+      const FASTJET: Feedstock = {
+        name: "fastjet",
+        outputs: ["fastjet"],
+        pr_count: 2,
+      };
       const categoriesWithSharedFeedstock: Category[] = [
         { name: "Simulation", feedstocks: [FASTJET], subcategories: null },
         { name: "Scikit-HEP", feedstocks: [FASTJET], subcategories: null },
@@ -220,7 +228,10 @@ describe("filterTools", () => {
     });
 
     it("feedstock names are unique across all results (safe Svelte each key)", () => {
-      const result = filterTools(ALL_CATEGORIES, { query: "", activeCategories: [] });
+      const result = filterTools(ALL_CATEGORIES, {
+        query: "",
+        activeCategories: [],
+      });
       const names = result.map((r) => r.feedstock.name);
       expect(new Set(names).size).toBe(names.length);
     });

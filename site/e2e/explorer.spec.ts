@@ -65,7 +65,9 @@ test("typing gibberish shows empty state", async ({ page }) => {
   // Empty state message.
   await expect(page.locator("text=No feedstocks found")).toBeVisible();
   // The "Clear filters" button inside empty state should appear.
-  await expect(page.locator("button", { hasText: "Clear filters" }).last()).toBeVisible();
+  await expect(
+    page.locator("button", { hasText: "Clear filters" }).last(),
+  ).toBeVisible();
 });
 
 test("category chip filters results", async ({ page }) => {
@@ -97,7 +99,9 @@ test("clear filters chip removes category filter", async ({ page }) => {
 
   // Activate a filter.
   await page.locator('[role="group"] button').first().click();
-  await expect(page.locator("button", { hasText: "Clear filters" })).toBeVisible();
+  await expect(
+    page.locator("button", { hasText: "Clear filters" }),
+  ).toBeVisible();
 
   // Count filtered results.
   const filteredText = await page.locator('[aria-live="polite"]').textContent();
@@ -115,7 +119,9 @@ test("clear filters chip removes category filter", async ({ page }) => {
 test("'Add a tool' link points to the issues page", async ({ page }) => {
   await goto(page);
 
-  const issueLink = page.locator('a[href*="hep-packaging-coordination/.github/issues"]').first();
+  const issueLink = page
+    .locator('a[href*="hep-packaging-coordination/.github/issues"]')
+    .first();
   await expect(issueLink).toBeVisible();
   const href = await issueLink.getAttribute("href");
   expect(href).toContain("hep-packaging-coordination/.github/issues");
