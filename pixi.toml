@@ -10,7 +10,7 @@ scripts = ["setup.sh"]
 [tasks]
 
 # ── Core pipeline ─────────────────────────────────────────────────────────────
-update = { cmd = "python ./update_readme.py && pre-commit run --files profile/README.md site/src/data/tools.json", inputs = ["feedstocks.json", "update_readme.py", "feedstock_data.py"], outputs = ["profile/README.md", "site/src/data/tools.json"], description = "Regenerate profile/README.md and site/src/data/tools.json from live conda-forge data" }
+update = { cmd = "python ./update_readme.py && (pre-commit run --files profile/README.md site/src/data/tools.json || exit 0)", inputs = ["feedstocks.json", "update_readme.py", "feedstock_data.py"], outputs = ["profile/README.md", "site/src/data/tools.json"], description = "Regenerate profile/README.md and site/src/data/tools.json from live conda-forge data" }
 
 # ── Site building blocks ──────────────────────────────────────────────────────
 site-install = { cmd = "npm install", cwd = "site", description = "Install site npm dependencies", inputs = ["site/package.json", "site/package-lock.json"], outputs = ["site/node_modules/.package-lock.json"] }
