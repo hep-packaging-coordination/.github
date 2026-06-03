@@ -10,12 +10,12 @@ scripts = ["setup.sh"]
 [tasks]
 
 # ── Core pipeline ─────────────────────────────────────────────────────────────
-update = { cmd = "python ./update_readme.py", inputs = ["feedstocks.json", "update_readme.py", "feedstock_data.py"], outputs = ["profile/README.md", "site/src/data/feedstocks.json"], description = "Regenerate profile/README.md and site/src/data/feedstocks.json from live conda-forge data" }
+update = { cmd = "python ./update_readme.py && pre-commit run --files profile/README.md site/src/data/tools.json", inputs = ["feedstocks.json", "update_readme.py", "feedstock_data.py"], outputs = ["profile/README.md", "site/src/data/tools.json"], description = "Regenerate profile/README.md and site/src/data/tools.json from live conda-forge data" }
 
 # ── Site building blocks ──────────────────────────────────────────────────────
 site-install = { cmd = "npm install", cwd = "site", description = "Install site npm dependencies", inputs = ["site/package.json", "site/package-lock.json"], outputs = ["site/node_modules/.package-lock.json"] }
 site-dev = { cmd = "npm run dev", cwd = "site", description = "Start Astro dev server at http://localhost:4321/.github/", depends-on = ["site-install"] }
-site-build = { cmd = "npm run build", cwd = "site", description = "Build static site to site/dist/", depends-on = ["update", "site-install"], inputs = ["site/src/data/feedstocks.json"], outputs = ["site/dist/index.html"] }
+site-build = { cmd = "npm run build", cwd = "site", description = "Build static site to site/dist/", depends-on = ["update", "site-install"], inputs = ["site/src/data/tools.json"], outputs = ["site/dist/index.html"] }
 site-preview = { cmd = "npm run preview", cwd = "site", description = "Serve production build at http://localhost:4321/.github/", depends-on = ["site-build"] }
 site-format = { cmd = "npm run format", cwd = "site", description = "Auto-format site source files (Astro, Svelte, Tailwind)", depends-on = ["site-install"] }
 site-format-check = { cmd = "npm run format-check", cwd = "site", description = "Check site formatting without writing changes (CI-safe)", depends-on = ["site-install"] }
@@ -25,7 +25,6 @@ site-e2e = { cmd = "npx playwright test", cwd = "site", description = "Playwrigh
 linkcheck = { cmd = "lychee --root-dir site/dist site/dist/", description = "Check for broken links in the built site", depends-on = ["site-build"] }
 
 # ── Top-level developer tasks ─────────────────────────────────────────────────
-
 [tasks.start]
 # Chain: update + site-install (parallel) → site-build → site-preview.
 # No cmd needed — the full dependency walk ends at site-preview (the server).

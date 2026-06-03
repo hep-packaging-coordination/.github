@@ -14,7 +14,7 @@ from feedstock_data import build_tool_model, render_readme, render_tools_json
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
 
-# Minimal feedstocks.json data covering all structural variants:
+# Minimal tools.json data covering all structural variants:
 #   - flat category (list of feedstocks)
 #   - nested category (dict of subcategory -> list)
 MINIMAL_FEEDSTOCKS = {

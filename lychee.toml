@@ -1,0 +1,3 @@
+exclude = [
+  'https://img.shields.io/conda/', # exclude to prevent unnecessary traffic
+]

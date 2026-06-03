@@ -7,11 +7,11 @@ import DarkModeToggle from "../components/DarkModeToggle.astro";
 import ToolExplorer from "../components/ToolExplorer.svelte";
 import { ToolsDataSchema } from "../lib/tools";
 
-// Import the committed feedstocks.json at build time.
+// Import the committed tools.json at build time.
 // This is intentional: build-time import avoids any runtime fetch() that
 // would depend on the base path, keeps the island instant (no loading state),
 // and is type-checked against ToolsDataSchema below.
-import rawTools from "../data/feedstocks.json";
+import rawTools from "../data/tools.json";
 
 // Validate the snapshot against the schema at build time.  A malformed
 // tools.json fails the build rather than silently shipping bad data.
