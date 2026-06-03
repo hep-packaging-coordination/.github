@@ -1,3 +1,4 @@
 # SCM syntax highlighting
 pixi.lock linguist-language=YAML linguist-generated=true
 site/package-lock.json linguist-language=JSON linguist-generated=true
+site/src/data/feedstocks.json linguist-language=JSON linguist-generated=true
