@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate profile/README.md and site/src/data/feedstocks.json.
+"""Generate profile/README.md and site/src/data/tools.json.
 
 Fetches live data (conda-forge feedstock-outputs map, GitHub open-PR counts)
 and delegates model construction and rendering to feedstock_data.py so the
@@ -12,7 +12,7 @@ import subprocess
 
 import requests
 
-from feedstock_data import build_feedstock_model, render_readme, render_feedstocks_json
+from feedstock_data import build_tool_model, render_readme, render_tools_json
 
 
 def load_feedstock_outputs():
@@ -156,8 +156,8 @@ def main():
         if isinstance(content, list):
             all_feedstocks.update(content)
         elif isinstance(content, dict):
-            for feedstocks in content.values():
-                all_feedstocks.update(feedstocks)
+            for tools in content.values():
+                all_feedstocks.update(tools)
 
     # Fetch live data (network calls happen exactly once).
     raw_outputs = load_feedstock_outputs()
@@ -165,7 +165,7 @@ def main():
     pr_counts = fetch_all_pr_counts(all_feedstocks)
 
     # Build the shared model, then render both artifacts.
-    model = build_feedstock_model(feedstocks_data, feedstock_outputs, pr_counts)
+    model = build_tool_model(feedstocks_data, feedstock_outputs, pr_counts)
 
     script_dir = os.path.dirname(os.path.realpath(__file__))
 
@@ -174,14 +174,12 @@ def main():
         f.write(render_readme(model))
     print(f"README.md updated at {readme_path}")
 
-    feedstocks_json_path = os.path.join(
-        script_dir, "site", "src", "data", "feedstocks.json"
-    )
-    os.makedirs(os.path.dirname(feedstocks_json_path), exist_ok=True)
-    with open(feedstocks_json_path, "w") as f:
-        json.dump(render_feedstocks_json(model), f, indent=2)
+    tools_json_path = os.path.join(script_dir, "site", "src", "data", "feedstocks.json")
+    os.makedirs(os.path.dirname(tools_json_path), exist_ok=True)
+    with open(tools_json_path, "w") as f:
+        json.dump(render_tools_json(model), f, indent=2)
         f.write("\n")
-    print(f"feedstocks.json updated at {feedstocks_json_path}")
+    print(f"tools.json updated at {tools_json_path}")
 
 
 if __name__ == "__main__":
