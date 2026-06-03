@@ -9,6 +9,7 @@ two output files are always derived from the same in-memory model.
 import json
 import os
 import subprocess
+from pathlib import Path
 
 import requests
 
@@ -167,15 +168,15 @@ def main():
     # Build the shared model, then render both artifacts.
     model = build_tool_model(feedstocks_data, feedstock_outputs, pr_counts)
 
-    script_dir = os.path.dirname(os.path.realpath(__file__))
+    script_dir = Path(__file__).resolve().parent
 
-    readme_path = os.path.join(script_dir, "profile", "README.md")
+    readme_path = script_dir / "profile" / "README.md"
     with open(readme_path, "w") as f:
         f.write(render_readme(model))
     print(f"README.md updated at {readme_path}")
 
-    tools_json_path = os.path.join(script_dir, "site", "src", "data", "tools.json")
-    os.makedirs(os.path.dirname(tools_json_path), exist_ok=True)
+    tools_json_path = script_dir / "site" / "src" / "data" / "tools.json"
+    tools_json_path.parent.mkdir(parents=True, exist_ok=True)
     with open(tools_json_path, "w") as f:
         json.dump(render_tools_json(model), f, indent=2)
         f.write("\n")
