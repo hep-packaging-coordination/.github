@@ -31,7 +31,7 @@ cmd = "npm run build"
 cwd = "site"
 description = "Build static site to site/dist/"
 depends-on = ["update", "site-install"]
-inputs = ["site/src/data/tools.json"]
+inputs = ["site/src/data/tools.json", "site/src"]
 outputs = ["site/dist/index.html"]
 
 [tasks.site-preview]
