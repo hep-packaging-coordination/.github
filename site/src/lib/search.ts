@@ -112,6 +112,36 @@ export function countByCategory(
 }
 
 /**
+ * Group a filtered result set by top-level category, preserving the original
+ * category order from the catalog.
+ *
+ * Each item is placed in the group of its first categoryName that matches a
+ * top-level category.  Groups with no matching items are omitted.
+ */
+export function groupResults(
+  items: SearchItem[],
+  categories: Category[],
+): Array<{ name: string; items: SearchItem[] }> {
+  const categoryOrder = categories.map((c) => c.name);
+  const groups = new Map<string, SearchItem[]>(
+    categoryOrder.map((name) => [name, []]),
+  );
+
+  for (const item of items) {
+    const primaryCategory = item.categoryNames.find((cn) =>
+      categoryOrder.includes(cn),
+    );
+    if (primaryCategory) {
+      groups.get(primaryCategory)!.push(item);
+    }
+  }
+
+  return categoryOrder
+    .map((name) => ({ name, items: groups.get(name)! }))
+    .filter((g) => g.items.length > 0);
+}
+
+/**
  * Filter the feedstock catalog by query and/or active category chips.
  *
  * Query and category are composed with AND: a result must satisfy both.

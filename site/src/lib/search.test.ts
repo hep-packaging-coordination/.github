@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { filterTools, countByCategory } from "./search";
+import { filterTools, countByCategory, groupResults } from "./search";
 import type { Feedstock, Category } from "./tools";
 
 // ── Test fixtures ─────────────────────────────────────────────────────────────
@@ -270,5 +270,75 @@ describe("filterTools", () => {
       expect(names).toContain("histfitter");
       expect(names).not.toContain("cms-combine"); // cms-combine is CMS, not ATLAS
     });
+  });
+});
+
+// ── groupResults tests ────────────────────────────────────────────────────────
+
+describe("groupResults", () => {
+  it("produces one group per top-level category that has matching items", () => {
+    const items = filterTools(ALL_CATEGORIES, {
+      query: "",
+      activeCategories: [],
+    });
+    const groups = groupResults(items, ALL_CATEGORIES);
+    expect(groups).toHaveLength(3);
+    expect(groups.map((g) => g.name)).toEqual([
+      "Statistical Modeling",
+      "Analysis",
+      "Experiment specific",
+    ]);
+  });
+
+  it("preserves original category order regardless of result order", () => {
+    // ALL_CATEGORIES order: Statistical Modeling, Analysis, Experiment specific
+    const items = filterTools(ALL_CATEGORIES, {
+      query: "",
+      activeCategories: [],
+    });
+    const groups = groupResults(items, ALL_CATEGORIES);
+    expect(groups[0].name).toBe("Statistical Modeling");
+    expect(groups[1].name).toBe("Analysis");
+    expect(groups[2].name).toBe("Experiment specific");
+  });
+
+  it("places each feedstock in exactly one group", () => {
+    const items = filterTools(ALL_CATEGORIES, {
+      query: "",
+      activeCategories: [],
+    });
+    const groups = groupResults(items, ALL_CATEGORIES);
+    const allGroupedNames = groups.flatMap((g) =>
+      g.items.map((i) => i.feedstock.name),
+    );
+    expect(new Set(allGroupedNames).size).toBe(allGroupedNames.length);
+    expect(allGroupedNames).toHaveLength(4); // pyhf, root, histfitter, cms-combine
+  });
+
+  it("omits groups with no items after filtering", () => {
+    const items = filterTools(ALL_CATEGORIES, {
+      query: "",
+      activeCategories: ["Statistical Modeling"],
+    });
+    const groups = groupResults(items, ALL_CATEGORIES);
+    expect(groups).toHaveLength(1);
+    expect(groups[0].name).toBe("Statistical Modeling");
+  });
+
+  it("places subcategory feedstocks under their parent top-level group", () => {
+    const items = filterTools(ALL_CATEGORIES, {
+      query: "",
+      activeCategories: [],
+    });
+    const groups = groupResults(items, ALL_CATEGORIES);
+    const expGroup = groups.find((g) => g.name === "Experiment specific")!;
+    const names = expGroup.items.map((i) => i.feedstock.name);
+    expect(names).toContain("histfitter");
+    expect(names).toContain("cms-combine");
+  });
+
+  it("returns empty array when there are no items", () => {
+    const groups = groupResults([], ALL_CATEGORIES);
+    expect(groups).toHaveLength(0);
   });
 });

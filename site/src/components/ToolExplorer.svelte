@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { filterTools, countByCategory } from "../lib/search";
+  import { filterTools, countByCategory, groupResults } from "../lib/search";
   import type { Category } from "../lib/tools";
   import ToolCard from "./ToolCard.svelte";
 
@@ -15,6 +15,7 @@
   const results = $derived(
     filterTools(categories, { query, activeCategories }),
   );
+  const groups = $derived(groupResults(results, categories));
   const counts = $derived(countByCategory(categories));
 
   function toggleCategory(name: string) {
@@ -219,18 +220,30 @@
     {results.length} feedstock{results.length === 1 ? "" : "s"} found
   </p>
 
-  <!-- Results grid -->
+  <!-- Results grid, grouped by category -->
   {#if results.length > 0}
-    <ul
-      class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-      role="list"
-    >
-      {#each results as { feedstock, categoryNames } (feedstock.name)}
-        <li>
-          <ToolCard {feedstock} {categoryNames} />
-        </li>
-      {/each}
-    </ul>
+    {#each groups as group, i (group.name)}
+      <h2
+        class={[
+          "mb-3 border-b border-[var(--color-cf-border)] pb-1 text-xs font-semibold uppercase tracking-widest text-[var(--color-cf-text-muted)]",
+          i > 0 && "mt-8",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        {group.name}
+      </h2>
+      <ul
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        role="list"
+      >
+        {#each group.items as { feedstock, categoryNames } (feedstock.name)}
+          <li>
+            <ToolCard {feedstock} {categoryNames} />
+          </li>
+        {/each}
+      </ul>
+    {/each}
   {:else}
     <div
       class="rounded-2xl border border-dashed border-[var(--color-cf-border)] py-16 text-center"
