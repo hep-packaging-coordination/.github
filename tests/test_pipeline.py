@@ -1,7 +1,7 @@
 """Tests for the refactored feedstock data pipeline.
 
 Covers:
-  - build_tool_model: pure model construction from raw data
+  - build_feedstock_model: pure model construction from raw data
   - render_tools_json: JSON artifact from model
   - render_readme: README artifact from model
   - Consistency invariant: README and tools.json agree on every feedstock
@@ -9,7 +9,7 @@ Covers:
 
 import json
 
-from feedstock_data import build_tool_model, render_readme, render_tools_json
+from feedstock_data import build_feedstock_model, render_readme, render_tools_json
 
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
@@ -60,12 +60,12 @@ def _all_feedstock_names(feedstocks_data):
     return names
 
 
-# ── build_tool_model ──────────────────────────────────────────────────────────
+# ── build_feedstock_model ──────────────────────────────────────────────────────────
 
 
 class TestBuildToolModel:
     def _model(self):
-        return build_tool_model(
+        return build_feedstock_model(
             MINIMAL_FEEDSTOCKS, MINIMAL_FEEDSTOCK_OUTPUTS, MINIMAL_PR_COUNTS
         )
 
@@ -118,7 +118,7 @@ class TestBuildToolModel:
     def test_feedstock_absent_from_outputs_map_has_empty_outputs(self):
         """A feedstock not present in the outputs map gets an empty output list."""
         feedstocks_data = {"Analysis": ["unknown-feedstock"]}
-        model = build_tool_model(feedstocks_data, {}, {"unknown-feedstock": 0})
+        model = build_feedstock_model(feedstocks_data, {}, {"unknown-feedstock": 0})
         entry = model["categories"][0]["feedstocks"][0]
         assert entry["name"] == "unknown-feedstock"
         assert entry["outputs"] == []
@@ -129,7 +129,7 @@ class TestBuildToolModel:
 
 class TestRenderToolsJson:
     def _json(self):
-        model = build_tool_model(
+        model = build_feedstock_model(
             MINIMAL_FEEDSTOCKS, MINIMAL_FEEDSTOCK_OUTPUTS, MINIMAL_PR_COUNTS
         )
         return render_tools_json(model)
@@ -170,7 +170,7 @@ class TestRenderToolsJson:
 
 class TestRenderReadme:
     def _readme(self):
-        model = build_tool_model(
+        model = build_feedstock_model(
             MINIMAL_FEEDSTOCKS, MINIMAL_FEEDSTOCK_OUTPUTS, MINIMAL_PR_COUNTS
         )
         return render_readme(model)
@@ -244,7 +244,7 @@ class TestReadmeToolsJsonConsistency:
     can never silently diverge."""
 
     def setup_method(self):
-        model = build_tool_model(
+        model = build_feedstock_model(
             MINIMAL_FEEDSTOCKS, MINIMAL_FEEDSTOCK_OUTPUTS, MINIMAL_PR_COUNTS
         )
         self.readme = render_readme(model)
