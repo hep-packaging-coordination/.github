@@ -46,10 +46,11 @@ jobs:
           pixi-version: v0.41.0
           cache: true
 
-      - name: Install site npm dependencies
-        run: pixi run site-install
-
       - name: Build site
+        # site-build depends on [update, site-install]; update calls the GitHub
+        # API for open-PR counts so GITHUB_TOKEN must be available.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pixi run site-build
 
       - name: Upload Pages artifact

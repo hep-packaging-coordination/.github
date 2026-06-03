@@ -19,9 +19,6 @@ jobs:
           pixi-version: v0.41.0
           cache: true
 
-      - name: Install npm dependencies
-        run: pixi run site-install
-
       - name: Check formatting
         run: pixi run site-format-check
 
@@ -32,6 +29,10 @@ jobs:
         run: pixi run site-test
 
       - name: Build
+        # site-build depends on [update, site-install]; update calls the GitHub
+        # API for open-PR counts so GITHUB_TOKEN must be available.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pixi run site-build
 
       - name: Install Playwright browsers
@@ -39,4 +40,8 @@ jobs:
         working-directory: site
 
       - name: E2e tests (Playwright)
+        # site-e2e depends on site-build which is already done above.
+        # Pixi's output cache means site-build and update won't re-run.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pixi run site-e2e
