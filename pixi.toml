@@ -15,7 +15,7 @@ update = { cmd = "python ./update_readme.py", inputs = ["feedstocks.json", "upda
 # ── Site building blocks ──────────────────────────────────────────────────────
 site-install = { cmd = "npm install", cwd = "site", description = "Install site npm dependencies", inputs = ["site/package.json", "site/package-lock.json"], outputs = ["site/node_modules/.package-lock.json"] }
 site-dev = { cmd = "npm run dev", cwd = "site", description = "Start Astro dev server at http://localhost:4321/.github/", depends-on = ["site-install"] }
-site-build = { cmd = "npm run build", cwd = "site", description = "Build static site to site/dist/", depends-on = ["update", "site-install"] }
+site-build = { cmd = "npm run build", cwd = "site", description = "Build static site to site/dist/", depends-on = ["update", "site-install"], inputs = ["site/src/data/feedstocks.json"], outputs = ["site/dist/index.html"] }
 site-preview = { cmd = "npm run preview", cwd = "site", description = "Serve production build at http://localhost:4321/.github/", depends-on = ["site-build"] }
 site-format = { cmd = "npm run format", cwd = "site", description = "Auto-format site source files (Astro, Svelte, Tailwind)", depends-on = ["site-install"] }
 site-format-check = { cmd = "npm run format-check", cwd = "site", description = "Check site formatting without writing changes (CI-safe)", depends-on = ["site-install"] }
