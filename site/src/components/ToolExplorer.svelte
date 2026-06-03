@@ -12,7 +12,9 @@
   let query = $state("");
   let activeCategories = $state<string[]>([]);
 
-  const results = $derived(filterTools(categories, { query, activeCategories }));
+  const results = $derived(
+    filterTools(categories, { query, activeCategories }),
+  );
   const counts = $derived(countByCategory(categories));
 
   function toggleCategory(name: string) {
@@ -35,8 +37,7 @@
   // True if any subcategory of cat is actively selected.
   function hasActiveSubcategory(cat: Category): boolean {
     return (
-      (cat.subcategories?.some((s) => activeCategories.includes(s.name)) ??
-        false)
+      cat.subcategories?.some((s) => activeCategories.includes(s.name)) ?? false
     );
   }
 
@@ -88,7 +89,11 @@
   </div>
 
   <!-- Category chips -->
-  <div class="mb-4 flex flex-wrap items-center gap-2" role="group" aria-label="Filter by category">
+  <div
+    class="mb-4 flex flex-wrap items-center gap-2"
+    role="group"
+    aria-label="Filter by category"
+  >
     {#each categories as cat (cat.name)}
       {#if cat.subcategories && cat.subcategories.length > 0}
         <!--
@@ -126,7 +131,11 @@
               stroke="currentColor"
               aria-hidden="true"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
             </svg>
           </button>
 
@@ -154,10 +163,18 @@
                     type="button"
                     onclick={() => toggleCategory(sub.name)}
                     aria-pressed={activeCategories.includes(sub.name)}
-                    class={chipClass(sub.name, activeCategories.includes(sub.name), true)}
+                    class={chipClass(
+                      sub.name,
+                      activeCategories.includes(sub.name),
+                      true,
+                    )}
                   >
                     {sub.name}
-                    <span class={countBadgeClass(activeCategories.includes(sub.name))}>
+                    <span
+                      class={countBadgeClass(
+                        activeCategories.includes(sub.name),
+                      )}
+                    >
                       {counts[sub.name]}
                     </span>
                   </button>
@@ -204,7 +221,10 @@
 
   <!-- Results grid -->
   {#if results.length > 0}
-    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
+    <ul
+      class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      role="list"
+    >
       {#each results as { feedstock, categoryNames } (feedstock.name)}
         <li>
           <ToolCard {feedstock} {categoryNames} />
@@ -212,8 +232,12 @@
       {/each}
     </ul>
   {:else}
-    <div class="rounded-2xl border border-dashed border-[var(--color-cf-border)] py-16 text-center">
-      <p class="text-lg font-semibold text-[var(--color-cf-text)]">No feedstocks found</p>
+    <div
+      class="rounded-2xl border border-dashed border-[var(--color-cf-border)] py-16 text-center"
+    >
+      <p class="text-lg font-semibold text-[var(--color-cf-text)]">
+        No feedstocks found
+      </p>
       <p class="mt-1 text-sm text-[var(--color-cf-text-muted)]">
         Try a different search term or clear the category filter.
       </p>

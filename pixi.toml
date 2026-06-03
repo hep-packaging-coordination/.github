@@ -27,11 +27,12 @@ linkcheck = { cmd = "lychee --root-dir site/dist site/dist/", description = "Che
 # ── Top-level developer tasks ─────────────────────────────────────────────────
 
 [tasks.start]
-# Uses cmd for explicit sequential order: update data → build → serve.
-# (depends-on tasks may run in parallel, which would race update vs. build.)
-cmd = "python update_readme.py && npm --prefix site run build && npm --prefix site run preview"
-depends-on = ["site-install"]
-description = "Fresh start: regenerate data, build site, then serve at http://localhost:4321/.github/"
+# update and site-install run in parallel (no dependency between them).
+# Once both finish, cmd builds then serves — sequential via &&.
+cmd = "npm run build && npm run preview"
+cwd = "site"
+depends-on = ["update", "site-install"]
+description = "Fresh start: regenerate data, install deps, build, and serve at http://localhost:4321/.github/"
 
 [tasks.format]
 # Formats the site first (Prettier), then runs pre-commit on the whole repo

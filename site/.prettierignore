@@ -3,5 +3,3 @@ node_modules/
 .astro/
 test-results/
 playwright-report/
-# prettier-plugin-svelte does not yet support Svelte 5 runes ($state, $derived, $props)
-*.svelte

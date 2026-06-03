@@ -62,7 +62,9 @@
       {#each outputs as output (output)}
         {@const anacondaUrl = `https://anaconda.org/conda-forge/${output}`}
         <div class="flex flex-wrap items-center gap-1.5">
-          <span class="w-28 shrink-0 truncate text-xs text-[var(--color-cf-text-muted)]">
+          <span
+            class="w-28 shrink-0 truncate text-xs text-[var(--color-cf-text-muted)]"
+          >
             {output}
           </span>
           <div class="flex flex-wrap gap-1">
