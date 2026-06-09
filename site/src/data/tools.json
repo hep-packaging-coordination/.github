@@ -40,6 +40,11 @@
           "pr_count": 1
         },
         {
+          "name": "hammer",
+          "outputs": ["hammer"],
+          "pr_count": 1
+        },
+        {
           "name": "iregi",
           "outputs": ["iregi-static"],
           "pr_count": 0
@@ -113,7 +118,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "rundec",
@@ -188,7 +193,7 @@
             "geant4_data_variant",
             "geant4_visualisation_variant"
           ],
-          "pr_count": 3
+          "pr_count": 2
         },
         {
           "name": "hepmc2",
@@ -234,7 +239,7 @@
         {
           "name": "apptainer",
           "outputs": ["apptainer"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "ca-policy-lcg",
@@ -273,7 +278,13 @@
         },
         {
           "name": "xrootd",
-          "outputs": ["xrootd"],
+          "outputs": [
+            "libxrootd",
+            "libxrootd-devel",
+            "python-xrootd",
+            "xrootd",
+            "xrootd-cli"
+          ],
           "pr_count": 1
         }
       ],
@@ -445,7 +456,7 @@
             {
               "name": "pylegendmeta",
               "outputs": ["pylegendmeta"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "reboost",
@@ -472,7 +483,7 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "awkward-cpp",
@@ -616,6 +627,11 @@
     {
       "name": "Machine Learning",
       "feedstocks": [
+        {
+          "name": "fastbdt",
+          "outputs": ["fastbdt", "fastbdt-double-weight"],
+          "pr_count": 0
+        },
         {
           "name": "lgatr",
           "outputs": ["lgatr"],
