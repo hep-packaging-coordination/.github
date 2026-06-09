@@ -3,3 +3,16 @@
 *.egg-info
 
 .env
+
+# py
+__pycache__
+*.pyc
+
+# js
+node_modules
+
+# astro
+site/.astro
+site/dist
+site/playwright-report
+site/test-results

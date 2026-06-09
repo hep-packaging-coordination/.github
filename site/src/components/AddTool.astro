@@ -1,0 +1,51 @@
+---
+const issueUrl =
+  "https://github.com/hep-packaging-coordination/.github/issues/new?template=add-tool.md&title=Add+%60%3Ctool+name%3E%60+to+HEP+Packaging+Coordination";
+const issuesUrl =
+  "https://github.com/hep-packaging-coordination/.github/issues";
+---
+
+<aside
+  class="section-fade rounded-2xl border border-[var(--color-cf-border)] bg-[var(--color-cf-card)] p-8 text-center"
+>
+  <h2 class="font-display text-2xl font-bold text-[var(--color-cf-text)]">
+    Add a new tool
+  </h2>
+  <p class="mx-auto mt-3 max-w-prose text-[var(--color-cf-text-muted)]">
+    Contributions are very welcome! First package and distribute your tool on
+    conda-forge, then open an issue here.
+  </p>
+  <div class="mt-6 flex flex-wrap justify-center gap-3">
+    <a
+      href={issueUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-[var(--color-cf-primary)] px-5 py-2.5 font-medium text-white transition-opacity hover:opacity-90"
+    >
+      <!-- Plus icon -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"></path>
+      </svg>
+      Open an issue
+    </a>
+    <a
+      href={issuesUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-[var(--color-cf-border)] bg-[var(--color-cf-bg)] px-5 py-2.5 font-medium text-[var(--color-cf-text)] transition-colors hover:border-[var(--color-cf-primary)] hover:text-[var(--color-cf-primary)]"
+    >
+      Browse all issues
+    </a>
+  </div>
+</aside>

@@ -33,11 +33,14 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          uv pip install --system --upgrade requests
+          uv pip install --system --upgrade requests pytest responses jsonschema
+
+      - name: Run Python tests
+        run: pytest tests/ -v
 
       - name: Run update script
         env:
-          # Pass the GitHub token so that the API requests (if needed) can be authenticated.
+          # Pass the GitHub token so the API requests can be authenticated.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python update_readme.py
@@ -47,15 +50,19 @@ jobs:
         if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
         with:
           name: updated-readme
-          path: profile/README.md
+          path: |
+            profile/README.md
+            site/src/data/tools.json
 
       - name: Commit and push changes
+        # The GITHUB_TOKEN commit will NOT re-trigger deploy.yml (GitHub's
+        # loop-prevention). The deploy workflow chains via workflow_run instead.
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository == 'hep-packaging-coordination/.github'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
-            git add profile/README.md
+            git add profile/README.md site/src/data/tools.json
             git commit -m "Update README via CI"
             git push
           else

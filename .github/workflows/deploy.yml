@@ -1,0 +1,67 @@
+name: Deploy gh-pages site
+
+on:
+  # Chain after a successful data update (GITHUB_TOKEN commits don't re-trigger
+  # push events, so workflow_run is the correct mechanism here).
+  workflow_run:
+    workflows: ["Update profile/README.md"]
+    types: [completed]
+    branches: [main]
+
+  # Also trigger on direct human commits to site/ source files.
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - ".github/workflows/deploy.yml"
+
+  # Manual redeploy.
+  workflow_dispatch:
+
+# Only one deploy runs at a time; concurrent runs queue (not cancelled) so
+# the last merged state is always deployed.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # On workflow_run events, skip if the triggering run failed.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pixi
+        uses: prefix-dev/setup-pixi@v0.9.6
+        with:
+          cache: true
+
+      - name: Build site
+        # site-build depends on [update, site-install]; update calls the GitHub
+        # API for open-PR counts so GITHUB_TOKEN must be available.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pixi run site-build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site/dist/
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

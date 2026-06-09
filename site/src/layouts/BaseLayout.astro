@@ -1,0 +1,164 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "HEP Packaging Coordination",
+  description = "A community project distributing HEP software on conda-forge. Search and explore hundreds of High Energy Physics tools.",
+} = Astro.props;
+
+// OG/Twitter scrapers require fully-absolute URLs; relative refs are ignored.
+const siteOrigin = "https://hep-packaging-coordination.github.io";
+const base = import.meta.env.BASE_URL;
+const ogImage = siteOrigin + base + "og.png";
+const canonicalUrl = siteOrigin + base;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Favicon (base-prefixed; Astro does not rewrite public/ assets) -->
+    <link rel="icon" href={base + "favicon.svg"} type="image/svg+xml" />
+
+    <!-- Fonts: Montserrat + Inter, matching conda-forge.org -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      No-flash dark mode: apply the stored theme class before first paint.
+      prefers-color-scheme is handled by @media in global styles below.
+    -->
+    <script is:inline>
+      try {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (_e) {}
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <!-- Section fade-in via IntersectionObserver -->
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) e.target.classList.add("visible");
+            });
+          },
+          { threshold: 0, rootMargin: "0px 0px 150px 0px" },
+        );
+        document.querySelectorAll(".section-fade").forEach(function (el) {
+          obs.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import "tailwindcss";
+
+  /* ── conda-forge brand tokens ───────────────────────────────────────────────
+     Source: https://github.com/conda-forge/conda-forge.github.io src/css/custom.css
+     ───────────────────────────────────────────────────────────────────────── */
+  @theme {
+    --font-display: Montserrat, system-ui, sans-serif;
+    --font-body: Inter, system-ui, sans-serif;
+
+    /* Teal primary ramp */
+    --color-cf-primary: #008478;
+    --color-cf-primary-dark: #007466;
+    --color-cf-primary-darker: #00695c;
+    --color-cf-primary-darkest: #004d40;
+    --color-cf-primary-light: #26a69a;
+    --color-cf-primary-lighter: #80cbc4;
+    --color-cf-primary-lightest: #b2dfdb;
+
+    /* Surfaces */
+    --color-cf-bg: #ffffff;
+    --color-cf-card: #f6f6f6;
+    --color-cf-border: #e5e7eb;
+
+    /* Text */
+    --color-cf-text: #1c1c1e;
+    --color-cf-text-muted: #6b7280;
+
+    /* Semantic */
+    --color-cf-success: #388e3c;
+    --color-cf-info: #1976d2;
+    --color-cf-warning: #ef6c00;
+  }
+
+  @layer base {
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-cf-bg);
+      color: var(--color-cf-text);
+      font-family: var(--font-body);
+    }
+
+    /* Dark mode toggled via localStorage + the inline script above */
+    html.dark {
+      --color-cf-primary: #4db6ac;
+      --color-cf-primary-dark: #009688;
+      --color-cf-bg: #1b1b1d;
+      --color-cf-card: #3a3a3a;
+      --color-cf-border: #4b5563;
+      --color-cf-text: #f1f5f9;
+      --color-cf-text-muted: #9ca3af;
+      background-color: var(--color-cf-bg);
+      color: var(--color-cf-text);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-display);
+    }
+  }
+
+  /* Section fade-in */
+  .section-fade {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.5s cubic-bezier(0.32, 0.72, 0, 1),
+      transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-fade {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

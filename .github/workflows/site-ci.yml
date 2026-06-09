@@ -1,0 +1,46 @@
+name: Site CI
+
+on:
+  pull_request:
+    paths:
+      - "site/**"
+      - ".github/workflows/site-ci.yml"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pixi
+        uses: prefix-dev/setup-pixi@v0.9.6
+        with:
+          cache: true
+
+      - name: Check formatting
+        run: pixi run site-format-check
+
+      - name: Lint
+        run: pixi run site-lint
+
+      - name: Unit tests (vitest)
+        run: pixi run site-test
+
+      - name: Build
+        # site-build depends on [update, site-install]; update calls the GitHub
+        # API for open-PR counts so GITHUB_TOKEN must be available.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pixi run site-build
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+        working-directory: site
+
+      - name: E2e tests (Playwright)
+        # site-e2e depends on site-build which is already done above.
+        # Pixi's output cache means site-build and update won't re-run.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pixi run site-e2e

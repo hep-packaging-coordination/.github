@@ -1,0 +1,50 @@
+---
+interface Props {
+  totalTools: number;
+  totalCategories: number;
+}
+
+const { totalTools, totalCategories } = Astro.props;
+---
+
+<header
+  class="section-fade border-b border-[var(--color-cf-border)] bg-[var(--color-cf-bg)] py-16 text-center"
+>
+  <!-- Anvil / forge icon (Lucide-style SVG — not conda-forge's official logo) -->
+  <div
+    class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--color-cf-primary-lightest)]"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-8 w-8 text-[var(--color-cf-primary)]"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <!-- Package / cube icon as "forge" metaphor -->
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
+      ></path>
+    </svg>
+  </div>
+
+  <h1
+    class="font-display text-4xl font-bold tracking-tight text-[var(--color-cf-text)] sm:text-5xl"
+  >
+    HEP Packaging Coordination
+  </h1>
+  <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-cf-text-muted)]">
+    A community project distributing High Energy Physics software on
+    <a
+      href="https://conda-forge.org"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-medium text-[var(--color-cf-primary)] hover:underline"
+      >conda-forge</a
+    >. Search {totalTools} feedstocks across {totalCategories} categories.
+  </p>
+</header>
