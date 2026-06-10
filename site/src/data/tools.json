@@ -118,7 +118,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "rundec",
@@ -285,7 +285,7 @@
             "xrootd",
             "xrootd-cli"
           ],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
@@ -386,7 +386,7 @@
             {
               "name": "module-qc-database-tools",
               "outputs": ["module-qc-database-tools"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "module-qc-tools",
