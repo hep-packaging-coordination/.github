@@ -466,7 +466,7 @@
             {
               "name": "remage",
               "outputs": ["remage"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "revertex",
