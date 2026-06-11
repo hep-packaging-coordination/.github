@@ -30,10 +30,11 @@
     "wilson"
   ],
   "Simulation": [
+    "bxdecay0",
     "delphes",
     "fastjet-contrib",
     "fastjet-cxx",
-    "fastjet",
+    "gaudi",
     "geant4",
     "hepmc2",
     "hepmc3",
@@ -41,8 +42,9 @@
     "pythia8",
     "resummino",
     "sherpa",
-    "yoda",
-    "bxdecay0"
+    "vgm",
+    "vmc",
+    "yoda"
   ],
   "Grid": [
     "apptainer",

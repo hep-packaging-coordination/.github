@@ -167,23 +167,23 @@
           "pr_count": 0
         },
         {
-          "name": "fastjet",
-          "outputs": ["fastjet"],
-          "pr_count": 2
-        },
-        {
           "name": "fastjet-contrib",
           "outputs": [
             "fastjet-contrib",
             "fastjet-contrib-split",
             "fastjet-contrib-static"
           ],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "fastjet-cxx",
           "outputs": ["fastjet-cxx", "fastjet-cxx-devel", "fastjet-cxx-python"],
           "pr_count": 4
+        },
+        {
+          "name": "gaudi",
+          "outputs": ["gaudi"],
+          "pr_count": 0
         },
         {
           "name": "geant4",
@@ -224,6 +224,16 @@
           "name": "sherpa",
           "outputs": ["sherpa"],
           "pr_count": 6
+        },
+        {
+          "name": "vgm",
+          "outputs": ["vgm"],
+          "pr_count": 0
+        },
+        {
+          "name": "vmc",
+          "outputs": ["vmc"],
+          "pr_count": 0
         },
         {
           "name": "yoda",
