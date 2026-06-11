@@ -35,6 +35,11 @@
           "pr_count": 2
         },
         {
+          "name": "feynhiggs",
+          "outputs": ["feynhiggs", "feynhiggs-static"],
+          "pr_count": 0
+        },
+        {
           "name": "ff",
           "outputs": ["ff-static"],
           "pr_count": 1
