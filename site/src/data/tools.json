@@ -193,7 +193,7 @@
         {
           "name": "gaudi",
           "outputs": ["gaudi"],
-          "pr_count": 3
+          "pr_count": 0
         },
         {
           "name": "geant4",
