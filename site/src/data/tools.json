@@ -188,7 +188,7 @@
         {
           "name": "gaudi",
           "outputs": ["gaudi"],
-          "pr_count": 0
+          "pr_count": 3
         },
         {
           "name": "geant4",
@@ -573,7 +573,7 @@
         {
           "name": "mplhep",
           "outputs": ["mplhep"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "particle",
