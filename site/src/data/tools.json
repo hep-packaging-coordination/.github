@@ -146,6 +146,11 @@
           "pr_count": 0
         },
         {
+          "name": "softsusy",
+          "outputs": ["softsusy"],
+          "pr_count": 0
+        },
+        {
           "name": "spheno",
           "outputs": ["spheno", "spheno-atlas"],
           "pr_count": 0
