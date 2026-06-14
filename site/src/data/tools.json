@@ -538,7 +538,7 @@
         {
           "name": "fastjet",
           "outputs": ["fastjet"],
-          "pr_count": 3
+          "pr_count": 2
         },
         {
           "name": "fsspec-xrootd",
