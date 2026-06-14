@@ -14,8 +14,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@astrojs/svelte": "^8.0.0",
-    "astro": "^6.4.3",
+    "@astrojs/svelte": "^8.1.2",
+    "astro": "^6.4.6",
     "fuse.js": "^7.0.0",
     "svelte": "^5.43.6",
     "zod": "^3.24.0"
