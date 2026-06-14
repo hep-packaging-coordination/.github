@@ -123,7 +123,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "rundec",
@@ -538,7 +538,7 @@
         {
           "name": "fastjet",
           "outputs": ["fastjet"],
-          "pr_count": 2
+          "pr_count": 3
         },
         {
           "name": "fsspec-xrootd",
