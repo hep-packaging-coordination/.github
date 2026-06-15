@@ -210,7 +210,7 @@
             "fastjet-contrib-split",
             "fastjet-contrib-static"
           ],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "fastjet-cxx",
