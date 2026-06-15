@@ -164,6 +164,33 @@
       "subcategories": null
     },
     {
+      "name": "Data Processing",
+      "feedstocks": [
+        {
+          "name": "gaudi",
+          "outputs": ["gaudi"],
+          "pr_count": 0
+        },
+        {
+          "name": "phlex",
+          "outputs": ["phlex"],
+          "pr_count": 0
+        }
+      ],
+      "subcategories": null
+    },
+    {
+      "name": "Reconstruction",
+      "feedstocks": [
+        {
+          "name": "acts",
+          "outputs": ["acts-core"],
+          "pr_count": 5
+        }
+      ],
+      "subcategories": null
+    },
+    {
       "name": "Simulation",
       "feedstocks": [
         {
@@ -183,17 +210,12 @@
             "fastjet-contrib-split",
             "fastjet-contrib-static"
           ],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "fastjet-cxx",
           "outputs": ["fastjet-cxx", "fastjet-cxx-devel", "fastjet-cxx-python"],
           "pr_count": 4
-        },
-        {
-          "name": "gaudi",
-          "outputs": ["gaudi"],
-          "pr_count": 0
         },
         {
           "name": "geant4",

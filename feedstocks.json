@@ -31,12 +31,13 @@
     "spheno",
     "wilson"
   ],
+  "Data Processing": ["gaudi", "phlex"],
+  "Reconstruction": ["acts"],
   "Simulation": [
     "bxdecay0",
     "delphes",
     "fastjet-contrib",
     "fastjet-cxx",
-    "gaudi",
     "geant4",
     "hepmc2",
     "hepmc3",
