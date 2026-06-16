@@ -47,7 +47,7 @@
         {
           "name": "hammer",
           "outputs": ["hammer"],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "iregi",
@@ -255,7 +255,7 @@
         {
           "name": "sherpa",
           "outputs": ["sherpa"],
-          "pr_count": 6
+          "pr_count": 5
         },
         {
           "name": "vgm",
