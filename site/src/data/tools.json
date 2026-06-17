@@ -112,7 +112,7 @@
         {
           "name": "rivet",
           "outputs": ["rivet"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "root",
@@ -560,7 +560,7 @@
         {
           "name": "fastjet",
           "outputs": ["fastjet"],
-          "pr_count": 2
+          "pr_count": 3
         },
         {
           "name": "fsspec-xrootd",
