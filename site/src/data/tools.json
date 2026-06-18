@@ -225,7 +225,7 @@
             "geant4_data_variant",
             "geant4_visualisation_variant"
           ],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "hepmc2",
@@ -255,7 +255,7 @@
         {
           "name": "sherpa",
           "outputs": ["sherpa"],
-          "pr_count": 4
+          "pr_count": 5
         },
         {
           "name": "vgm",
