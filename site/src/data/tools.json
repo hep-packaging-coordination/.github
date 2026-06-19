@@ -6,7 +6,7 @@
       "feedstocks": [
         {
           "name": "collier",
-          "outputs": ["collier", "collier-static"],
+          "outputs": ["collier", "collier-devel", "collier-static"],
           "pr_count": 0
         },
         {
