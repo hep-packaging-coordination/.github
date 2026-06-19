@@ -255,7 +255,7 @@
         {
           "name": "sherpa",
           "outputs": ["sherpa"],
-          "pr_count": 5
+          "pr_count": 4
         },
         {
           "name": "vgm",
