@@ -332,7 +332,7 @@
             "xrootd",
             "xrootd-cli"
           ],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
@@ -580,7 +580,7 @@
         {
           "name": "hepstats",
           "outputs": ["hepstats"],
-          "pr_count": 3
+          "pr_count": 2
         },
         {
           "name": "hepunits",
