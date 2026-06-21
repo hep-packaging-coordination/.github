@@ -45,6 +45,11 @@
           "pr_count": 1
         },
         {
+          "name": "gm2calc",
+          "outputs": ["gm2calc", "gm2calc-python", "gm2calc-suite"],
+          "pr_count": 0
+        },
+        {
           "name": "hammer",
           "outputs": ["hammer"],
           "pr_count": 2
