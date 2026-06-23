@@ -343,7 +343,7 @@
         {
           "name": "pyhs3",
           "outputs": ["pyhs3"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "roounfold",
