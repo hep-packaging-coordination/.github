@@ -201,7 +201,7 @@
         {
           "name": "bxdecay0",
           "outputs": ["bxdecay0"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "delphes",
