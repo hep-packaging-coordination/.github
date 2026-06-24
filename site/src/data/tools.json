@@ -174,12 +174,12 @@
         {
           "name": "gaudi",
           "outputs": ["gaudi"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "phlex",
           "outputs": ["phlex"],
-          "pr_count": 0
+          "pr_count": 1
         }
       ],
       "subcategories": null
@@ -206,7 +206,7 @@
         {
           "name": "delphes",
           "outputs": ["delphes"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "fastjet-contrib",
@@ -286,7 +286,7 @@
         {
           "name": "apptainer",
           "outputs": ["apptainer"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "ca-policy-lcg",
@@ -348,7 +348,7 @@
         {
           "name": "roounfold",
           "outputs": ["roounfold"],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "stanhf",
@@ -413,7 +413,7 @@
             {
               "name": "histfitter",
               "outputs": ["histfitter"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "itkdb",
