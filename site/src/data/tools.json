@@ -206,7 +206,7 @@
         {
           "name": "delphes",
           "outputs": ["delphes"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "fastjet-contrib",
@@ -343,12 +343,12 @@
         {
           "name": "pyhs3",
           "outputs": ["pyhs3"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "roounfold",
           "outputs": ["roounfold"],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "stanhf",
@@ -393,7 +393,7 @@
             {
               "name": "cms-combine",
               "outputs": ["cms-combine"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "dasgoclient",
@@ -413,7 +413,7 @@
             {
               "name": "histfitter",
               "outputs": ["histfitter"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "itkdb",
