@@ -521,6 +521,16 @@
               "pr_count": 0
             }
           ]
+        },
+        {
+          "name": "DUNE",
+          "feedstocks": [
+            {
+              "name": "dune-justin",
+              "outputs": ["dune-justin"],
+              "pr_count": 0
+            }
+          ]
         }
       ]
     },
@@ -560,7 +570,7 @@
         {
           "name": "decaylanguage",
           "outputs": ["decaylanguage"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "fastjet",
