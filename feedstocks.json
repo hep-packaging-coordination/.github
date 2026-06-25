@@ -90,7 +90,8 @@
       "legend-pygeom-tools",
       "legend-pygeom-l200",
       "legend-pygeom-l1000"
-    ]
+    ],
+    "DUNE": ["dune-justin"]
   },
   "Scikit-HEP": [
     "awkward",
