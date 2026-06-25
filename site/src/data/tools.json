@@ -22,7 +22,7 @@
         {
           "name": "eko",
           "outputs": ["eko"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "emela",
@@ -483,7 +483,7 @@
             {
               "name": "legend-pygeom-l200",
               "outputs": ["legend-pygeom-l200"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "legend-pygeom-optics",
