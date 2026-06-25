@@ -215,7 +215,7 @@
             "fastjet-contrib-split",
             "fastjet-contrib-static"
           ],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "fastjet-cxx",
@@ -483,7 +483,7 @@
             {
               "name": "legend-pygeom-l200",
               "outputs": ["legend-pygeom-l200"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "legend-pygeom-optics",
