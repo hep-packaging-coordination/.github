@@ -441,6 +441,11 @@
               "pr_count": 0
             },
             {
+              "name": "pyami-atlas",
+              "outputs": ["pyami-atlas"],
+              "pr_count": 0
+            },
+            {
               "name": "pyami-core",
               "outputs": ["pyami-core", "pyami-core-cli"],
               "pr_count": 0
