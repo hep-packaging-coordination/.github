@@ -133,7 +133,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 3
+          "pr_count": 1
         },
         {
           "name": "rundec",
@@ -184,7 +184,7 @@
         {
           "name": "gaudi",
           "outputs": ["gaudi"],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "phlex",
@@ -630,7 +630,7 @@
         {
           "name": "mplhep",
           "outputs": ["mplhep"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "particle",
