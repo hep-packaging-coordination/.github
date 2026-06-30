@@ -1,5 +1,6 @@
 {
   "Analysis": [
+    "calchep",
     "collier",
     "contur",
     "cuttools",
@@ -30,6 +31,7 @@
     "smodels",
     "softsusy",
     "spheno",
+    "superiso",
     "wilson"
   ],
   "Data Processing": ["gaudi", "phlex"],
