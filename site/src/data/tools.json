@@ -167,7 +167,7 @@
         },
         {
           "name": "superiso",
-          "outputs": ["libsuperiso"],
+          "outputs": ["libsuperiso", "superiso"],
           "pr_count": 0
         },
         {
