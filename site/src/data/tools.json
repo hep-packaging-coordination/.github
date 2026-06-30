@@ -5,6 +5,11 @@
       "name": "Analysis",
       "feedstocks": [
         {
+          "name": "calchep",
+          "outputs": ["calchep", "calchep-gui"],
+          "pr_count": 1
+        },
+        {
           "name": "collier",
           "outputs": ["collier", "collier-devel", "collier-static"],
           "pr_count": 0
@@ -158,6 +163,11 @@
         {
           "name": "spheno",
           "outputs": ["spheno", "spheno-atlas"],
+          "pr_count": 0
+        },
+        {
+          "name": "superiso",
+          "outputs": ["libsuperiso"],
           "pr_count": 0
         },
         {
