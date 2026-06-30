@@ -2,6 +2,10 @@
 
 A community project working to get as many cross-platform builds of HEP tools on conda-forge as possible.
 
+<div align="center">
+  <a href="https://hep-packaging-coordination.github.io/.github/" style="background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Homepage</a>
+</div>
+
 ## Tools distributed on conda-forge
 
 ### Analysis
