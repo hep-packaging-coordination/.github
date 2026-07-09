@@ -575,7 +575,7 @@
         {
           "name": "coffea",
           "outputs": ["coffea"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "cuda_histogram",
