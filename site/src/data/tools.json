@@ -189,7 +189,7 @@
         {
           "name": "phlex",
           "outputs": ["phlex"],
-          "pr_count": 0
+          "pr_count": 1
         }
       ],
       "subcategories": null
@@ -225,7 +225,7 @@
             "fastjet-contrib-split",
             "fastjet-contrib-static"
           ],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "fastjet-cxx",
