@@ -275,7 +275,7 @@
         {
           "name": "vgm",
           "outputs": ["vgm"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "vmc",
