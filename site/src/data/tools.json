@@ -133,7 +133,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "rundec",
@@ -438,7 +438,7 @@
             {
               "name": "module-qc-data-tools",
               "outputs": ["module-qc-data-tools"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "module-qc-database-tools",
@@ -595,7 +595,7 @@
         {
           "name": "fsspec-xrootd",
           "outputs": ["fsspec-xrootd"],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "hepconvert",
