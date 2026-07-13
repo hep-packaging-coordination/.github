@@ -448,7 +448,7 @@
             {
               "name": "module-qc-tools",
               "outputs": ["module-qc-tools"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "pyami-atlas",
@@ -518,7 +518,7 @@
             {
               "name": "pylegendmeta",
               "outputs": ["pylegendmeta"],
-              "pr_count": 1
+              "pr_count": 2
             },
             {
               "name": "reboost",
