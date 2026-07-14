@@ -438,7 +438,7 @@
             {
               "name": "module-qc-data-tools",
               "outputs": ["module-qc-data-tools"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "module-qc-database-tools",
