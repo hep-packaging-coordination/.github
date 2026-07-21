@@ -97,7 +97,7 @@
         {
           "name": "pineappl",
           "outputs": ["pineappl"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "pylha",
@@ -528,7 +528,7 @@
             {
               "name": "remage",
               "outputs": ["remage"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "revertex",
