@@ -443,7 +443,7 @@
             {
               "name": "module-qc-database-tools",
               "outputs": ["module-qc-database-tools"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "module-qc-tools",
@@ -555,7 +555,7 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "awkward-cpp",
