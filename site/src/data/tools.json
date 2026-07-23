@@ -133,7 +133,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "rundec",
@@ -403,7 +403,7 @@
             {
               "name": "cms-combine",
               "outputs": ["cms-combine"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "dasgoclient",
