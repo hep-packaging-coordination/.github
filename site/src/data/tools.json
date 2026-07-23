@@ -27,7 +27,7 @@
         {
           "name": "eko",
           "outputs": ["eko"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "emela",
@@ -403,7 +403,7 @@
             {
               "name": "cms-combine",
               "outputs": ["cms-combine"],
-              "pr_count": 1
+              "pr_count": 2
             },
             {
               "name": "dasgoclient",
