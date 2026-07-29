@@ -433,7 +433,7 @@
             {
               "name": "module-qc-analysis-tools",
               "outputs": ["module-qc-analysis-tools"],
-              "pr_count": 2
+              "pr_count": 0
             },
             {
               "name": "module-qc-data-tools",
@@ -448,7 +448,7 @@
             {
               "name": "module-qc-tools",
               "outputs": ["module-qc-tools"],
-              "pr_count": 3
+              "pr_count": 0
             },
             {
               "name": "pyami-atlas",
