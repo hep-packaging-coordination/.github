@@ -433,7 +433,7 @@
             {
               "name": "module-qc-analysis-tools",
               "outputs": ["module-qc-analysis-tools"],
-              "pr_count": 1
+              "pr_count": 2
             },
             {
               "name": "module-qc-data-tools",
@@ -448,7 +448,7 @@
             {
               "name": "module-qc-tools",
               "outputs": ["module-qc-tools"],
-              "pr_count": 2
+              "pr_count": 3
             },
             {
               "name": "pyami-atlas",
@@ -555,7 +555,7 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "awkward-cpp",
@@ -590,7 +590,7 @@
         {
           "name": "fastjet",
           "outputs": ["fastjet"],
-          "pr_count": 3
+          "pr_count": 4
         },
         {
           "name": "fsspec-xrootd",
