@@ -458,7 +458,7 @@
             {
               "name": "pyami-core",
               "outputs": ["pyami-core", "pyami-core-cli"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "stare-atlas",
@@ -590,7 +590,7 @@
         {
           "name": "fastjet",
           "outputs": ["fastjet"],
-          "pr_count": 3
+          "pr_count": 2
         },
         {
           "name": "fsspec-xrootd",
