@@ -27,7 +27,7 @@
         {
           "name": "eko",
           "outputs": ["eko"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "emela",
@@ -620,7 +620,7 @@
         {
           "name": "histoprint",
           "outputs": ["histoprint"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "iminuit",
