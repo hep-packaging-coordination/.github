@@ -620,7 +620,7 @@
         {
           "name": "histoprint",
           "outputs": ["histoprint"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "iminuit",
