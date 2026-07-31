@@ -453,7 +453,7 @@
             {
               "name": "pyami-atlas",
               "outputs": ["pyami-atlas"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "pyami-core",
