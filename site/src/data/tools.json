@@ -555,7 +555,7 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "awkward-cpp",
@@ -660,7 +660,7 @@
         {
           "name": "scikit-hep",
           "outputs": ["scikit-hep"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "uhi",
