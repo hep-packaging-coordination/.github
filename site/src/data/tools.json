@@ -211,7 +211,7 @@
         {
           "name": "bxdecay0",
           "outputs": ["bxdecay0"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "delphes",
@@ -265,7 +265,7 @@
         {
           "name": "resummino",
           "outputs": ["resummino"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "sherpa",
