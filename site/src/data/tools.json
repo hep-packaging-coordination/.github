@@ -453,12 +453,12 @@
             {
               "name": "pyami-atlas",
               "outputs": ["pyami-atlas"],
-              "pr_count": 1
+              "pr_count": 2
             },
             {
               "name": "pyami-core",
               "outputs": ["pyami-core", "pyami-core-cli"],
-              "pr_count": 1
+              "pr_count": 2
             },
             {
               "name": "stare-atlas",
