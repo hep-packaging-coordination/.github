@@ -565,7 +565,7 @@
         {
           "name": "boost-histogram",
           "outputs": ["boost-histogram"],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "cabinetry",
