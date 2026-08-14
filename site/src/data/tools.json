@@ -133,7 +133,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 7
+          "pr_count": 8
         },
         {
           "name": "rundec",
@@ -543,7 +543,7 @@
             {
               "name": "dune-justin",
               "outputs": ["dune-justin"],
-              "pr_count": 0
+              "pr_count": 1
             }
           ]
         }
