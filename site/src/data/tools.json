@@ -230,7 +230,7 @@
         {
           "name": "fastjet-cxx",
           "outputs": ["fastjet-cxx", "fastjet-cxx-devel", "fastjet-cxx-python"],
-          "pr_count": 4
+          "pr_count": 5
         },
         {
           "name": "geant4",
@@ -630,7 +630,7 @@
         {
           "name": "mplhep",
           "outputs": ["mplhep"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "particle",
