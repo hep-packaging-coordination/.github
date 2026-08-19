@@ -17,7 +17,7 @@
         {
           "name": "contur",
           "outputs": ["contur"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "cuttools",
@@ -712,7 +712,7 @@
         {
           "name": "lwtnn",
           "outputs": ["lwtnn"],
-          "pr_count": 2
+          "pr_count": 1
         }
       ],
       "subcategories": null
