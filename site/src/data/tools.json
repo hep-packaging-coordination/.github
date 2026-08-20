@@ -133,7 +133,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 8
+          "pr_count": 9
         },
         {
           "name": "rundec",
@@ -420,7 +420,7 @@
             {
               "name": "atlasopenmagic",
               "outputs": ["atlasopenmagic"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "histfitter",
