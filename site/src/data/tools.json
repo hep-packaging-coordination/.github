@@ -677,7 +677,7 @@
         {
           "name": "uproot-browser",
           "outputs": ["uproot-browser"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "vector",
