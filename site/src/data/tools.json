@@ -133,7 +133,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 6
+          "pr_count": 5
         },
         {
           "name": "rundec",
@@ -287,7 +287,7 @@
         {
           "name": "yoda",
           "outputs": ["yoda"],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
@@ -313,7 +313,7 @@
         {
           "name": "dirac-grid",
           "outputs": ["dirac-grid", "diraccommon"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "gfal2",
