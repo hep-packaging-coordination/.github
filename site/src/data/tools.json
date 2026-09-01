@@ -465,7 +465,7 @@
             {
               "name": "stare-atlas",
               "outputs": ["stare-atlas"],
-              "pr_count": 0
+              "pr_count": 1
             }
           ]
         },
