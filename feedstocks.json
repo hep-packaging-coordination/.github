@@ -130,4 +130,5 @@
   ],
   "Hardware": ["yarr"],
   "Machine Learning": ["fastbdt", "lgatr", "lwtnn"]
+  "Formatting and Linting": ["astyle"]
 }
