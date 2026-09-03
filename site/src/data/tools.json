@@ -242,7 +242,7 @@
             "geant4_data_variant",
             "geant4_visualisation_variant"
           ],
-          "pr_count": 3
+          "pr_count": 2
         },
         {
           "name": "hepmc2",
@@ -530,7 +530,7 @@
             {
               "name": "remage",
               "outputs": ["remage"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "revertex",
@@ -677,7 +677,7 @@
         {
           "name": "uproot-browser",
           "outputs": ["uproot-browser"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "vector",
