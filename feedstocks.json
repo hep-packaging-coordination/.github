@@ -35,9 +35,10 @@
     "wilson"
   ],
   "Data Processing": ["gaudi", "phlex"],
-  "Reconstruction": ["acts"],
+  "Reconstruction": ["acts", "millepede", "rave"],
   "Simulation": [
     "bxdecay0",
+    "cry",
     "delphes",
     "fastjet-contrib",
     "fastjet-cxx",
@@ -48,6 +49,9 @@
     "pythia8",
     "resummino",
     "sherpa",
+    "thepeg",
+    "veccore",
+    "vecgeom",
     "vgm",
     "vmc",
     "yoda"
@@ -126,4 +130,5 @@
   ],
   "Hardware": ["yarr"],
   "Machine Learning": ["fastbdt", "lgatr", "lwtnn"]
+  "Formatting and Linting": ["astyle"]
 }
