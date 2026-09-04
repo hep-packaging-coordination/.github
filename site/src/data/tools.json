@@ -344,7 +344,7 @@
             "xrootd",
             "xrootd-cli"
           ],
-          "pr_count": 2
+          "pr_count": 0
         }
       ],
       "subcategories": null
@@ -704,7 +704,7 @@
         {
           "name": "fastbdt",
           "outputs": ["fastbdt", "fastbdt-double-weight"],
-          "pr_count": 2
+          "pr_count": 0
         },
         {
           "name": "lgatr",
