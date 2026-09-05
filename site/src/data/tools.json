@@ -138,7 +138,7 @@
         {
           "name": "rundec",
           "outputs": ["rundec"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "siscone",
