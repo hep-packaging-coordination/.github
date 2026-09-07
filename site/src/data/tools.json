@@ -333,7 +333,7 @@
         {
           "name": "voms-lsc",
           "outputs": ["voms-lsc"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "xrootd",
