@@ -313,7 +313,7 @@
         {
           "name": "dirac-grid",
           "outputs": ["dirac-grid", "diraccommon"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "gfal2",
@@ -530,7 +530,7 @@
             {
               "name": "remage",
               "outputs": ["remage"],
-              "pr_count": 2
+              "pr_count": 1
             },
             {
               "name": "revertex",
@@ -577,7 +577,7 @@
         {
           "name": "coffea",
           "outputs": ["coffea"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "cuda_histogram",
