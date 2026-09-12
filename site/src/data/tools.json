@@ -562,7 +562,7 @@
         {
           "name": "awkward-cpp",
           "outputs": ["awkward-cpp"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "boost-histogram",
