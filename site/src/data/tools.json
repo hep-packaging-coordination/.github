@@ -67,7 +67,7 @@
         {
           "name": "lhapdf",
           "outputs": ["lhapdf"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "looptools",
@@ -562,7 +562,7 @@
         {
           "name": "awkward-cpp",
           "outputs": ["awkward-cpp"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "boost-histogram",
