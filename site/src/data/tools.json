@@ -133,7 +133,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 6
+          "pr_count": 4
         },
         {
           "name": "rundec",
@@ -520,7 +520,7 @@
             {
               "name": "pylegendmeta",
               "outputs": ["pylegendmeta"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "reboost",
