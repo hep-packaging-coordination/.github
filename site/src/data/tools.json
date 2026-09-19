@@ -57,7 +57,7 @@
         {
           "name": "hammer",
           "outputs": ["hammer"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "iregi",
@@ -184,12 +184,12 @@
         {
           "name": "gaudi",
           "outputs": ["gaudi"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "phlex",
           "outputs": ["phlex"],
-          "pr_count": 0
+          "pr_count": 1
         }
       ],
       "subcategories": null
@@ -216,7 +216,7 @@
         {
           "name": "delphes",
           "outputs": ["delphes"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "fastjet-contrib",
@@ -277,12 +277,12 @@
         {
           "name": "vgm",
           "outputs": ["vgm"],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "vmc",
           "outputs": ["vmc"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "yoda",
@@ -360,7 +360,7 @@
         {
           "name": "roounfold",
           "outputs": ["roounfold"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "stanhf",
@@ -405,7 +405,7 @@
             {
               "name": "cms-combine",
               "outputs": ["cms-combine"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "dasgoclient",
@@ -425,7 +425,7 @@
             {
               "name": "histfitter",
               "outputs": ["histfitter"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "itkdb",
@@ -562,7 +562,7 @@
         {
           "name": "awkward-cpp",
           "outputs": ["awkward-cpp"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "boost-histogram",
