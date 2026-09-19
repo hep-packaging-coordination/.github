@@ -184,12 +184,12 @@
         {
           "name": "gaudi",
           "outputs": ["gaudi"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "phlex",
           "outputs": ["phlex"],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
@@ -216,7 +216,7 @@
         {
           "name": "delphes",
           "outputs": ["delphes"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "fastjet-contrib",
@@ -282,7 +282,7 @@
         {
           "name": "vmc",
           "outputs": ["vmc"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "yoda",
@@ -425,7 +425,7 @@
             {
               "name": "histfitter",
               "outputs": ["histfitter"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "itkdb",
@@ -557,7 +557,7 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "awkward-cpp",
