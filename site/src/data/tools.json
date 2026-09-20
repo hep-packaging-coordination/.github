@@ -272,12 +272,12 @@
         {
           "name": "sherpa",
           "outputs": ["sherpa"],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "vgm",
           "outputs": ["vgm"],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "vmc",
