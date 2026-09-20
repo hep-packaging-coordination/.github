@@ -184,7 +184,7 @@
         {
           "name": "gaudi",
           "outputs": ["gaudi"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "phlex",
@@ -272,7 +272,7 @@
         {
           "name": "sherpa",
           "outputs": ["sherpa"],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "vgm",
