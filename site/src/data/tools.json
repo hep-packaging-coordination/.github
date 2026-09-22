@@ -27,7 +27,7 @@
         {
           "name": "eko",
           "outputs": ["eko"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "emela",
@@ -230,7 +230,7 @@
         {
           "name": "fastjet-cxx",
           "outputs": ["fastjet-cxx", "fastjet-cxx-devel", "fastjet-cxx-python"],
-          "pr_count": 4
+          "pr_count": 1
         },
         {
           "name": "geant4",
@@ -262,7 +262,7 @@
         {
           "name": "pythia8",
           "outputs": ["pythia8"],
-          "pr_count": 0
+          "pr_count": 2
         },
         {
           "name": "resummino",
