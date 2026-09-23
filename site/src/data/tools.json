@@ -298,7 +298,7 @@
         {
           "name": "apptainer",
           "outputs": ["apptainer"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "ca-policy-lcg",
@@ -617,7 +617,7 @@
         {
           "name": "hist",
           "outputs": ["hist", "hist-base"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "histoprint",
