@@ -143,7 +143,7 @@
         {
           "name": "siscone",
           "outputs": ["siscone"],
-          "pr_count": 2
+          "pr_count": 3
         },
         {
           "name": "smefit",
@@ -262,7 +262,7 @@
         {
           "name": "pythia8",
           "outputs": ["pythia8"],
-          "pr_count": 2
+          "pr_count": 3
         },
         {
           "name": "resummino",
