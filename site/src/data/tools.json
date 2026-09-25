@@ -440,7 +440,7 @@
             {
               "name": "module-qc-data-tools",
               "outputs": ["module-qc-data-tools"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "module-qc-database-tools",
@@ -530,7 +530,7 @@
             {
               "name": "remage",
               "outputs": ["remage"],
-              "pr_count": 2
+              "pr_count": 1
             },
             {
               "name": "revertex",
