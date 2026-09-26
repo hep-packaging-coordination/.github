@@ -230,7 +230,7 @@
         {
           "name": "fastjet-cxx",
           "outputs": ["fastjet-cxx", "fastjet-cxx-devel", "fastjet-cxx-python"],
-          "pr_count": 2
+          "pr_count": 3
         },
         {
           "name": "geant4",
