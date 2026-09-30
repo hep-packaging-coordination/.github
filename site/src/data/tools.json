@@ -122,7 +122,7 @@
         {
           "name": "rivet",
           "outputs": ["rivet"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "root",
@@ -189,7 +189,7 @@
         {
           "name": "phlex",
           "outputs": ["phlex"],
-          "pr_count": 0
+          "pr_count": 1
         }
       ],
       "subcategories": null
@@ -225,7 +225,7 @@
             "fastjet-contrib-split",
             "fastjet-contrib-static"
           ],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "fastjet-cxx",
@@ -440,7 +440,7 @@
             {
               "name": "module-qc-data-tools",
               "outputs": ["module-qc-data-tools"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "module-qc-database-tools",
@@ -450,7 +450,7 @@
             {
               "name": "module-qc-tools",
               "outputs": ["module-qc-tools"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "pyami-atlas",
