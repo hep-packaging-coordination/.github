@@ -142,7 +142,7 @@
         },
         {
           "name": "siscone",
-          "outputs": ["siscone"],
+          "outputs": ["siscone", "siscone-devel"],
           "pr_count": 2
         },
         {
@@ -222,7 +222,9 @@
           "name": "fastjet-contrib",
           "outputs": [
             "fastjet-contrib",
+            "fastjet-contrib-devel",
             "fastjet-contrib-split",
+            "fastjet-contrib-split-devel",
             "fastjet-contrib-static"
           ],
           "pr_count": 2
@@ -242,7 +244,7 @@
             "geant4_data_variant",
             "geant4_visualisation_variant"
           ],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "hepmc2",
@@ -313,7 +315,7 @@
         {
           "name": "dirac-grid",
           "outputs": ["dirac-grid", "diraccommon"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "gfal2",
