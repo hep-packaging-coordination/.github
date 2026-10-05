@@ -559,12 +559,12 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "awkward-cpp",
           "outputs": ["awkward-cpp"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "boost-histogram",
@@ -594,7 +594,7 @@
         {
           "name": "fastjet",
           "outputs": ["fastjet"],
-          "pr_count": 3
+          "pr_count": 2
         },
         {
           "name": "fsspec-xrootd",
