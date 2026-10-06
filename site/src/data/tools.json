@@ -664,7 +664,7 @@
         {
           "name": "scikit-hep",
           "outputs": ["scikit-hep"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "uhi",
@@ -695,7 +695,7 @@
         {
           "name": "yarr",
           "outputs": ["yarr"],
-          "pr_count": 0
+          "pr_count": 2
         }
       ],
       "subcategories": null
