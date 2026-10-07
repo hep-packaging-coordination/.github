@@ -497,7 +497,7 @@
             {
               "name": "legend-pygeom-l1000",
               "outputs": ["legend-pygeom-l1000"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "legend-pygeom-l200",
