@@ -37,7 +37,7 @@
         {
           "name": "evermore",
           "outputs": ["evermore"],
-          "pr_count": 2
+          "pr_count": 3
         },
         {
           "name": "feynhiggs",
@@ -695,7 +695,7 @@
         {
           "name": "yarr",
           "outputs": ["yarr"],
-          "pr_count": 2
+          "pr_count": 1
         }
       ],
       "subcategories": null
