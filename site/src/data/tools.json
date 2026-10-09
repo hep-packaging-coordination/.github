@@ -227,7 +227,7 @@
             "fastjet-contrib-split-devel",
             "fastjet-contrib-static"
           ],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "fastjet-cxx",
@@ -594,7 +594,7 @@
         {
           "name": "fastjet",
           "outputs": ["fastjet"],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "fsspec-xrootd",
