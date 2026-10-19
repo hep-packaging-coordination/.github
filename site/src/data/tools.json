@@ -143,7 +143,7 @@
         {
           "name": "siscone",
           "outputs": ["siscone", "siscone-devel"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "smefit",
@@ -232,7 +232,7 @@
         {
           "name": "fastjet-cxx",
           "outputs": ["fastjet-cxx", "fastjet-cxx-devel", "fastjet-cxx-python"],
-          "pr_count": 2
+          "pr_count": 1
         },
         {
           "name": "geant4",
@@ -594,7 +594,7 @@
         {
           "name": "fastjet",
           "outputs": ["fastjet"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "fsspec-xrootd",
