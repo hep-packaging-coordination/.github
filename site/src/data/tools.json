@@ -200,7 +200,7 @@
         {
           "name": "acts",
           "outputs": ["acts-core"],
-          "pr_count": 5
+          "pr_count": 4
         }
       ],
       "subcategories": null
