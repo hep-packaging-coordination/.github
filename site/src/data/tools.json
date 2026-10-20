@@ -247,6 +247,11 @@
           "pr_count": 2
         },
         {
+          "name": "geant4-python-application",
+          "outputs": ["geant4-python-application"],
+          "pr_count": 2
+        },
+        {
           "name": "hepmc2",
           "outputs": ["hepmc2"],
           "pr_count": 0

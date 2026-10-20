@@ -42,6 +42,7 @@
     "fastjet-contrib",
     "fastjet-cxx",
     "geant4",
+    "geant4-python-application",
     "hepmc2",
     "hepmc3",
     "mg5amcnlo",
