@@ -64,7 +64,7 @@
     "xrootd",
     "voms-lsc"
   ],
-  "Statistical Modeling": ["stanhf", "pyhs3", "roounfold"],
+  "Statistical Modeling": ["stanhf", "pyhs3", "roounfold", "spey-hs3"],
   "Experiment specific": {
     "LHCb": ["lbenv", "lbplatformutils", "lhcbdirac-config", "lhcbdirac"],
     "CMS": ["dasgoclient", "cms-combine"],
