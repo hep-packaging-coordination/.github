@@ -92,8 +92,9 @@ def _fetch_pr_counts_rest(feedstocks):
 
     Uses GITHUB_TOKEN if set, otherwise makes unauthenticated requests.
     Paginates through all open PRs to avoid missing any beyond the first page.
-    An HTTP error for one repo records "ERROR" for it; other request failures
-    (e.g. no network) propagate so the run fails instead of writing output.
+    A 404 (missing or renamed feedstock) records "ERROR" for that repo. Every
+    other failure (no network, bad token, rate limit, outage) affects all repos,
+    so it propagates and the run fails instead of writing degraded output.
     """
     headers = {}
     token = os.environ.get("GITHUB_TOKEN")
@@ -115,6 +116,8 @@ def _fetch_pr_counts_rest(feedstocks):
                 non_draft_count += sum(1 for pr in pulls if not pr.get("draft", False))
                 page += 1
             except requests.HTTPError as e:
+                if e.response.status_code != 404:
+                    raise
                 print(f"Error fetching PRs for {repo}: {e}")
                 non_draft_count = "ERROR"
                 break
