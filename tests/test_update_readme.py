@@ -63,8 +63,17 @@ class TestFetchPrCountsRest:
             _fetch_pr_counts_rest(["pyhf"])
 
     @responses.activate
-    def test_http_error_records_error_sentinel(self):
-        # A per-repo HTTP error (e.g. a renamed or missing feedstock) is not
-        # a network failure, so it is still reported in the PR count column.
+    def test_not_found_records_error_sentinel(self):
+        # A 404 means this one feedstock is missing or renamed, so it is
+        # reported in the PR count column rather than failing the run.
         responses.get(PULLS_URL, status=404)
         assert _fetch_pr_counts_rest(["pyhf"]) == {"pyhf": "ERROR"}
+
+    @pytest.mark.parametrize("status", [401, 403, 429, 500, 503])
+    @responses.activate
+    def test_other_http_errors_raise(self, status):
+        # Bad tokens, rate limits, and outages affect every repo, so they
+        # must fail the run instead of writing "ERROR" for all feedstocks.
+        responses.get(PULLS_URL, status=status)
+        with pytest.raises(requests.HTTPError):
+            _fetch_pr_counts_rest(["pyhf"])
