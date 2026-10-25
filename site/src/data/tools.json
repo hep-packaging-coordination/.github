@@ -370,6 +370,11 @@
           "pr_count": 0
         },
         {
+          "name": "spey-hs3",
+          "outputs": ["spey-hs3"],
+          "pr_count": 0
+        },
+        {
           "name": "stanhf",
           "outputs": ["stanhf"],
           "pr_count": 0
