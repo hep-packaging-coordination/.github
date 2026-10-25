@@ -11,6 +11,7 @@ from responses import matchers
 
 from update_readme import (
     FEEDSTOCK_OUTPUTS_URL,
+    REQUEST_TIMEOUT_SECONDS,
     _fetch_pr_counts_rest,
     load_feedstock_outputs,
 )
@@ -23,6 +24,14 @@ class TestLoadFeedstockOutputs:
     def test_returns_mapping(self):
         responses.get(FEEDSTOCK_OUTPUTS_URL, json={"pyhf": ["pyhf"]})
         assert load_feedstock_outputs() == {"pyhf": ["pyhf"]}
+
+    @responses.activate
+    def test_request_sets_timeout(self):
+        responses.get(FEEDSTOCK_OUTPUTS_URL, json={})
+        load_feedstock_outputs()
+        assert (
+            responses.calls[0].request.req_kwargs["timeout"] == REQUEST_TIMEOUT_SECONDS
+        )
 
     @responses.activate
     def test_connection_error_raises(self):
@@ -55,6 +64,14 @@ class TestFetchPrCountsRest:
         self._stub_page(1, [{"draft": False}, {"draft": True}])
         self._stub_page(2, [])
         assert _fetch_pr_counts_rest(["pyhf"]) == {"pyhf": 1}
+
+    @responses.activate
+    def test_requests_set_timeout(self):
+        self._stub_page(1, [])
+        _fetch_pr_counts_rest(["pyhf"])
+        assert (
+            responses.calls[0].request.req_kwargs["timeout"] == REQUEST_TIMEOUT_SECONDS
+        )
 
     @responses.activate
     def test_connection_error_raises(self):

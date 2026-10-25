@@ -16,6 +16,10 @@ import requests
 from feedstock_data import build_tool_model, render_readme, render_tools_json
 
 FEEDSTOCK_OUTPUTS_URL = "https://raw.githubusercontent.com/conda-forge/feedstock-outputs/single-file/feedstock-outputs.json"
+# Without a timeout, requests waits forever on a stalled connection, so a run
+# on a degraded network would hang instead of failing. The value is the limit
+# for connecting and for each socket read, not for the whole download.
+REQUEST_TIMEOUT_SECONDS = 30
 
 
 def load_feedstock_outputs():
@@ -25,7 +29,7 @@ def load_feedstock_outputs():
     Raises on any request failure: an empty map would strip every output
     from the generated README and tools.json.
     """
-    response = requests.get(FEEDSTOCK_OUTPUTS_URL)
+    response = requests.get(FEEDSTOCK_OUTPUTS_URL, timeout=REQUEST_TIMEOUT_SECONDS)
     response.raise_for_status()
     return response.json()
 
@@ -108,7 +112,9 @@ def _fetch_pr_counts_rest(feedstocks):
         while True:
             url = f"https://api.github.com/repos/{repo}/pulls?state=open&per_page=100&page={page}"
             try:
-                response = requests.get(url, headers=headers)
+                response = requests.get(
+                    url, headers=headers, timeout=REQUEST_TIMEOUT_SECONDS
+                )
                 response.raise_for_status()
                 pulls = response.json()
                 if not pulls:
