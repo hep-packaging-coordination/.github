@@ -115,10 +115,10 @@ def _fetch_pr_counts_rest(feedstocks):
                     break
                 non_draft_count += sum(1 for pr in pulls if not pr.get("draft", False))
                 page += 1
-            except requests.HTTPError as e:
-                if e.response.status_code != 404:
+            except requests.HTTPError as error:
+                if error.response.status_code != 404:
                     raise
-                print(f"Error fetching PRs for {repo}: {e}")
+                print(f"Error fetching PRs for {repo}: {error}")
                 non_draft_count = "ERROR"
                 break
         counts[feedstock] = non_draft_count
