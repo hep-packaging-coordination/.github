@@ -111,22 +111,19 @@ def _fetch_pr_counts_rest(feedstocks):
         page, non_draft_count = 1, 0
         while True:
             url = f"https://api.github.com/repos/{repo}/pulls?state=open&per_page=100&page={page}"
-            try:
-                response = requests.get(
-                    url, headers=headers, timeout=REQUEST_TIMEOUT_SECONDS
-                )
-                response.raise_for_status()
-                pulls = response.json()
-                if not pulls:
-                    break
-                non_draft_count += sum(1 for pr in pulls if not pr.get("draft", False))
-                page += 1
-            except requests.HTTPError as error:
-                if error.response.status_code != 404:
-                    raise
-                print(f"Error fetching PRs for {repo}: {error}")
+            response = requests.get(
+                url, headers=headers, timeout=REQUEST_TIMEOUT_SECONDS
+            )
+            if response.status_code == 404:
+                print(f"Error fetching PRs for {repo}: 404 Not Found")
                 non_draft_count = "ERROR"
                 break
+            response.raise_for_status()
+            pulls = response.json()
+            if not pulls:
+                break
+            non_draft_count += sum(1 for pr in pulls if not pr.get("draft", False))
+            page += 1
         counts[feedstock] = non_draft_count
 
     return counts
