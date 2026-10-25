@@ -20,15 +20,13 @@ def load_feedstock_outputs():
     """Load the feedstock-outputs mapping from conda-forge's single-file JSON.
 
     Returns a dict mapping output name -> list of feedstock names.
+    Raises on any request failure: an empty map would strip every output
+    from the generated README and tools.json.
     """
     url = "https://raw.githubusercontent.com/conda-forge/feedstock-outputs/single-file/feedstock-outputs.json"
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.json()
-    except Exception as e:
-        print(f"Error loading feedstock outputs: {e}")
-        return {}
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.json()
 
 
 def _fetch_pr_counts_graphql(feedstocks):
@@ -93,6 +91,8 @@ def _fetch_pr_counts_rest(feedstocks):
 
     Uses GITHUB_TOKEN if set, otherwise makes unauthenticated requests.
     Paginates through all open PRs to avoid missing any beyond the first page.
+    An HTTP error for one repo records "ERROR" for it; other request failures
+    (e.g. no network) propagate so the run fails instead of writing output.
     """
     headers = {}
     token = os.environ.get("GITHUB_TOKEN")
@@ -113,7 +113,7 @@ def _fetch_pr_counts_rest(feedstocks):
                     break
                 non_draft_count += sum(1 for pr in pulls if not pr.get("draft", False))
                 page += 1
-            except Exception as e:
+            except requests.HTTPError as e:
                 print(f"Error fetching PRs for {repo}: {e}")
                 non_draft_count = "ERROR"
                 break
