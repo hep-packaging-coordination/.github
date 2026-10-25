@@ -15,6 +15,8 @@ import requests
 
 from feedstock_data import build_tool_model, render_readme, render_tools_json
 
+FEEDSTOCK_OUTPUTS_URL = "https://raw.githubusercontent.com/conda-forge/feedstock-outputs/single-file/feedstock-outputs.json"
+
 
 def load_feedstock_outputs():
     """Load the feedstock-outputs mapping from conda-forge's single-file JSON.
@@ -23,8 +25,7 @@ def load_feedstock_outputs():
     Raises on any request failure: an empty map would strip every output
     from the generated README and tools.json.
     """
-    url = "https://raw.githubusercontent.com/conda-forge/feedstock-outputs/single-file/feedstock-outputs.json"
-    response = requests.get(url)
+    response = requests.get(FEEDSTOCK_OUTPUTS_URL)
     response.raise_for_status()
     return response.json()
 
