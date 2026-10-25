@@ -163,7 +163,7 @@
         {
           "name": "spheno",
           "outputs": ["spheno", "spheno-atlas"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "superiso",
@@ -684,7 +684,7 @@
         {
           "name": "uproot-browser",
           "outputs": ["uproot-browser"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "vector",
