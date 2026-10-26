@@ -234,6 +234,15 @@ class TestRenderReadme:
         readme = self._readme()
         assert "## Adding new tools" in readme
 
+    def test_homepage_button_is_badge_image_link(self):
+        """GitHub strips inline styles, so the button must be an image link."""
+        readme = self._readme()
+        assert (
+            '<a href="https://hep-packaging-coordination.github.io/.github/">'
+            '<img src="https://img.shields.io/badge/' in readme
+        )
+        assert ' style="' not in readme
+
 
 # ── Consistency invariant ─────────────────────────────────────────────────────
 
