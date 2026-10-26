@@ -8,6 +8,7 @@ Covers:
 """
 
 import json
+import re
 
 from feedstock_data import build_tool_model, render_readme, render_tools_json
 
@@ -233,6 +234,16 @@ class TestRenderReadme:
     def test_adding_new_tools_section_present(self):
         readme = self._readme()
         assert "## Adding new tools" in readme
+
+    def test_homepage_button_is_badge_image_link(self):
+        """GitHub strips inline styles, so the button must be an image link."""
+        readme = self._readme()
+        assert re.search(
+            r'<a href="https://hep-packaging-coordination\.github\.io/\.github/"[^>]*>'
+            r"\s*<img ",
+            readme,
+        )
+        assert ' style="' not in readme
 
 
 # ── Consistency invariant ─────────────────────────────────────────────────────
