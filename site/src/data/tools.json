@@ -178,7 +178,7 @@
         {
           "name": "spheno",
           "outputs": ["spheno", "spheno-atlas"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "superiso",
@@ -812,7 +812,7 @@
         {
           "name": "astyle",
           "outputs": ["astyle"],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
