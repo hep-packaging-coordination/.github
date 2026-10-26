@@ -113,6 +113,7 @@ def render_readme(model: dict) -> str:
     lines.append("")
     # GitHub strips inline style attributes from Markdown HTML, so a styled <a>
     # renders as a plain link. A shields.io badge image gives a button look.
+    # cf. https://github.com/github/markup#github-markup (sanitization step)
     lines.append("""<p align="center">
   <a href="https://hep-packaging-coordination.github.io/.github/"><img src="https://img.shields.io/badge/Homepage-007bff?style=for-the-badge" alt="Homepage"></a>
 </p>""")

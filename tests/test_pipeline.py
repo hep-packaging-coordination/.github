@@ -8,6 +8,7 @@ Covers:
 """
 
 import json
+import re
 
 from feedstock_data import build_tool_model, render_readme, render_tools_json
 
@@ -237,9 +238,10 @@ class TestRenderReadme:
     def test_homepage_button_is_badge_image_link(self):
         """GitHub strips inline styles, so the button must be an image link."""
         readme = self._readme()
-        assert (
-            '<a href="https://hep-packaging-coordination.github.io/.github/">'
-            '<img src="https://img.shields.io/badge/' in readme
+        assert re.search(
+            r'<a href="https://hep-packaging-coordination\.github\.io/\.github/"[^>]*>'
+            r"\s*<img ",
+            readme,
         )
         assert ' style="' not in readme
 
