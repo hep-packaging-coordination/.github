@@ -86,6 +86,7 @@
       "atlasopenmagic",
       "pyami-core",
       "pyami-atlas",
+      "ami-mcp",
       "histfitter"
     ],
     "LEGEND": [
