@@ -425,6 +425,11 @@
           "pr_count": 0
         },
         {
+          "name": "spey",
+          "outputs": ["spey"],
+          "pr_count": 0
+        },
+        {
           "name": "spey-hs3",
           "outputs": ["spey-hs3"],
           "pr_count": 0
