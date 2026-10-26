@@ -201,6 +201,16 @@
           "name": "acts",
           "outputs": ["acts-core"],
           "pr_count": 2
+        },
+        {
+          "name": "millepede",
+          "outputs": ["millepede"],
+          "pr_count": 1
+        },
+        {
+          "name": "rave",
+          "outputs": ["rave"],
+          "pr_count": 1
         }
       ],
       "subcategories": null
@@ -212,6 +222,11 @@
           "name": "bxdecay0",
           "outputs": ["bxdecay0"],
           "pr_count": 0
+        },
+        {
+          "name": "cry",
+          "outputs": ["cry"],
+          "pr_count": 1
         },
         {
           "name": "delphes",
@@ -280,6 +295,21 @@
           "name": "sherpa",
           "outputs": ["sherpa"],
           "pr_count": 1
+        },
+        {
+          "name": "thepeg",
+          "outputs": ["thepeg"],
+          "pr_count": 0
+        },
+        {
+          "name": "veccore",
+          "outputs": ["veccore"],
+          "pr_count": 0
+        },
+        {
+          "name": "vecgeom",
+          "outputs": ["vecgeom"],
+          "pr_count": 3
         },
         {
           "name": "vgm",
@@ -726,6 +756,17 @@
         {
           "name": "lwtnn",
           "outputs": ["lwtnn"],
+          "pr_count": 1
+        }
+      ],
+      "subcategories": null
+    },
+    {
+      "name": "Formatting and Linting",
+      "feedstocks": [
+        {
+          "name": "astyle",
+          "outputs": ["astyle"],
           "pr_count": 1
         }
       ],
