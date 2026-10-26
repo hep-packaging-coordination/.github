@@ -485,6 +485,11 @@
           "name": "ATLAS",
           "feedstocks": [
             {
+              "name": "ami-mcp",
+              "outputs": ["ami-mcp"],
+              "pr_count": 0
+            },
+            {
               "name": "atlasopenmagic",
               "outputs": ["atlasopenmagic"],
               "pr_count": 0
