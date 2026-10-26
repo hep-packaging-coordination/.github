@@ -151,6 +151,11 @@
           "pr_count": 0
         },
         {
+          "name": "scirooplot",
+          "outputs": ["scirooplot"],
+          "pr_count": 0
+        },
+        {
           "name": "siscone",
           "outputs": ["siscone", "siscone-devel"],
           "pr_count": 0
