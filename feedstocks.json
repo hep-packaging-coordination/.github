@@ -87,7 +87,8 @@
       "pyami-core",
       "pyami-atlas",
       "ami-mcp",
-      "histfitter"
+      "histfitter",
+      "fastframes"
     ],
     "LEGEND": [
       "dbetto",
