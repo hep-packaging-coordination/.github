@@ -37,7 +37,7 @@
     "superiso",
     "wilson"
   ],
-  "Data Processing": ["gaudi", "phlex"],
+  "Data Processing": ["gaudi", "lcg-relax", "phlex"],
   "Reconstruction": ["acts", "millepede", "rave"],
   "Simulation": [
     "bxdecay0",
