@@ -130,6 +130,6 @@
     "vector"
   ],
   "Hardware": ["yarr"],
-  "Machine Learning": ["fastbdt", "lgatr", "lwtnn"],
+  "Machine Learning": ["fastbdt", "heptokens", "lgatr", "lwtnn"],
   "Formatting and Linting": ["astyle"]
 }
