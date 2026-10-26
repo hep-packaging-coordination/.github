@@ -287,6 +287,11 @@
           "pr_count": 0
         },
         {
+          "name": "herwig",
+          "outputs": ["herwig"],
+          "pr_count": 0
+        },
+        {
           "name": "mg5amcnlo",
           "outputs": ["mg5amcnlo"],
           "pr_count": 4

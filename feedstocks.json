@@ -48,6 +48,7 @@
     "geant4-python-application",
     "hepmc2",
     "hepmc3",
+    "herwig",
     "mg5amcnlo",
     "pythia8",
     "resummino",
