@@ -100,6 +100,16 @@
           "pr_count": 2
         },
         {
+          "name": "professor",
+          "outputs": ["professor"],
+          "pr_count": 0
+        },
+        {
+          "name": "pyapprentice",
+          "outputs": ["pyapprentice"],
+          "pr_count": 0
+        },
+        {
           "name": "pylha",
           "outputs": ["pylha"],
           "pr_count": 0
