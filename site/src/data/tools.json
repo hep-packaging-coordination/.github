@@ -202,6 +202,11 @@
           "pr_count": 2
         },
         {
+          "name": "lcg-relax",
+          "outputs": ["lcg-relax"],
+          "pr_count": 0
+        },
+        {
           "name": "phlex",
           "outputs": ["phlex"],
           "pr_count": 1
