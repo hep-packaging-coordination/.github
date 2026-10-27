@@ -15,20 +15,23 @@ import requests
 
 from feedstock_data import build_tool_model, render_readme, render_tools_json
 
+FEEDSTOCK_OUTPUTS_URL = "https://raw.githubusercontent.com/conda-forge/feedstock-outputs/single-file/feedstock-outputs.json"
+# Without a timeout, requests waits forever on a stalled connection, so a run
+# on a degraded network would hang instead of failing. The value is the limit
+# for connecting and for each socket read, not for the whole download.
+REQUEST_TIMEOUT_SECONDS = 30
+
 
 def load_feedstock_outputs():
     """Load the feedstock-outputs mapping from conda-forge's single-file JSON.
 
     Returns a dict mapping output name -> list of feedstock names.
+    Raises on any request failure: an empty map would strip every output
+    from the generated README and tools.json.
     """
-    url = "https://raw.githubusercontent.com/conda-forge/feedstock-outputs/single-file/feedstock-outputs.json"
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.json()
-    except Exception as e:
-        print(f"Error loading feedstock outputs: {e}")
-        return {}
+    response = requests.get(FEEDSTOCK_OUTPUTS_URL, timeout=REQUEST_TIMEOUT_SECONDS)
+    response.raise_for_status()
+    return response.json()
 
 
 def _fetch_pr_counts_graphql(feedstocks):
@@ -93,6 +96,9 @@ def _fetch_pr_counts_rest(feedstocks):
 
     Uses GITHUB_TOKEN if set, otherwise makes unauthenticated requests.
     Paginates through all open PRs to avoid missing any beyond the first page.
+    A 404 (missing or renamed feedstock) records "ERROR" for that repo. Every
+    other failure (no network, bad token, rate limit, outage) affects all repos,
+    so it propagates and the run fails instead of writing degraded output.
     """
     headers = {}
     token = os.environ.get("GITHUB_TOKEN")
@@ -105,18 +111,19 @@ def _fetch_pr_counts_rest(feedstocks):
         page, non_draft_count = 1, 0
         while True:
             url = f"https://api.github.com/repos/{repo}/pulls?state=open&per_page=100&page={page}"
-            try:
-                response = requests.get(url, headers=headers)
-                response.raise_for_status()
-                pulls = response.json()
-                if not pulls:
-                    break
-                non_draft_count += sum(1 for pr in pulls if not pr.get("draft", False))
-                page += 1
-            except Exception as e:
-                print(f"Error fetching PRs for {repo}: {e}")
+            response = requests.get(
+                url, headers=headers, timeout=REQUEST_TIMEOUT_SECONDS
+            )
+            if response.status_code == 404:
+                print(f"Error fetching PRs for {repo}: 404 Not Found")
                 non_draft_count = "ERROR"
                 break
+            response.raise_for_status()
+            pulls = response.json()
+            if not pulls:
+                break
+            non_draft_count += sum(1 for pr in pulls if not pr.get("draft", False))
+            page += 1
         counts[feedstock] = non_draft_count
 
     return counts
