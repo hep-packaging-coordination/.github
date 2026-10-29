@@ -664,7 +664,7 @@
         {
           "name": "cuda_histogram",
           "outputs": ["cuda_histogram"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "decaylanguage",
