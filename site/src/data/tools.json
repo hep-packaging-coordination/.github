@@ -775,7 +775,7 @@
         {
           "name": "yarr",
           "outputs": ["yarr"],
-          "pr_count": 1
+          "pr_count": 2
         }
       ],
       "subcategories": null
@@ -812,7 +812,7 @@
         {
           "name": "astyle",
           "outputs": ["astyle"],
-          "pr_count": 0
+          "pr_count": 1
         }
       ],
       "subcategories": null
