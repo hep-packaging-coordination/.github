@@ -502,7 +502,7 @@
             {
               "name": "fastframes",
               "outputs": ["fastframes"],
-              "pr_count": 1
+              "pr_count": 0
             },
             {
               "name": "histfitter",
