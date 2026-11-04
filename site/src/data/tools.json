@@ -153,7 +153,7 @@
         {
           "name": "scirooplot",
           "outputs": ["scirooplot"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "siscone",
@@ -775,7 +775,7 @@
         {
           "name": "yarr",
           "outputs": ["yarr"],
-          "pr_count": 3
+          "pr_count": 0
         }
       ],
       "subcategories": null
