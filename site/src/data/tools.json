@@ -143,7 +143,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 3
+          "pr_count": 5
         },
         {
           "name": "rundec",
@@ -612,7 +612,7 @@
             {
               "name": "remage",
               "outputs": ["remage"],
-              "pr_count": 2
+              "pr_count": 1
             },
             {
               "name": "revertex",
@@ -775,7 +775,7 @@
         {
           "name": "yarr",
           "outputs": ["yarr"],
-          "pr_count": 2
+          "pr_count": 3
         }
       ],
       "subcategories": null
@@ -812,7 +812,7 @@
         {
           "name": "astyle",
           "outputs": ["astyle"],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
