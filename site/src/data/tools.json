@@ -60,6 +60,11 @@
           "pr_count": 0
         },
         {
+          "name": "higgstools",
+          "outputs": ["higgstools", "libhiggstools", "libhiggstools-devel"],
+          "pr_count": 1
+        },
+        {
           "name": "iregi",
           "outputs": ["iregi-static"],
           "pr_count": 0
