@@ -62,7 +62,7 @@
         {
           "name": "higgstools",
           "outputs": ["higgstools", "libhiggstools", "libhiggstools-devel"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "iregi",
