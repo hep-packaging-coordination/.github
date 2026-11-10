@@ -148,7 +148,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 5
+          "pr_count": 8
         },
         {
           "name": "rundec",
@@ -304,7 +304,7 @@
         {
           "name": "herwig",
           "outputs": ["herwig"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "mg5amcnlo",
@@ -329,7 +329,7 @@
         {
           "name": "thepeg",
           "outputs": ["thepeg"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "veccore",
