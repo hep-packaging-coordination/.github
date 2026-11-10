@@ -27,7 +27,7 @@
         {
           "name": "eko",
           "outputs": ["eko"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "emela",
@@ -304,7 +304,7 @@
         {
           "name": "herwig",
           "outputs": ["herwig"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "mg5amcnlo",
@@ -329,7 +329,7 @@
         {
           "name": "thepeg",
           "outputs": ["thepeg"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "veccore",
@@ -385,7 +385,7 @@
         {
           "name": "gfal2",
           "outputs": ["gfal2"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "python-gfal2",
@@ -791,7 +791,7 @@
         {
           "name": "fastbdt",
           "outputs": ["fastbdt", "fastbdt-double-weight"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "heptokens",
