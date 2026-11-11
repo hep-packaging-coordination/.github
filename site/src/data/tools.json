@@ -791,7 +791,7 @@
         {
           "name": "fastbdt",
           "outputs": ["fastbdt", "fastbdt-double-weight"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "heptokens",
