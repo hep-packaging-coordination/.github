@@ -27,7 +27,7 @@
         {
           "name": "eko",
           "outputs": ["eko"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "emela",
@@ -148,7 +148,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 8
+          "pr_count": 10
         },
         {
           "name": "rundec",
