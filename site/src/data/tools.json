@@ -314,7 +314,7 @@
         {
           "name": "pythia8",
           "outputs": ["pythia8"],
-          "pr_count": 3
+          "pr_count": 4
         },
         {
           "name": "resummino",
@@ -796,7 +796,7 @@
         {
           "name": "heptokens",
           "outputs": ["heptokens"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "lgatr",
