@@ -148,7 +148,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 10
+          "pr_count": 11
         },
         {
           "name": "rundec",
