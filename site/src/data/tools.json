@@ -339,7 +339,7 @@
         {
           "name": "vecgeom",
           "outputs": ["vecgeom"],
-          "pr_count": 3
+          "pr_count": 4
         },
         {
           "name": "vgm",
