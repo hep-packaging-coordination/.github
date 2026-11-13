@@ -644,7 +644,7 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "awkward-cpp",
@@ -817,7 +817,7 @@
         {
           "name": "astyle",
           "outputs": ["astyle"],
-          "pr_count": 1
+          "pr_count": 2
         }
       ],
       "subcategories": null
