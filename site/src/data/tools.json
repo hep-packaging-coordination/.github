@@ -472,7 +472,7 @@
             {
               "name": "lhcbdirac-config",
               "outputs": ["lhcbdirac-config"],
-              "pr_count": 0
+              "pr_count": 1
             }
           ]
         },
@@ -817,7 +817,7 @@
         {
           "name": "astyle",
           "outputs": ["astyle"],
-          "pr_count": 2
+          "pr_count": 0
         }
       ],
       "subcategories": null
