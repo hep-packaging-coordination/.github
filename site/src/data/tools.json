@@ -472,7 +472,7 @@
             {
               "name": "lhcbdirac-config",
               "outputs": ["lhcbdirac-config"],
-              "pr_count": 1
+              "pr_count": 2
             }
           ]
         },
