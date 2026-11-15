@@ -158,7 +158,7 @@
         {
           "name": "scirooplot",
           "outputs": ["scirooplot"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "siscone",
@@ -734,7 +734,7 @@
         {
           "name": "pyhf",
           "outputs": ["pyhf"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "pylhe",
@@ -796,7 +796,7 @@
         {
           "name": "heptokens",
           "outputs": ["heptokens"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "lgatr",
