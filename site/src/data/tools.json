@@ -734,7 +734,7 @@
         {
           "name": "pyhf",
           "outputs": ["pyhf"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "pylhe",
