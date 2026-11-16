@@ -158,7 +158,7 @@
         {
           "name": "scirooplot",
           "outputs": ["scirooplot"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "siscone",
@@ -552,7 +552,7 @@
             {
               "name": "stare-atlas",
               "outputs": ["stare-atlas"],
-              "pr_count": 0
+              "pr_count": 1
             }
           ]
         },
@@ -649,7 +649,7 @@
         {
           "name": "awkward-cpp",
           "outputs": ["awkward-cpp"],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "boost-histogram",
