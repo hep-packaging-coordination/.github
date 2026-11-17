@@ -148,7 +148,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 11
+          "pr_count": 9
         },
         {
           "name": "rundec",
@@ -225,7 +225,7 @@
         {
           "name": "acts",
           "outputs": ["acts-core"],
-          "pr_count": 1
+          "pr_count": 2
         },
         {
           "name": "millepede",
@@ -617,7 +617,7 @@
             {
               "name": "remage",
               "outputs": ["remage"],
-              "pr_count": 1
+              "pr_count": 2
             },
             {
               "name": "revertex",
