@@ -225,7 +225,7 @@
         {
           "name": "acts",
           "outputs": ["acts-core"],
-          "pr_count": 4
+          "pr_count": 1
         },
         {
           "name": "millepede",
@@ -644,12 +644,12 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "awkward-cpp",
           "outputs": ["awkward-cpp"],
-          "pr_count": 2
+          "pr_count": 0
         },
         {
           "name": "boost-histogram",
@@ -714,7 +714,7 @@
         {
           "name": "iminuit",
           "outputs": ["iminuit"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "mplhep",
