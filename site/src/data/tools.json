@@ -148,7 +148,7 @@
             "root_base",
             "root_cxx_standard"
           ],
-          "pr_count": 9
+          "pr_count": 8
         },
         {
           "name": "rundec",
@@ -284,7 +284,7 @@
             "geant4_data_variant",
             "geant4_visualisation_variant"
           ],
-          "pr_count": 2
+          "pr_count": 3
         },
         {
           "name": "geant4-python-application",
@@ -817,7 +817,7 @@
         {
           "name": "astyle",
           "outputs": ["astyle"],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
