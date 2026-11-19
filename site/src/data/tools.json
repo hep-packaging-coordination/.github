@@ -502,7 +502,7 @@
             {
               "name": "atlasopenmagic",
               "outputs": ["atlasopenmagic"],
-              "pr_count": 0
+              "pr_count": 1
             },
             {
               "name": "fastframes",
@@ -644,7 +644,7 @@
         {
           "name": "awkward",
           "outputs": ["awkward", "awkward-numba"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "awkward-cpp",
