@@ -137,7 +137,7 @@
         {
           "name": "rivet",
           "outputs": ["rivet"],
-          "pr_count": 0
+          "pr_count": 1
         },
         {
           "name": "root",
@@ -354,7 +354,7 @@
         {
           "name": "yoda",
           "outputs": ["yoda"],
-          "pr_count": 0
+          "pr_count": 1
         }
       ],
       "subcategories": null
