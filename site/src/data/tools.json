@@ -137,7 +137,7 @@
         {
           "name": "rivet",
           "outputs": ["rivet"],
-          "pr_count": 1
+          "pr_count": 0
         },
         {
           "name": "root",
@@ -225,7 +225,7 @@
         {
           "name": "acts",
           "outputs": ["acts-core"],
-          "pr_count": 2
+          "pr_count": 3
         },
         {
           "name": "millepede",
@@ -354,7 +354,7 @@
         {
           "name": "yoda",
           "outputs": ["yoda"],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
@@ -817,7 +817,7 @@
         {
           "name": "astyle",
           "outputs": ["astyle"],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
