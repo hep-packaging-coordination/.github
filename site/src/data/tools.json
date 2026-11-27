@@ -214,7 +214,7 @@
         {
           "name": "phlex",
           "outputs": ["phlex"],
-          "pr_count": 1
+          "pr_count": 0
         }
       ],
       "subcategories": null
@@ -284,7 +284,7 @@
             "geant4_data_variant",
             "geant4_visualisation_variant"
           ],
-          "pr_count": 3
+          "pr_count": 4
         },
         {
           "name": "geant4-python-application",
